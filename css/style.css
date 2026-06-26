@@ -1,0 +1,908 @@
+/* ============================================================= */
+/* 01. 기본 초기화 및 범용 스타일                               */
+/* ============================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* ============================================================= */
+/* 02. 상단 헤더 영역 (Header & Container)                       */
+/* ============================================================= */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    padding: 0 100px;
+    position: relative;
+    z-index: 1002;
+}
+
+.header-logo {
+    width: 200px;
+}
+
+.header-logo img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.header-sns {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.sns-icon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s;
+}
+
+.sns-icon:hover {
+    transform: scale(1.1);
+}
+
+
+/* ============================================================= */
+/* 03. PC 주메뉴 구역                                           */
+/* ============================================================= */
+.header-menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    height: 100%;
+}
+
+.menu-item {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item > a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: -0.5px;
+}
+
+
+/* ============================================================= */
+/* 04. 메가 드롭다운 판 (PC 전용 패널 및 액션)                    */
+/* ============================================================= */
+.mega-dropdown {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-top: 1px solid #eee;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.25s ease-in-out;
+    z-index: 1001;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+.mega-dropdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.dropdown-column {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.dropdown-column a {
+    font-size: 16px;
+    color: #666;
+}
+
+/* 마우스 호버 시 메가드롭다운 오픈 조건 */
+.main-header:hover .mega-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* ============================================================= */
+/* 05. 햄버거 토글 버튼 (모바일용 변환 단추)                      */
+/* ============================================================= */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #0f172a;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+
+/* ============================================================= */
+/* 06. 모바일 아코디언 사이드바 & 오버레이                         */
+/* ============================================================= */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 60px 0 40px 0;
+    z-index: 10005;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+    transition: right 0.3s ease-in-out;
+}
+
+.mobile-sidebar.active {
+    right: 0 !important;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #666;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #f1f5f9;
+    margin-top: 20px;
+}
+
+.sidebar-group {
+    border-bottom: 1px solid #f1f5f9;
+    background-color: #ffffff;
+    transition: background-color 0.25s ease;
+}
+
+.sidebar-title-btn {
+    font-size: 16px;
+    font-weight: 700;
+    color: #334155;
+    padding: 18px 24px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-title-btn::after {
+    content: '❯';
+    font-size: 11px;
+    color: #94a3b8;
+    transition: transform 0.25s ease;
+}
+
+.sidebar-group.active {
+    background-color: #f1f5f9;
+}
+
+.sidebar-group.active .sidebar-title-btn {
+    color: #0f172a;
+}
+
+.sidebar-group.active .sidebar-title-btn::after {
+    transform: rotate(90deg);
+}
+
+.sidebar-sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out;
+    background-color: #e2e8f0;
+}
+
+.sidebar-sub-menu a {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    padding: 14px 40px;
+    text-decoration: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-sub-menu a:hover {
+    color: #000000;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 10004;
+    display: none;
+}
+
+.sidebar-overlay.active {
+    display: block !important;
+}
+
+
+/* ============================================================= */
+/* 07. 메인 비주얼 Swiper 슬라이더                                */
+/* ============================================================= */
+.main-visual {
+    width: 100%;
+    height: auto;
+    margin-top: 70px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.responsive-media {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #ffffff !important;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ffffff !important;
+}
+
+
+/* ============================================================= */
+/* 08. 회사 상단 인트로 영역 (Company Intro)                       */
+/* ============================================================= */
+.company-intro {
+    text-align: center;
+    /* 패딩 수정: 위 80px, 좌우 20px, 아래 0px */
+    padding: 80px 20px 0px 20px;
+    background-color: #f5f5f5;
+}
+
+.intro-line-1 {
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 15px;
+    font-size: clamp(20px, 2.5vw, 40px);
+    letter-spacing: 2px;
+}
+
+.intro-line-2 {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-weight: 900;
+    display: inline-block;
+    color: #111111;
+    font-size: clamp(40px, 5.5vw, 80px);
+    letter-spacing: 0px;
+}
+
+
+/* ============================================================= */
+/* 09. 회사 상세 소개 영역 (Detailed Intro)                       */
+/* ============================================================= */
+.detailed-intro {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-bottom: 80px;
+}
+
+.intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 80px;
+    gap: 20px;
+}
+
+.intro-text {
+    flex: 0 0 50%;
+    max-width: 600px;
+    text-align: left;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.about-title {
+    font-size: clamp(15px, 2.2vw, 20px);
+    letter-spacing: 4px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-body {
+    font-size: clamp(16px, 2.4vw, 24px);
+    line-height: 1.8;
+    color: #334155;
+}
+
+.line-block {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.about-body strong {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+.intro-image {
+    flex: 0 0 50%;
+    max-width: 600px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.intro-image img {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+
+/* ============================================================= */
+/* 10. 회사 로드맵 영역 (Company Roadmap)                          */
+/* ============================================================= */
+.company-roadmap {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.roadmap-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+    position: relative;
+}
+
+.roadmap-header {
+    margin-bottom: 80px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+.roadmap-header h2 {
+    font-size: clamp(32px, 3vw, 40px);
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.timeline-wrapper {
+    position: relative;
+    padding: 200px 0;
+}
+
+/* 타임라인 가로 중앙 메인 원통선 */
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    transform: translate(-50%, -50%);
+    height: 14px;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E"),
+        linear-gradient(to bottom, #8ca0ba 0%, #94a3b8 15%, #94a3b8 85%, #8496b0 100%);
+    background-repeat: repeat-x, no-repeat;
+    background-size: 180px 40px, 100% 100%;
+    background-position: center, center;
+    z-index: 1;
+}
+
+.timeline-inner {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    width: 340px;
+    max-width: 340px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    padding: 32px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    position: relative;
+    margin-left: -50px;
+    z-index: 3;
+}
+
+.timeline-item:first-child {
+    margin-left: 0;
+}
+
+.timeline-item.type-top { transform: translateY(-170px); }
+.timeline-item.type-bottom { transform: translateY(170px); }
+
+/* 세로 점선 라인 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: linear-gradient(to bottom, #94a3b8 60%, rgba(255, 255, 255, 0) 0%) repeat-y;
+    background-size: 3px 13px;
+}
+
+.timeline-item.type-top::after { top: 100%; height: calc(170px - 50%); }
+.timeline-item.type-bottom::after { bottom: 100%; height: calc(170px - 50%); }
+
+.timeline-item .badge {
+    display: inline-block;
+    background-color: #0f172a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.timeline-item .item-title { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+.timeline-item .item-desc { font-size: 13px; color: #64748b; line-height: 1.6; word-break: keep-all; }
+
+/* 타임라인 메인 교차점 중앙 뱃지 원 */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: #0f172a;
+    border: 5px solid #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item.type-top .timeline-dot { top: calc(100% + 43px); }
+.timeline-item.type-bottom .timeline-dot { bottom: calc(100% + 43px); }
+
+
+/* ============================================================= */
+/* 11. 약관 및 개인정보 보관함 페이지 전용 영역 (.legal-section)     */
+/* ============================================================= */
+.legal-section {
+    padding: 180px 0 100px 0;
+    background-color: #ffffff;
+}
+
+.legal-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.legal-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.legal-subtitle {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 25px;
+}
+
+.legal-content {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #334155;
+    max-width: 1000px;
+}
+
+.effective-date {
+    font-weight: bold;
+    color: #475569;
+    margin-bottom: 35px;
+}
+
+.legal-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+
+.legal-content ul {
+    margin: 12px 0 24px 20px;
+    padding: 0;
+}
+
+.legal-content li {
+    margin-bottom: 8px;
+    list-style-type: disc;
+}
+
+.contact-box {
+    margin-top: 20px;
+    padding: 20px 25px;
+    background-color: #f8fafc;
+    border-left: 4px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+
+/* ============================================================= */
+/* 12. 하단 푸터 영역 (Site Footer & 🚀 항상 두 줄 주소/이메일 적용) */
+/* ============================================================= */
+.site-footer {
+    width: 100%;
+    background-color: #e2e8f0;
+    padding: 80px 0 60px 0;
+    color: #475569;
+    font-family: sans-serif;
+    border-top: 1px solid #cbd5e1;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* [푸터 왼쪽 기업정보 구역과 세로선] */
+.footer-left {
+    flex: 1;
+    max-width: 600px;
+    /* 세로선을 왼쪽 구역 오른쪽에 그리고, 선과 글자 사이 여백(padding)을 줍니다 */
+    border-right: 1px solid #cbd5e1;
+    padding-right: 20px; /* ◀ 왼쪽 구역 글자와 세로선 사이의 간격 */
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.footer-info {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.info-row {
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 주소 및 이메일 상시 하향 정렬 튜닝 */
+.info-row.address-row {
+    display: flex;
+    align-items: center;
+}
+
+.info-row.email-row {
+    margin-top: 5px;
+}
+
+.address-text br {
+    display: block !important;
+}
+
+.info-row strong {
+    color: #0f172a;
+    margin-right: 4px;
+}
+
+.footer-container .bar {
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background-color: #cbd5e1;
+    margin: 0 12px;
+}
+
+.footer-links {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #0f172a;
+}
+
+.footer-links strong {
+    color: #0284c7;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 10px;
+}
+
+/* [푸터 오른쪽 메뉴 인덱스 구역] */
+.footer-right {
+    display: flex;
+    gap: 40px; /* 오른쪽 메뉴 열 사이의 간격 (콤팩트하게 유지) */
+    /* 기존 padding-left: 40px; 가 삭제되어 세로선에 딱 붙게 되므로 외곽 여백을 살짝 띄워줍니다 */
+    margin-left: 20px; /* ◀ 세로선과 오른쪽 메뉴 시작점 사이의 간격 */
+}
+
+.footer-menu-group {
+    min-width: 100px;
+    text-align: center;
+}
+
+.menu-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.footer-menu-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu-group ul li {
+    margin-bottom: 12px;
+}
+
+.footer-menu-group ul li a {
+    font-size: 13px;
+    font-weight: 400;
+    color: #475569;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-menu-group ul li a:hover {
+    color: #0f172a;
+}
+
+
+/* ============================================================= */
+/* 13. 우측 하단 고정형 TOP 버튼                                  */
+/* ============================================================= */
+.top-btn {
+    position: fixed;
+    bottom: 60px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background-color: #0f172a;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.top-btn:hover {
+    transform: translateY(-5px);
+    background-color: #1e293b;
+}
+
+
+/* ============================================================= */
+/* 14. [통합 반응형] 브레이크포인트 타겟 세팅                      */
+/* ============================================================= */
+
+/* ── 📌 스케일 대응: PC 화면이 1400px 미만으로 줄어들 때 ── */
+@media (max-width: 1400px) {
+    /* 로드맵 타임라인 정비례 축소 */
+    .timeline-wrapper {
+        padding: 14.28vw 0;
+    }
+    .timeline-item {
+        width: 24.28vw;
+        max-width: 24.28vw;
+        padding: 2.28vw 1.78vw;
+        margin-left: -3.57vw;
+        border-radius: 0.85vw;
+    }
+    .timeline-item:first-child {
+        margin-left: 0;
+    }
+    .timeline-item.type-top { transform: translateY(-12.14vw); }
+    .timeline-item.type-bottom { transform: translateY(12.14vw); }
+    .timeline-item.type-top::after { height: calc(12.14vw - 50%); }
+    .timeline-item.type-bottom::after { height: calc(12.14vw - 50%); }
+    .timeline-item .badge {
+        font-size: 0.85vw;
+        padding: 0.35vw 0.71vw;
+        margin-bottom: 0.85vw;
+    }
+    .timeline-item .item-title { font-size: 1.21vw; margin-bottom: 0.57vw; }
+    .timeline-item .item-desc { font-size: 0.92vw; }
+    .timeline-dot {
+        width: 4.14vw;
+        height: 4.14vw;
+        border-width: 0.35vw;
+        font-size: 1.14vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .timeline-item.type-top .timeline-dot { top: calc(100% + 3.07vw); }
+    .timeline-item.type-bottom .timeline-dot { bottom: calc(100% + 3.07vw); }
+
+    /* 서브 법적 공지 내용면 정비례 축소 */
+    .legal-section { padding: 10vw 0 7vw 0; }
+    .legal-container { padding: 0 2.85vw; }
+    .legal-title { font-size: 2.57vw; }
+    .legal-subtitle { font-size: 1.14vw; margin-bottom: 3.57vw; padding-bottom: 1.78vw; }
+    .legal-content { font-size: 1.14vw; }
+    .legal-content h3 { font-size: 1.42vw; margin-top: 3.21vw; margin-bottom: 1.07vw; }
+}
+
+/* ── 📌 태블릿 대응: 일반 메뉴 차단 및 햄버거 노출 분기점 (1100px) ── */
+@media (max-width: 1100px) {
+    .header-menu, .mega-dropdown {
+        display: none !important;
+    }
+    .header-logo, .header-sns {
+        width: auto;
+    }
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* ── 📌 모바일 대응: 레이아웃 완전 수직 배회 분기점 (768px 이하) ── */
+@media (max-width: 768px) {
+    /* 로드맵 수직 변환 */
+    .timeline-line, .timeline-dot { display: none !important; }
+    .timeline-wrapper { padding: 0; }
+    .timeline-inner { flex-direction: column; gap: 25px; }
+    .timeline-item { margin-left: 0; width: 100%; max-width: 100%; }
+    .timeline-item.type-top, .timeline-item.type-bottom { transform: translateY(0); }
+    .timeline-item::after { display: none; }
+    .timeline-item .badge { font-size: 12px; padding: 5px 10px; margin-bottom: 12px; }
+    .timeline-item .item-title { font-size: 17px; margin-bottom: 8px; }
+    .timeline-item .item-desc { font-size: 13px; }
+
+    /* 약관 본문 패딩 방어 */
+    .legal-section { padding: 80px 0 60px 0; }
+    .legal-title { font-size: 24px; }
+    .legal-subtitle { font-size: 14px; margin-bottom: 30px; }
+    .legal-content { font-size: 14px; }
+    .legal-content h3 { font-size: 16px; margin-top: 30px; }
+
+    /* 푸터 수직 레이아웃 변경 및 선 교체 */
+    .footer-container { flex-direction: column; gap: 40px; padding: 0 25px; }
+    .footer-left { padding-right: 0; border-right: none; border-bottom: 1px solid #cbd5e1; padding-bottom: 20px; width: 100%; }
+    .footer-right { padding-left: 0; width: 100%; justify-content: space-between; gap: 20px; }
+    .info-row .bar { display: none; }
+    .info-row span { display: block; width: 100%; margin-bottom: 4px; }
+}
+
+/* ── 📌 소형 스마트폰 대응: 인트로 수직 배정 (500px 이하) ── */
+@media (max-width: 500px) {
+    .intro-container { flex-direction: column; align-items: center; }
+    .intro-text { max-width: 100%; text-align: center; margin-bottom: 30px; }
+    .intro-image { max-width: 100%; justify-content: center; }
+    .intro-image img { width: 260px; }
+}
+
+.vertical-line {
+    width: 1px;               /* 선의 두께 */
+    height: 50px;             /* 선의 세로 길이 (원하는 만큼 조절 가능) */
+    background-color: #555555;   /* 선의 색상 (회색 계열, 회사 톤앤매너에 맞게 수정 가능) */
+    margin: 20px auto;        /* 위아래 30px 여백을 주고, 가운데 정렬(auto) */
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>| 울림게임즈</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>z
+
+<header class="main-header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="울림게임즈 로고">
+            </a>
+        </div>
+
+        <nav class="header-menu">
+            <div class="menu-item"><a href="#">울림게임즈</a></div>
+            <div class="menu-item"><a href="#">게임소개</a></div>
+            <div class="menu-item"><a href="#">소식</a></div>
+            <div class="menu-item"><a href="#">고객지원</a></div>
+        </nav>
+
+        <div class="header-right-zone" style="display: flex; align-items: center; gap: 20px;">
+            <div class="header-sns">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="인스타그램" class="sns-icon">
+                </a>
+                <a href="https://www.youtube.com/@ullimgames" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="유튜브" class="sns-icon">
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggleBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mega-dropdown">
+        <div class="mega-dropdown-container">
+            <div class="dropdown-column">
+                <a href="#">울림게임즈</a>
+                <a href="#">오시는길</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#">나이트 투어</a>
+                <a href="#">프로젝트:합</a>
+                <a href="#">프로젝트:XR</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#">공지사항</a>
+                <a href="#">보도자료</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#">1:1문의</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+        <button class="close-btn" id="closeSidebarBtn">&times;</button>
+    </div>
+    <nav class="sidebar-menu">
+        <div class="sidebar-group">
+            <div class="sidebar-title-btn">울림게임즈</div>
+            <div class="sidebar-sub-menu">
+                <a href="#">울림게임즈 소개</a>
+                <a href="#">오시는길</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-title-btn">게임소개</div>
+            <div class="sidebar-sub-menu">
+                <a href="#">나이트 투어</a>
+                <a href="#">프로젝트:합</a>
+                <a href="#">프로젝트:XR</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-title-btn">소식</div>
+            <div class="sidebar-sub-menu">
+                <a href="#">공지사항</a>
+                <a href="#">보도자료</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-title-btn">고객지원</div>
+            <div class="sidebar-sub-menu">
+                <a href="#">1:1문의</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<main>
+    <section class="main-visual swiper mainSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <video src="images/mainvisual_1_replica.mp4" autoplay loop muted playsinline class="responsive-media"></video>
+            </div>
+            <div class="swiper-slide">
+                <video src="images/main_visual_2.mp4" autoplay loop muted playsinline class="responsive-media"></video>
+            </div>
+            <div class="swiper-slide">
+                <video src="images/main_visual_3.mp4" autoplay loop muted playsinline class="responsive-media"></video>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <section class="company-intro">
+        <h2 class="intro-line-1">게임으로 전하는 새로운 울림</h2>
+        <h2 class="intro-line-2">Ullim Games</h2>
+    </section>
+
+    <div class="vertical-line"></div>
+
+    <section class="detailed-intro">
+        <div class="intro-container">
+            <div class="intro-text">
+                <h3 class="about-title">ABOUT US</h3>
+                <p class="about-body">
+                    <span class="line-block">울림게임즈는 전 세계 플레이어에게</span>
+                    <span class="line-block">마음속 깊은 울림과 재미를 선사합니다.</span>
+                    <br>
+                    <span class="line-block">AI 기술을 직접 개발하고 게임 속에 녹여,</span>
+                    <span class="line-block">울림게임즈만의 경험을 구현합니다.</span>
+                    <br>
+                    <span class="line-block">친구들과 함께 쌓았던 소중한 추억과</span>
+                    <span class="line-block">순수한 몰입을 세상에 전합니다.</span>
+                </p>
+            </div>
+            <div class="intro-image">
+                <img src="images/company_profile.png" alt="Ullim Games Office">
+            </div>
+        </div>
+    </section>
+
+    <section class="company-roadmap">
+        <div class="roadmap-container">
+            <div class="roadmap-header">
+                <h2>ROAD MAP</h2>
+            </div>
+            <div class="timeline-wrapper">
+                <div class="timeline-inner">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-item type-top">
+                        <div class="timeline-dot">26.06</div>
+                        <div class="badge">2026. 06</div>
+                        <h3 class="item-title">울림게임즈 스튜디오 설립</h3>
+                        <p class="item-desc">세상에 새로운 울림을 전할 게임 개발사, 울림게임즈의 공식적인 첫 발걸음</p>
+                    </div>
+
+                    <div class="timeline-item type-bottom">
+                        <div class="timeline-dot">26.07</div>
+                        <div class="badge">2026. 07</div>
+                        <h3 class="item-title">나이트 투어 정식 출시</h3>
+                        <p class="item-desc">중세 체스의 유서 깊은 '나이트 투어' 규칙을 재해석한 독창적인 모바일 2D 캐주얼 보드게임 구글 플레이스토어 정식 런칭</p>
+                    </div>
+
+                    <div class="timeline-item type-top">
+                        <div class="timeline-dot">26.08</div>
+                        <div class="badge">2026. 08</div>
+                        <h3 class="item-title">프로젝트 : 合(합) 빌드 공개</h3>
+                        <p class="item-desc">로컬 멀티플레이를 지원하는 모바일 3D 실시간 턴제 SRPG 개발 및 플랫폼 최적화 테스트 진행</p>
+                    </div>
+
+                    <div class="timeline-item type-bottom">
+                        <div class="timeline-dot">26.09</div>
+                        <div class="badge">2026. 09</div>
+                        <h3 class="item-title">프로젝트 : XR 출시 예정</h3>
+                        <p class="item-desc">몰입감을 극대화한 3D VR 액션 게임 개발 및 메타버스 플랫폼 'VRChat'을 통한 독점 프리뷰 빌드 선공개 예정</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="울림게임즈 로고">
+            </div>
+
+            <div class="footer-info">
+                <div class="info-row">
+                    <span><strong>상호</strong> 울림게임즈</span>
+                    <span class="bar"></span>
+                    <span><strong>대표</strong> 황승현</span>
+                    <span class="bar"></span>
+                    <span><strong>사업자등록번호</strong> 804-61-00970</span>
+                </div>
+                <div class="info-row">
+                    <span><strong>게임제작업등록</strong> 제 2026-33호</span>
+                </div>
+                <div class="info-row address-row">
+                    <span class="address-text"><strong>주소</strong> 충청남도 천안시 동남구 백석대학로 1-3,<br> 학생복지동 3층 311-4호</span>
+                </div>
+                <div class="info-row email-row">
+                    <span class="email-text"><strong>이메일</strong> contact@ullimgames.com</span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="privacy.html"><strong>개인정보처리방침</strong></a>
+                    <span class="bar"></span>
+                    <a href="terms.html">이용약관</a>
+                </div>
+
+                <p class="copyright">&copy; 2026 Woollim Games. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-menu-group">
+                <h4 class="menu-title">울림게임즈</h4>
+                <ul>
+                    <li><a href="#">울림게임즈</a></li>
+                    <li><a href="#">오시는길</a></li>
+                </ul>
+            </div>
+            <div class="footer-menu-group">
+                <h4 class="menu-title">게임소개</h4>
+                <ul>
+                    <li><a href="#">나이트 투어</a></li>
+                    <li><a href="#">프로젝트:합</a></li>
+                    <li><a href="#">프로젝트:XR</a></li>
+                </ul>
+            </div>
+            <div class="footer-menu-group">
+                <h4 class="menu-title">소식</h4>
+                <ul>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">보도자료</a></li>
+                </ul>
+            </div>
+            <div class="footer-menu-group">
+                <h4 class="menu-title">고객지원</h4>
+                <ul>
+                    <li><a href="#">1:1문의</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="backToTop" class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">TOP</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. 메인 비주얼 슬라이더 구동
+        var swiper = new Swiper(".mainSwiper", {
+            loop: true,
+            autoplay: { delay: 8000 },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        // 2. 모바일 사이드바 및 아코디언 메뉴 구동 로직
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const backToTopBtn = document.getElementById('backToTop');
+
+        if (menuToggleBtn && closeSidebarBtn && mobileSidebar && sidebarOverlay) {
+            // 사이드바 열기
+            menuToggleBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileSidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+                if (backToTopBtn) backToTopBtn.style.display = 'none'; // 사이드바 오픈 시 TOP 숨김
+            });
+
+            // 사이드바 닫기 함수
+            function closeSidebar() {
+                mobileSidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                if (backToTopBtn) backToTopBtn.style.display = 'flex'; // 사이드바 종료 시 TOP 복구
+
+                document.querySelectorAll('.sidebar-group').forEach(g => {
+                    g.classList.remove('active');
+                    g.querySelector('.sidebar-sub-menu').style.maxHeight = null;
+                });
+            }
+
+            closeSidebarBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeSidebar();
+            });
+
+            sidebarOverlay.addEventListener('click', closeSidebar);
+
+            // 대제목 클릭 시 아코디언 슬라이드 작동
+            const titleBtns = document.querySelectorAll('.sidebar-title-btn');
+            titleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const currentGroup = this.parentElement;
+                    const currentSubMenu = currentGroup.querySelector('.sidebar-sub-menu');
+
+                    document.querySelectorAll('.sidebar-group').forEach(group => {
+                        if (group !== currentGroup) {
+                            group.classList.remove('active');
+                            group.querySelector('.sidebar-sub-menu').style.maxHeight = null;
+                        }
+                    });
+
+                    currentGroup.classList.toggle('active');
+
+                    if (currentGroup.classList.contains('active')) {
+                        currentSubMenu.style.maxHeight = currentSubMenu.scrollHeight + "px";
+                    } else {
+                        currentSubMenu.style.maxHeight = null;
+                    }
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>
