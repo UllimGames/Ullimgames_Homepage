@@ -156,6 +156,7 @@ a {
     border: none;
     cursor: pointer;
     padding: 0;
+    z-index: 1003;
 }
 
 .menu-toggle span {
@@ -179,7 +180,7 @@ a {
     background-color: #ffffff;
     padding: 60px 0 40px 0;
     z-index: 10005;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15); /* 그림자 강화하여 배경과 명확히 분리 */
     transition: right 0.3s ease-in-out;
 }
 
@@ -191,7 +192,7 @@ a {
     background: none;
     border: none;
     font-size: 30px;
-    color: #666;
+    color: #0f172a; /* 닫기 버튼 색상 강화 */
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -201,12 +202,12 @@ a {
 .sidebar-menu {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid #e2e8f0;
     margin-top: 20px;
 }
 
 .sidebar-group {
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
     background-color: #ffffff;
     transition: background-color 0.25s ease;
 }
@@ -214,7 +215,7 @@ a {
 .sidebar-title-btn {
     font-size: 16px;
     font-weight: 700;
-    color: #334155;
+    color: #0f172a; /* 모바일 가독성을 위해 더 진한 색으로 변경 */
     padding: 18px 24px;
     cursor: pointer;
     position: relative;
@@ -226,16 +227,16 @@ a {
 .sidebar-title-btn::after {
     content: '❯';
     font-size: 11px;
-    color: #94a3b8;
+    color: #64748b;
     transition: transform 0.25s ease;
 }
 
 .sidebar-group.active {
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
 }
 
 .sidebar-group.active .sidebar-title-btn {
-    color: #0f172a;
+    color: #0284c7; /* 활성화 시 브랜드 컬러 포인트 부여 */
 }
 
 .sidebar-group.active .sidebar-title-btn::after {
@@ -246,21 +247,21 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.25s ease-out;
-    background-color: #e2e8f0;
+    background-color: #f1f5f9; /* 어두운 회색에서 밝고 화사한 회색으로 변경 */
 }
 
 .sidebar-sub-menu a {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #475569;
+    color: #334155; /* 서브메뉴 글자 가독성 보강 */
     padding: 14px 40px;
     text-decoration: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid #e2e8f0;
 }
 
 .sidebar-sub-menu a:hover {
-    color: #000000;
+    color: #0284c7;
 }
 
 .sidebar-overlay {
@@ -269,7 +270,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.5); /* 오버레이 명도 조절하여 사이드바 집중도 향상 */
     z-index: 10004;
     display: none;
 }
@@ -318,7 +319,6 @@ a {
 /* ============================================================= */
 .company-intro {
     text-align: center;
-    /* 패딩 수정: 위 80px, 좌우 20px, 아래 0px */
     padding: 80px 20px 0px 20px;
     background-color: #f5f5f5;
 }
@@ -448,7 +448,6 @@ a {
     padding: 200px 0;
 }
 
-/* 타임라인 가로 중앙 메인 원통선 */
 .timeline-line {
     position: absolute;
     top: 50%;
@@ -493,7 +492,6 @@ a {
 .timeline-item.type-top { transform: translateY(-170px); }
 .timeline-item.type-bottom { transform: translateY(170px); }
 
-/* 세로 점선 라인 */
 .timeline-item::after {
     content: '';
     position: absolute;
@@ -521,7 +519,6 @@ a {
 .timeline-item .item-title { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
 .timeline-item .item-desc { font-size: 13px; color: #64748b; line-height: 1.6; word-break: keep-all; }
 
-/* 타임라인 메인 교차점 중앙 뱃지 원 */
 .timeline-dot {
     position: absolute;
     left: 50%;
@@ -639,13 +636,11 @@ a {
     position: relative;
 }
 
-/* [푸터 왼쪽 기업정보 구역과 세로선] */
 .footer-left {
     flex: 1;
     max-width: 600px;
-    /* 세로선을 왼쪽 구역 오른쪽에 그리고, 선과 글자 사이 여백(padding)을 줍니다 */
     border-right: 1px solid #cbd5e1;
-    padding-right: 20px; /* ◀ 왼쪽 구역 글자와 세로선 사이의 간격 */
+    padding-right: 20px;
 }
 
 .footer-logo {
@@ -669,7 +664,6 @@ a {
     align-items: center;
 }
 
-/* 주소 및 이메일 상시 하향 정렬 튜닝 */
 .info-row.address-row {
     display: flex;
     align-items: center;
@@ -723,12 +717,10 @@ a {
     margin-top: 10px;
 }
 
-/* [푸터 오른쪽 메뉴 인덱스 구역] */
 .footer-right {
     display: flex;
-    gap: 40px; /* 오른쪽 메뉴 열 사이의 간격 (콤팩트하게 유지) */
-    /* 기존 padding-left: 40px; 가 삭제되어 세로선에 딱 붙게 되므로 외곽 여백을 살짝 띄워줍니다 */
-    margin-left: 20px; /* ◀ 세로선과 오른쪽 메뉴 시작점 사이의 간격 */
+    gap: 40px;
+    margin-left: 20px;
 }
 
 .footer-menu-group {
@@ -800,12 +792,8 @@ a {
 /* 14. [통합 반응형] 브레이크포인트 타겟 세팅                      */
 /* ============================================================= */
 
-/* ── 📌 스케일 대응: PC 화면이 1400px 미만으로 줄어들 때 ── */
 @media (max-width: 1400px) {
-    /* 로드맵 타임라인 정비례 축소 */
-    .timeline-wrapper {
-        padding: 14.28vw 0;
-    }
+    .timeline-wrapper { padding: 14.28vw 0; }
     .timeline-item {
         width: 24.28vw;
         max-width: 24.28vw;
@@ -813,18 +801,12 @@ a {
         margin-left: -3.57vw;
         border-radius: 0.85vw;
     }
-    .timeline-item:first-child {
-        margin-left: 0;
-    }
+    .timeline-item:first-child { margin-left: 0; }
     .timeline-item.type-top { transform: translateY(-12.14vw); }
     .timeline-item.type-bottom { transform: translateY(12.14vw); }
     .timeline-item.type-top::after { height: calc(12.14vw - 50%); }
     .timeline-item.type-bottom::after { height: calc(12.14vw - 50%); }
-    .timeline-item .badge {
-        font-size: 0.85vw;
-        padding: 0.35vw 0.71vw;
-        margin-bottom: 0.85vw;
-    }
+    .timeline-item .badge { font-size: 0.85vw; padding: 0.35vw 0.71vw; margin-bottom: 0.85vw; }
     .timeline-item .item-title { font-size: 1.21vw; margin-bottom: 0.57vw; }
     .timeline-item .item-desc { font-size: 0.92vw; }
     .timeline-dot {
@@ -838,7 +820,6 @@ a {
     .timeline-item.type-top .timeline-dot { top: calc(100% + 3.07vw); }
     .timeline-item.type-bottom .timeline-dot { bottom: calc(100% + 3.07vw); }
 
-    /* 서브 법적 공지 내용면 정비례 축소 */
     .legal-section { padding: 10vw 0 7vw 0; }
     .legal-container { padding: 0 2.85vw; }
     .legal-title { font-size: 2.57vw; }
@@ -847,18 +828,29 @@ a {
     .legal-content h3 { font-size: 1.42vw; margin-top: 3.21vw; margin-bottom: 1.07vw; }
 }
 
-/* ── 📌 태블릿 대응: 일반 메뉴 차단 및 햄버거 노출 분기점 (1100px) ── */
+/* ── 📌 태블릿 및 공통 모바일 메뉴 노출 (1100px 이하 최적화) ── */
 @media (max-width: 1100px) {
     .header-menu, .mega-dropdown {
         display: none !important;
     }
+    .header-container {
+        padding: 0 24px; /* 테블릿/모바일에서 좌우 거대 여백 축소 */
+    }
     .header-logo, .header-sns {
         width: auto;
+    }
+    .header-sns {
+        margin-right: 50px; /* 햄버거 버튼과 겹치지 않게 여백 배치 */
+        gap: 12px;
+    }
+    .sns-icon {
+        width: 24px; /* 모바일용 콤팩트 아이콘 사이즈 */
+        height: 24px;
     }
     .menu-toggle {
         display: flex;
         position: absolute;
-        right: 50px;
+        right: 24px; /* 깔끔하게 우측 정렬 */
         top: 50%;
         transform: translateY(-50%);
     }
@@ -866,6 +858,18 @@ a {
 
 /* ── 📌 모바일 대응: 레이아웃 완전 수직 배회 분기점 (768px 이하) ── */
 @media (max-width: 768px) {
+    /* 모바일 상단 헤더 최종 최적화 */
+    .header-container {
+        padding: 0 16px;
+    }
+    .header-logo img {
+        height: 38px; /* 로고 가독성 유지하며 슬림화 */
+    }
+    .header-sns {
+        margin-right: 44px;
+        gap: 10px;
+    }
+
     /* 로드맵 수직 변환 */
     .timeline-line, .timeline-dot { display: none !important; }
     .timeline-wrapper { padding: 0; }
@@ -884,10 +888,38 @@ a {
     .legal-content { font-size: 14px; }
     .legal-content h3 { font-size: 16px; margin-top: 30px; }
 
-    /* 푸터 수직 레이아웃 변경 및 선 교체 */
-    .footer-container { flex-direction: column; gap: 40px; padding: 0 25px; }
-    .footer-left { padding-right: 0; border-right: none; border-bottom: 1px solid #cbd5e1; padding-bottom: 20px; width: 100%; }
-    .footer-right { padding-left: 0; width: 100%; justify-content: space-between; gap: 20px; }
+    /* 푸터 수직 레이아웃 변경 및 최적화 */
+    .site-footer {
+        padding: 40px 0;
+    }
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    .footer-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #cbd5e1;
+        padding-bottom: 25px;
+        width: 100%;
+    }
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+    .footer-right {
+        padding-left: 0;
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 50px;
+    }
+    .footer-menu-group {
+        text-align: left; /* 모바일 인덱스는 좌측 정렬이 훨씬 깔끔함 */
+    }
+    .menu-title {
+        margin-bottom: 12px;
+    }
     .info-row .bar { display: none; }
     .info-row span { display: block; width: 100%; margin-bottom: 4px; }
 }
@@ -901,8 +933,8 @@ a {
 }
 
 .vertical-line {
-    width: 1px;               /* 선의 두께 */
-    height: 50px;             /* 선의 세로 길이 (원하는 만큼 조절 가능) */
-    background-color: #555555;   /* 선의 색상 (회색 계열, 회사 톤앤매너에 맞게 수정 가능) */
-    margin: 20px auto;        /* 위아래 30px 여백을 주고, 가운데 정렬(auto) */
+    width: 1px;
+    height: 50px;
+    background-color: #555555;
+    margin: 20px auto;
 }
