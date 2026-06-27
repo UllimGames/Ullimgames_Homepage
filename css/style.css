@@ -954,3 +954,44 @@ a {
     background-color: #555555;
     margin: 20px auto;
 }
+
+/* ============================================================= */
+/* 🛠️ 모바일 가로 삐져나감 현상 최종 진압 방어벽 코드              */
+/* ============================================================= */
+
+/* 1. 전체 화면 가로 스크롤 원천 차단 */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 2. HTML에 새로 추가된 우측 구역 가로폭 방어 */
+.header-right-zone {
+    max-width: 100%;
+}
+
+/* 3. 로드맵 가로선이 브라우저 밖으로 튀어나가지 않게 안전 장치 */
+.timeline-line {
+    max-width: 100%;
+}
+
+/* ── 📌 태블릿 및 모바일 (1100px 이하) 정렬 최적화 보강 ── */
+@media (max-width: 1100px) {
+    .header-container {
+        justify-content: space-between;
+    }
+    .header-right-zone {
+        gap: 15px !important; /* 모바일에서 간격 콤팩트하게 축소 */
+    }
+    .header-sns {
+        margin-right: 0 !important; /* 감싸는 부모 박스가 생겼으므로 기존 마진 제거 */
+    }
+}
+
+/* ── 📌 스마트폰 (768px 이하) 정렬 최종 보정 ── */
+@media (max-width: 768px) {
+    .header-right-zone {
+        gap: 10px !important;
+    }
+}
