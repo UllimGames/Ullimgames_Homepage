@@ -35,16 +35,19 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1400px; /* 푸터, 메인과 동일하게 최대폭 제한 */
     width: 100%;
     height: 70px;
     margin: 0 auto;
-    padding: 0 100px;
+    padding: 0 40px; /* 가로선 일치를 위해 좌우 여백을 푸터와 동일하게 맞춤 */
     position: relative;
     z-index: 1002;
 }
 
 .header-logo {
     width: 200px;
+    display: flex;
+    align-items: center;
 }
 
 .header-logo img {
@@ -56,6 +59,7 @@ a {
     width: 200px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 20px;
 }
 
@@ -180,7 +184,7 @@ a {
     background-color: #ffffff;
     padding: 60px 0 40px 0;
     z-index: 10005;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.15); /* 그림자 강화하여 배경과 명확히 분리 */
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
     transition: right 0.3s ease-in-out;
 }
 
@@ -192,7 +196,7 @@ a {
     background: none;
     border: none;
     font-size: 30px;
-    color: #0f172a; /* 닫기 버튼 색상 강화 */
+    color: #0f172a;
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -215,7 +219,7 @@ a {
 .sidebar-title-btn {
     font-size: 16px;
     font-weight: 700;
-    color: #0f172a; /* 모바일 가독성을 위해 더 진한 색으로 변경 */
+    color: #0f172a;
     padding: 18px 24px;
     cursor: pointer;
     position: relative;
@@ -236,7 +240,7 @@ a {
 }
 
 .sidebar-group.active .sidebar-title-btn {
-    color: #0284c7; /* 활성화 시 브랜드 컬러 포인트 부여 */
+    color: #0284c7;
 }
 
 .sidebar-group.active .sidebar-title-btn::after {
@@ -247,14 +251,14 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.25s ease-out;
-    background-color: #f1f5f9; /* 어두운 회색에서 밝고 화사한 회색으로 변경 */
+    background-color: #f1f5f9;
 }
 
 .sidebar-sub-menu a {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #334155; /* 서브메뉴 글자 가독성 보강 */
+    color: #334155;
     padding: 14px 40px;
     text-decoration: none;
     border-top: 1px solid #e2e8f0;
@@ -270,7 +274,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 오버레이 명도 조절하여 사이드바 집중도 향상 */
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10004;
     display: none;
 }
@@ -357,7 +361,7 @@ a {
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 80px;
+    padding: 0 40px; /* 기존 80px에서 푸터와 동일하게 40px로 수정하여 가로선 통일 */
     gap: 20px;
 }
 
@@ -834,23 +838,24 @@ a {
         display: none !important;
     }
     .header-container {
-        padding: 0 24px; /* 테블릿/모바일에서 좌우 거대 여백 축소 */
+        padding: 0 24px; /* 테블릿 패딩 일치 */
     }
-    .header-logo, .header-sns {
+    .header-logo {
         width: auto;
     }
     .header-sns {
-        margin-right: 50px; /* 햄버거 버튼과 겹치지 않게 여백 배치 */
+        width: auto;
+        margin-right: 44px; /* 우측 정렬 유지 및 햄버거 버튼 공간 확보 */
         gap: 12px;
     }
     .sns-icon {
-        width: 24px; /* 모바일용 콤팩트 아이콘 사이즈 */
+        width: 24px;
         height: 24px;
     }
     .menu-toggle {
         display: flex;
         position: absolute;
-        right: 24px; /* 깔끔하게 우측 정렬 */
+        right: 24px;
         top: 50%;
         transform: translateY(-50%);
     }
@@ -858,16 +863,23 @@ a {
 
 /* ── 📌 모바일 대응: 레이아웃 완전 수직 배회 분기점 (768px 이하) ── */
 @media (max-width: 768px) {
-    /* 모바일 상단 헤더 최종 최적화 */
+    /* 모바일 상단 헤더 균형 정렬 고수 */
     .header-container {
         padding: 0 16px;
+        height: 60px; /* 슬림 헤더 */
     }
     .header-logo img {
-        height: 38px; /* 로고 가독성 유지하며 슬림화 */
+        height: 34px; /* 모바일 전용 로고 컴팩트 높이 적용 */
     }
     .header-sns {
-        margin-right: 44px;
+        margin-right: 40px; /* 햄버거 아이콘과의 간격 정밀 수정 */
         gap: 10px;
+    }
+    .menu-toggle {
+        right: 16px;
+    }
+    .main-visual {
+        margin-top: 60px; /* 줄어든 헤더만큼 메인 마진 탑 보정 */
     }
 
     /* 로드맵 수직 변환 */
@@ -895,7 +907,7 @@ a {
     .footer-container {
         flex-direction: column;
         gap: 30px;
-        padding: 0 20px;
+        padding: 0 16px; /* 헤더 좌우 여백과 완전 일치 */
     }
     .footer-left {
         padding-right: 0;
@@ -915,7 +927,7 @@ a {
         gap: 50px;
     }
     .footer-menu-group {
-        text-align: left; /* 모바일 인덱스는 좌측 정렬이 훨씬 깔끔함 */
+        text-align: left;
     }
     .menu-title {
         margin-bottom: 12px;
@@ -926,7 +938,11 @@ a {
 
 /* ── 📌 소형 스마트폰 대응: 인트로 수직 배정 (500px 이하) ── */
 @media (max-width: 500px) {
-    .intro-container { flex-direction: column; align-items: center; }
+    .intro-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 16px; /* 극단적 모바일 해상도 여백 통일 */
+    }
     .intro-text { max-width: 100%; text-align: center; margin-bottom: 30px; }
     .intro-image { max-width: 100%; justify-content: center; }
     .intro-image img { width: 260px; }
