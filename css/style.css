@@ -876,8 +876,10 @@ a {
         gap: 10px;
     }
     .menu-toggle {
-        right: 16px;
-    }
+            position: static !important; /* 절대 위치를 해제하여 유튜브 아이콘 우측에 정렬 */
+            margin: 0 !important;
+            transform: none !important;
+        }
     .main-visual {
         margin-top: 60px; /* 줄어든 헤더만큼 메인 마진 탑 보정 */
     }
@@ -905,10 +907,11 @@ a {
         padding: 40px 0;
     }
     .footer-container {
-        flex-direction: column;
-        gap: 30px;
-        padding: 0 16px; /* 헤더 좌우 여백과 완전 일치 */
-    }
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px 20px; /* 양옆 여백 안전하게 확보 */
+        }
     .footer-left {
         padding-right: 0;
         border-right: none;
@@ -920,15 +923,17 @@ a {
         margin-bottom: 20px;
     }
     .footer-right {
-        padding-left: 0;
-        margin-left: 0;
-        width: 100%;
-        justify-content: flex-start;
-        gap: 50px;
-    }
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important; /* 1줄에 2개씩 딱 맞게 배분 */
+            gap: 30px 20px !important; /* 행간격 30px, 열간격 20px */
+            width: 100% !important;
+            box-sizing: border-box;
+        }
     .footer-menu-group {
-        text-align: left;
-    }
+            min-width: 0 !important;
+            width: 100% !important;
+            margin: 0 !important;
+        }
     .menu-title {
         margin-bottom: 12px;
     }
@@ -992,6 +997,9 @@ html, body {
 /* ── 📌 스마트폰 (768px 이하) 정렬 최종 보정 ── */
 @media (max-width: 768px) {
     .header-right-zone {
-        gap: 10px !important;
-    }
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important; /* 아이콘과 삼단작대기 사이의 간격 */
+            position: static !important;
+        }
 }
