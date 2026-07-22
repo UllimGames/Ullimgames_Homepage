@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| 울림게임즈</title>
     <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -25,7 +28,7 @@
             <div class="menu-item"><a href="#">고객지원</a></div>
         </nav>
 
-        <div class="header-right-zone" style="display: flex; align-items: center; gap: 20px;">
+        <div class="header-right-zone">
             <div class="header-sns">
                 <a href="https://www.instagram.com/ullim_games/" target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="인스타그램" class="sns-icon">
@@ -45,22 +48,26 @@
 
     <div class="mega-dropdown">
         <div class="mega-dropdown-container">
-            <div class="dropdown-column">
-                <a href="#">울림게임즈</a>
-                <a href="#">오시는길</a>
+            <div class="mega-dropdown-spacer mega-dropdown-spacer--logo" aria-hidden="true"></div>
+            <div class="mega-dropdown-menus">
+                <div class="dropdown-column">
+                    <a href="#">울림게임즈</a>
+                    <a href="#">오시는길</a>
+                </div>
+                <div class="dropdown-column">
+                    <a href="#">나이트 투어</a>
+                    <a href="#">프로젝트:합</a>
+                    <a href="#">프로젝트:XR</a>
+                </div>
+                <div class="dropdown-column">
+                    <a href="#">공지사항</a>
+                    <a href="#">보도자료</a>
+                </div>
+                <div class="dropdown-column">
+                    <a href="#">1:1문의</a>
+                </div>
             </div>
-            <div class="dropdown-column">
-                <a href="#">나이트 투어</a>
-                <a href="#">프로젝트:합</a>
-                <a href="#">프로젝트:XR</a>
-            </div>
-            <div class="dropdown-column">
-                <a href="#">공지사항</a>
-                <a href="#">보도자료</a>
-            </div>
-            <div class="dropdown-column">
-                <a href="#">1:1문의</a>
-            </div>
+            <div class="mega-dropdown-spacer mega-dropdown-spacer--right" aria-hidden="true"></div>
         </div>
     </div>
 </header>
@@ -225,7 +232,7 @@
                     <a href="terms.html">이용약관</a>
                 </div>
 
-                <p class="copyright">&copy; 2026 Woollim Games. All Rights Reserved.</p>
+                <p class="copyright">&copy; 2026 Ullim Games. All Rights Reserved.</p>
             </div>
         </div>
 
@@ -262,6 +269,22 @@
     </div>
 </footer>
 
+<a href="/play/fruit-valley/" id="fruitValleyCta" class="play-cta play-cta--image" aria-label="후르츠발리 웹에서 바로 플레이">
+    <span class="play-cta-visual">
+        <img
+            class="play-cta-img"
+            src="images/cta-fruit-valley.png"
+            alt=""
+            width="176"
+            height="176"
+            onerror="this.closest('.play-cta').classList.add('is-fallback');"
+        >
+        <span class="play-cta-text">
+            <span class="play-cta-label">지금 바로<br>플레이</span>
+        </span>
+    </span>
+</a>
+
 <div id="backToTop" class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">TOP</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -287,6 +310,7 @@
         const mobileSidebar = document.getElementById('mobileSidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const backToTopBtn = document.getElementById('backToTop');
+        const fruitValleyCta = document.getElementById('fruitValleyCta');
 
         if (menuToggleBtn && closeSidebarBtn && mobileSidebar && sidebarOverlay) {
             // 사이드바 열기
@@ -294,14 +318,16 @@
                 e.preventDefault();
                 mobileSidebar.classList.add('active');
                 sidebarOverlay.classList.add('active');
-                if (backToTopBtn) backToTopBtn.style.display = 'none'; // 사이드바 오픈 시 TOP 숨김
+                if (backToTopBtn) backToTopBtn.style.display = 'none';
+                if (fruitValleyCta) fruitValleyCta.classList.add('is-sidebar-open');
             });
 
             // 사이드바 닫기 함수
             function closeSidebar() {
                 mobileSidebar.classList.remove('active');
                 sidebarOverlay.classList.remove('active');
-                if (backToTopBtn) backToTopBtn.style.display = 'flex'; // 사이드바 종료 시 TOP 복구
+                if (backToTopBtn) backToTopBtn.style.display = 'flex';
+                if (fruitValleyCta) fruitValleyCta.classList.remove('is-sidebar-open');
 
                 document.querySelectorAll('.sidebar-group').forEach(g => {
                     g.classList.remove('active');
@@ -339,6 +365,23 @@
                     }
                 });
             });
+        }
+
+        // Hide seasonal CTA when footer enters the viewport
+        if (fruitValleyCta && 'IntersectionObserver' in window) {
+            const siteFooter = document.querySelector('.site-footer');
+            if (siteFooter) {
+                const footerObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        fruitValleyCta.classList.toggle('is-near-footer', entry.isIntersecting);
+                    });
+                }, {
+                    root: null,
+                    threshold: 0,
+                    rootMargin: '0px 0px 0px 0px'
+                });
+                footerObserver.observe(siteFooter);
+            }
         }
     });
 </script>

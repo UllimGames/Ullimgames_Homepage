@@ -1,0 +1,51 @@
+---
+description: Ullim Games homepage agent conventions for a beginner owner
+alwaysApply: true
+---
+
+# Ullim Games Homepage
+
+Static Korean company site: HTML + CSS + light JS. Domain: ullimgames.com. Brand EN: **Ullim Games** (not Woollim). Entity: 울림게임즈 (not 주식회사).
+
+## How to work with the owner
+
+- Treat as beginner. Explain what / why / what changes; industry vs this-project choice when relevant.
+- **Plan first → wait for approval → then edit.**
+- Reply in Korean. Code, identifiers, comments, commit messages: English.
+- Commit/push only when explicitly asked. GitHub Pages usually publishes on push.
+
+## Do not touch (unless asked)
+
+- Footer identity: 상호, 대표, 사업자등록번호, 게임제작업등록, 주소, 이메일
+- SNS links (Instagram/YouTube)
+- Do not invent legal text from scratch without request; when editing legal pages, keep facts aligned (no membership, ranking off until server exists)
+
+## Logo
+
+- Temporary. Keep path until owner uploads replacement.
+
+## Brand / design direction
+
+- Keywords: 울림, 최신, 고급(가벼운 프리미엄), 게임감, AI
+- **Default UI: bright / light** (heavy dark “premium” first impression = no)
+- Soft blue / teal / warm / green family; avoid harsh neon-painful reds, electric blue, glaring yellow
+- AI accent: soft cyan/teal with gentle gradient (neon only subtle)
+- Company palette separate from **Fruit Valley seasonal** CTA colors (summer)
+- Final company colors may follow future logo
+- Layout idea: company intro on top → **large game visuals before roadmap** → roadmap; avoid cluttered portal (e.g. game.naver style)
+- Motion: soft hovers / light motion OK; owner will ask to remove excess
+- Font: keep current gothic company feel
+
+## Product priorities
+
+1. Summer CTA bottom-left → Fruit Valley WebGL (“웹에서 바로 플레이”); one seasonal CTA; past seasons elsewhere (e.g. header)
+2. **Ranking: OFF for now.** Scaffold so a future server/DB can plug in; do not ship live ranking until owner enables it
+3. When ranking later: higher score better; nickname or fruit+4digit guest
+4. No homepage membership (Google Play accounts for mobile games later)
+5. Only pages owner requests (no 오시는길 unless asked)
+6. Korean first; English later
+
+## Tech
+
+- Keep static HTML/CSS/JS unless owner approves new stack
+- No hardcoded secrets; when ranking server arrives, wire config without committing keys

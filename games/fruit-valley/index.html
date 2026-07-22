@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>FruitVolley</title>
+  <base href="/games/fruit-valley/">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0a1a22;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #unity-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #unity-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #0a1a22;
+    }
+    #unity-loading-bar {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      text-align: center;
+      color: #9fd8e8;
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+    }
+    #unity-progress-bar-empty {
+      width: 160px;
+      height: 12px;
+      margin: 12px auto 0;
+      background: #1c3340;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    #unity-progress-bar-full {
+      width: 0%;
+      height: 100%;
+      background: #4ec5d6;
+      border-radius: 8px;
+    }
+    #unity-warning {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      background: #b00020;
+      color: #fff;
+      padding: 8px;
+      display: none;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div id="unity-loading-bar">
+      <div>Loading</div>
+      <div id="unity-progress-bar-empty"><div id="unity-progress-bar-full"></div></div>
+    </div>
+    <div id="unity-warning"></div>
+  </div>
+  <script>
+    var container = document.querySelector("#unity-container");
+    var canvas = document.querySelector("#unity-canvas");
+    var loadingBar = document.querySelector("#unity-loading-bar");
+    var progressBarFull = document.querySelector("#unity-progress-bar-full");
+    var warningBanner = document.querySelector("#unity-warning");
+
+    function unityShowBanner(msg, type) {
+      function updateBannerVisibility() {
+        warningBanner.style.display = warningBanner.children.length ? "block" : "none";
+      }
+      var div = document.createElement("div");
+      div.innerHTML = msg;
+      warningBanner.appendChild(div);
+      if (type === "error") div.style = "background: red; padding: 10px;";
+      else if (type === "warning") div.style = "background: #ffc107; color: #000; padding: 10px;";
+      setTimeout(function () {
+        warningBanner.removeChild(div);
+        updateBannerVisibility();
+      }, 5000);
+      updateBannerVisibility();
+    }
+
+    var buildUrl = "Build";
+    var loaderUrl = buildUrl + "/Build.loader.js";
+    var config = {
+      arguments: [],
+      dataUrl: buildUrl + "/Build.data",
+      frameworkUrl: buildUrl + "/Build.framework.js",
+      codeUrl: buildUrl + "/Build.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "UllimGames",
+      productName: "FruitVolley",
+      productVersion: "1.0.2",
+      showBanner: unityShowBanner,
+    };
+
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var meta = document.createElement("meta");
+      meta.name = "viewport";
+      meta.content = "width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover";
+      document.getElementsByTagName("head")[0].appendChild(meta);
+    }
+
+    loadingBar.style.display = "block";
+
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
+        progressBarFull.style.width = 100 * progress + "%";
+      }).then(function (unityInstance) {
+        loadingBar.style.display = "none";
+        window.focus();
+        canvas.focus();
+      }).catch(function (message) {
+        alert(message);
+      });
+    };
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>후르츠발리 | 울림게임즈</title>
+    <link rel="icon" href="../../images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="play-page">
+
+<header class="play-header">
+    <div class="play-header-inner">
+        <a class="play-back" href="../../index.html">← 홈으로</a>
+        <div class="play-title-wrap">
+            <img src="../../images/logo.png" alt="울림게임즈" class="play-logo">
+            <h1 class="play-title">후르츠발리</h1>
+        </div>
+        <span class="play-header-spacer" aria-hidden="true"></span>
+    </div>
+</header>
+
+<main class="play-main">
+    <section class="play-stage" aria-label="후르츠발리 게임 화면">
+        <div class="play-frame-wrap">
+            <!-- Unity WebGL build lives in /games/fruit-valley/ (drop-in replace) -->
+            <iframe
+                id="fruitValleyFrame"
+                class="play-frame"
+                src="/games/fruit-valley/?v=20260723c"
+                title="후르츠발리 WebGL"
+                allow="fullscreen; autoplay; gamepad; clipboard-write"
+            ></iframe>
+        </div>
+    </section>
+
+    <!-- Ranking UI ready; data wiring stays OFF until server exists (data-ranking-enabled). -->
+    <aside class="play-ranking" aria-label="후르츠발리 랭킹" data-ranking-enabled="false">
+        <div class="play-ranking-head">
+            <p class="play-ranking-kicker">FRUIT VALLEY</p>
+            <h2 class="play-ranking-title">랭킹</h2>
+        </div>
+
+        <div class="play-ranking-cols" aria-hidden="true">
+            <span>순위</span>
+            <span>닉네임</span>
+            <span>점수</span>
+        </div>
+
+        <ol class="play-ranking-list" id="fruitValleyRankingList">
+            <!-- Rows filled by JS (empty placeholders until server ranking is enabled) -->
+        </ol>
+    </aside>
+</main>
+
+<script>
+    (function () {
+        var RANK_LIMIT = 10;
+        var listEl = document.getElementById('fruitValleyRankingList');
+        var boardEl = document.querySelector('.play-ranking');
+
+        function renderRows(entries) {
+            if (!listEl) return;
+            var html = '';
+            for (var i = 0; i < RANK_LIMIT; i++) {
+                var entry = entries[i];
+                var rank = i + 1;
+                var name = entry && entry.name ? entry.name : '—';
+                var score = entry && typeof entry.score === 'number' ? entry.score.toLocaleString('ko-KR') : '—';
+                var medal = rank === 1 ? ' is-gold' : rank === 2 ? ' is-silver' : rank === 3 ? ' is-bronze' : '';
+                html +=
+                    '<li class="play-ranking-row' + medal + '">' +
+                    '<span class="play-ranking-rank">' + rank + '</span>' +
+                    '<span class="play-ranking-name">' + name + '</span>' +
+                    '<span class="play-ranking-score">' + score + '</span>' +
+                    '</li>';
+            }
+            listEl.innerHTML = html;
+        }
+
+        // Empty board for now (ranking storage OFF)
+        renderRows([]);
+
+        window.UllimFruitValleyRanking = {
+            enabled: false,
+            render: renderRows,
+            submitScore: function () {
+                console.info('[Ullim] Ranking is disabled. Wire server later, then set enabled = true.');
+                return Promise.resolve({ ok: false, reason: 'disabled' });
+            },
+            setEnabled: function (on) {
+                this.enabled = !!on;
+                if (boardEl) boardEl.setAttribute('data-ranking-enabled', on ? 'true' : 'false');
+            }
+        };
+    })();
+</script>
+</body>
+</html>
