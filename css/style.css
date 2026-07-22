@@ -1,6 +1,22 @@
 /* ============================================================= */
-/* 01. 기본 초기화 및 글로벌 크래시 방어벽                         */
+/* 01. 기본 초기화 및 브랜드 토큰                                  */
 /* ============================================================= */
+:root {
+    --bg: #f3f8fb;
+    --bg-elevated: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --brand: #0e7490;
+    --brand-deep: #155e75;
+    --brand-soft: #ecfeff;
+    --accent: #22d3ee;
+    --accent-2: #2dd4bf;
+    --line: #dbe7ef;
+    --shadow: 0 12px 32px rgba(14, 116, 144, 0.08);
+    --radius: 18px;
+    --header-h: 70px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,18 +28,22 @@ html, body {
     overflow-x: hidden;
     position: relative;
     scroll-behavior: smooth;
-    -webkit-text-size-adjust: none; /* iOS 회전 시 글자 크기 강제 확대 방지 */
+    -webkit-text-size-adjust: none;
 }
 
 body {
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(34, 211, 238, 0.16), transparent 55%),
+        radial-gradient(900px 420px at 90% 5%, rgba(45, 212, 191, 0.12), transparent 50%),
+        var(--bg);
+    color: var(--text);
 }
 
 a {
     text-decoration: none;
-    color: #333;
+    color: var(--text);
+    transition: color 0.2s ease;
 }
 
 
@@ -35,8 +55,9 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background-color: rgba(243, 248, 251, 0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(14, 116, 144, 0.06);
     z-index: 1000;
 }
 
@@ -115,10 +136,14 @@ a {
 }
 
 .menu-item > a {
-    font-size: 20px;
-    font-weight: bold;
-    color: #222;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
     letter-spacing: -0.5px;
+}
+
+.menu-item > a:hover {
+    color: var(--brand);
 }
 
 
@@ -130,9 +155,9 @@ a {
     top: 70px;
     left: 0;
     width: 100%;
-    background-color: #f5f5f5;
-    border-top: 1px solid #eee;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+    background-color: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid var(--line);
+    box-shadow: var(--shadow);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-5px);
@@ -180,8 +205,12 @@ a {
 }
 
 .dropdown-column a {
-    font-size: 16px;
-    color: #666;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.dropdown-column a:hover {
+    color: var(--brand);
 }
 
 .main-header:hover .mega-dropdown {
@@ -280,7 +309,7 @@ a {
 }
 
 .sidebar-group.active .sidebar-title-btn {
-    color: #0284c7;
+    color: var(--brand);
 }
 
 .sidebar-group.active .sidebar-title-btn::after {
@@ -304,7 +333,7 @@ a {
 }
 
 .sidebar-sub-menu a:hover {
-    color: #0284c7;
+    color: var(--brand);
 }
 
 .sidebar-overlay {
@@ -358,35 +387,38 @@ a {
 
 
 /* ============================================================= */
-/* 07. 인트로 콘텐츠 영역 (콘텐츠 빌딩 블록)                        */
+/* 07. 인트로 콘텐츠 영역                                          */
 /* ============================================================= */
 .company-intro {
     text-align: center;
-    padding: 80px 20px 0 20px;
-    background-color: #f5f5f5;
+    padding: 88px 20px 0 20px;
+    background: transparent;
 }
 
 .intro-line-1 {
     font-weight: 500;
-    color: #666666;
-    margin-bottom: 15px;
-    font-size: clamp(20px, 2.5vw, 40px);
-    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-size: clamp(18px, 2.2vw, 28px);
+    letter-spacing: 0.08em;
 }
 
 .intro-line-2 {
     font-family: 'Helvetica Neue', 'Arial', sans-serif;
     font-weight: 900;
     display: inline-block;
-    color: #111111;
-    font-size: clamp(40px, 5.5vw, 80px);
-    letter-spacing: 0px;
+    background: linear-gradient(120deg, var(--brand-deep) 0%, var(--brand) 45%, #0891b2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(40px, 5.5vw, 76px);
+    letter-spacing: -0.02em;
 }
 
 .detailed-intro {
     width: 100%;
-    background-color: #f5f5f5;
-    padding-bottom: 80px;
+    background: transparent;
+    padding-bottom: 64px;
 }
 
 .intro-container {
@@ -407,20 +439,19 @@ a {
 }
 
 .about-title {
-    font-size: clamp(15px, 2.2vw, 20px);
-    letter-spacing: 4px;
-    color: #94a3b8;
-    margin-bottom: 20px;
-    font-weight: 700;
+    font-size: clamp(13px, 1.6vw, 16px);
+    letter-spacing: 0.28em;
+    color: var(--brand);
+    margin-bottom: 18px;
+    font-weight: 800;
 }
 
 .about-body {
-    font-size: clamp(16px, 2.4vw, 24px);
-    line-height: 1.8;
-    color: #334155;
+    font-size: clamp(16px, 2.1vw, 22px);
+    line-height: 1.85;
+    color: var(--text);
 }
 
-/* ⚠️ PC 모드 기본 적용 구조화 */
 .line-block {
     display: block;
     white-space: nowrap;
@@ -441,14 +472,189 @@ a {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
-    border-radius: 8px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .vertical-line {
-    width: 1px;
-    height: 50px;
-    background-color: #555555;
-    margin: 20px auto;
+    width: 2px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, var(--accent), var(--brand), transparent);
+    margin: 12px auto 28px;
+}
+
+
+/* ============================================================= */
+/* 07b. 게임 쇼케이스 (로드맵 위)                                   */
+/* ============================================================= */
+.games-showcase {
+    width: 100%;
+    padding: 40px 0 80px;
+    background: transparent;
+}
+
+.games-showcase-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 calc(40px + env(safe-area-inset-right)) 0 calc(40px + env(safe-area-inset-left));
+}
+
+.games-showcase-head {
+    margin-bottom: 36px;
+}
+
+.games-showcase-kicker {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    color: var(--brand);
+    margin-bottom: 10px;
+}
+
+.games-showcase-title {
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 800;
+    color: var(--brand-deep);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+}
+
+.games-showcase-desc {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.games-showcase-grid {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.game-panel {
+    position: relative;
+    display: block;
+    min-height: 210px;
+    border-radius: 22px;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fff;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-panel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(14, 116, 144, 0.18);
+}
+
+.game-panel--featured {
+    grid-row: span 2;
+    min-height: 440px;
+}
+
+.game-panel--wide {
+    grid-column: 1 / -1;
+    min-height: 220px;
+}
+
+.game-panel-media {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+    transition: transform 0.45s ease;
+}
+
+.game-panel:hover .game-panel-media {
+    transform: scale(1.07);
+}
+
+.game-panel-media--fruit {
+    background-image:
+        linear-gradient(160deg, rgba(8, 47, 73, 0.15), rgba(8, 47, 73, 0.55)),
+        url("../images/cta-fruit-valley.png");
+    background-color: #0c4a6e;
+    background-size: 72%, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 42%, center;
+}
+
+.game-panel-media--night {
+    background: linear-gradient(145deg, #0f172a 0%, #1e3a5f 55%, #0e7490 100%);
+}
+
+.game-panel-media--hap {
+    background: linear-gradient(145deg, #134e4a 0%, #0f766e 50%, #155e75 100%);
+}
+
+.game-panel-media--xr {
+    background: linear-gradient(145deg, #164e63 0%, #0e7490 45%, #22d3ee 120%);
+}
+
+.game-panel-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(15, 23, 42, 0.78) 100%);
+    z-index: 1;
+}
+
+.game-panel-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 24px;
+}
+
+.game-panel-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 6px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.game-panel-tag.is-live {
+    background: rgba(34, 211, 238, 0.25);
+    border-color: rgba(165, 243, 252, 0.55);
+}
+
+.game-panel-name {
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.game-panel-copy {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.86);
+    max-width: 34ch;
+}
+
+.game-panel-cta {
+    display: inline-flex;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ecfeff;
+}
+
+.game-panel--soon {
+    pointer-events: none;
+}
+
+.game-panel--soon .game-panel-tag {
+    opacity: 0.9;
 }
 
 
@@ -457,8 +663,8 @@ a {
 /* ============================================================= */
 .company-roadmap {
     width: 100%;
-    background-color: #f5f5f5;
-    padding: 120px 0;
+    background: transparent;
+    padding: 100px 0 120px;
     overflow: hidden;
 }
 
@@ -472,15 +678,16 @@ a {
 
 .roadmap-header {
     margin-bottom: 80px;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid var(--line);
     padding-bottom: 15px;
 }
 
 .roadmap-header h2 {
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 800;
-    color: #0f172a;
+    color: var(--brand-deep);
     margin: 0;
+    letter-spacing: 0.04em;
 }
 
 .timeline-wrapper {
@@ -498,7 +705,7 @@ a {
     height: 14px;
     background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E"),
-        linear-gradient(to bottom, #8ca0ba 0%, #94a3b8 15%, #94a3b8 85%, #8496b0 100%);
+        linear-gradient(to bottom, #67e8f9 0%, #22d3ee 15%, #14b8a6 85%, #0e7490 100%);
     background-repeat: repeat-x, no-repeat;
     background-size: 180px 40px, 100% 100%;
     background-position: center, center;
@@ -516,14 +723,19 @@ a {
     width: 340px;
     max-width: 340px;
     flex-shrink: 0;
-    background-color: #ffffff;
+    background-color: var(--bg-elevated);
     padding: 32px 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
     position: relative;
     margin-left: -50px;
     z-index: 3;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 16px 36px rgba(14, 116, 144, 0.14);
 }
 
 .timeline-item:first-child {
@@ -548,7 +760,7 @@ a {
 
 .timeline-item .badge {
     display: inline-block;
-    background-color: #0f172a;
+    background: linear-gradient(120deg, var(--brand-deep), var(--brand));
     color: #ffffff;
     font-size: 12px;
     font-weight: 700;
@@ -557,8 +769,8 @@ a {
     margin-bottom: 12px;
 }
 
-.timeline-item .item-title { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-.timeline-item .item-desc { font-size: 13px; color: #64748b; line-height: 1.6; word-break: keep-all; }
+.timeline-item .item-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.timeline-item .item-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; word-break: keep-all; }
 
 .timeline-dot {
     position: absolute;
@@ -567,8 +779,8 @@ a {
     width: 58px;
     height: 58px;
     border-radius: 50%;
-    background-color: #0f172a;
-    border: 5px solid #94a3b8;
+    background: linear-gradient(145deg, var(--brand), var(--brand-deep));
+    border: 5px solid #a5f3fc;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -576,7 +788,7 @@ a {
     font-size: 16px;
     font-weight: 800;
     z-index: 10;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 14px rgba(14, 116, 144, 0.25);
 }
 
 .timeline-item.type-top .timeline-dot { top: calc(100% + 43px); }
@@ -644,11 +856,11 @@ a {
 /* ============================================================= */
 .site-footer {
     width: 100%;
-    background-color: #e2e8f0;
+    background: linear-gradient(180deg, #e8f4f8 0%, #dbeaf2 100%);
     padding: 80px 0 60px 0;
     color: #475569;
     font-family: sans-serif;
-    border-top: 1px solid #cbd5e1;
+    border-top: 1px solid var(--line);
 }
 
 .footer-container {
@@ -777,7 +989,7 @@ a {
     right: 40px;
     width: 60px;
     height: 60px;
-    background-color: #0f172a;
+    background: linear-gradient(145deg, var(--brand), var(--brand-deep));
     color: #ffffff;
     border-radius: 50%;
     display: flex;
@@ -787,14 +999,14 @@ a {
     font-size: 18px;
     letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(14, 116, 144, 0.28);
     z-index: 9999;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .top-btn:hover {
     transform: translateY(-5px);
-    background-color: #1e293b;
+    background: linear-gradient(145deg, #0891b2, var(--brand-deep));
 }
 
 /* Seasonal Fruit Valley CTA (summer accent — not company brand colors) */
@@ -1358,6 +1570,26 @@ a {
         margin-bottom: 12px;
     }
 
+    .games-showcase {
+        padding: 24px 0 56px;
+    }
+
+    .games-showcase-inner {
+        padding: 0 16px;
+    }
+
+    .games-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-panel,
+    .game-panel--featured,
+    .game-panel--wide {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 260px;
+    }
+
     .play-cta {
         left: 12px;
         bottom: 20px;
@@ -1439,7 +1671,6 @@ a {
         text-align: center;
         margin-bottom: 30px;
     }
-    /* 텍스트 줄바꿈 및 강제 생략 제거 */
     .line-block {
         white-space: normal !important;
         text-overflow: clip !important;
@@ -1447,7 +1678,6 @@ a {
     .intro-image { max-width: 100%; justify-content: center; }
     .intro-image img { width: 260px; }
 
-    /* 가로 회전 시 비주얼 배너 찌그러짐 방지 비율 락 */
     .main-visual {
         max-height: 75vh !important;
     }
