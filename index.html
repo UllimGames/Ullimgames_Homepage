@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>울림게임즈 | Ullim Games</title>
-    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="images/ullimgames_logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=scroll2">
+    <script src="js/games-config.js"></script>
 </head>
 <body>
+<script src="js/theme-schedule.js"></script>
+<script src="js/theme.js?v=scroll2"></script>
 
 <header class="main-header">
     <div class="header-container">
         <div class="header-logo">
             <a href="index.html">
-                <img src="images/logo.png" alt="울림게임즈 로고">
+                <img src="images/ullimgames_logo.png" alt="울림게임즈 로고">
             </a>
         </div>
 
@@ -30,10 +33,10 @@
 
         <div class="header-right-zone">
             <div class="header-sns">
-                <a href="https://www.instagram.com/ullim_games/" target="_blank">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="인스타그램" class="sns-icon">
                 </a>
-                <a href="https://www.youtube.com/@ullimgames" target="_blank">
+                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer">
                     <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="유튜브" class="sns-icon">
                 </a>
             </div>
@@ -55,9 +58,10 @@
                     <a href="#">오시는길</a>
                 </div>
                 <div class="dropdown-column">
-                    <a href="#">나이트 투어</a>
-                    <a href="#">프로젝트:합</a>
-                    <a href="#">프로젝트:XR</a>
+                    <a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                    <a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                    <a href="/play/fruit-valley/">후르츠발리</a>
+                    <a href="#games">프로젝트 PZ</a>
                 </div>
                 <div class="dropdown-column">
                     <a href="#">공지사항</a>
@@ -88,9 +92,10 @@
         <div class="sidebar-group">
             <div class="sidebar-title-btn">게임소개</div>
             <div class="sidebar-sub-menu">
-                <a href="#">나이트 투어</a>
-                <a href="#">프로젝트:합</a>
-                <a href="#">프로젝트:XR</a>
+                <a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                <a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                <a href="/play/fruit-valley/">후르츠발리</a>
+                <a href="#games">프로젝트 PZ</a>
             </div>
         </div>
 
@@ -159,106 +164,65 @@
         </div>
     </section>
 
-    <section class="games-showcase" aria-label="울림게임즈 게임">
+    <section class="games-showcase" id="games" aria-label="울림게임즈 게임">
         <div class="games-showcase-inner">
             <header class="games-showcase-head">
                 <p class="games-showcase-kicker">GAMES</p>
                 <h2 class="games-showcase-title">울림이 만드는 게임</h2>
-                <p class="games-showcase-desc">많은 유저에게 게임으로 큰 울림을 전합니다.</p>
+                <p class="games-showcase-desc">출시한 게임을 앞에 두고, 브라우저에서 하는 게임도 같이 모읍니다.</p>
             </header>
 
             <div class="games-showcase-grid">
-                <a href="/play/fruit-valley/" class="game-panel game-panel--featured">
-                    <div class="game-panel-media game-panel-media--fruit" aria-hidden="true"></div>
-                    <div class="game-panel-fade" aria-hidden="true"></div>
-                    <div class="game-panel-body">
-                        <span class="game-panel-tag is-live">웹에서 바로 플레이</span>
-                        <h3 class="game-panel-name">후르츠발리</h3>
-                        <p class="game-panel-copy">여름 감성의 캐주얼 발리볼. 다운로드 없이 웹에서 바로 즐기세요.</p>
-                        <span class="game-panel-cta">플레이하기 →</span>
-                    </div>
-                </a>
-
-                <div class="game-panel game-panel--soon" aria-label="나이트 투어 준비 중">
+                <a class="game-panel game-panel--main js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer" aria-label="나이트 투어 Google Play">
                     <div class="game-panel-media game-panel-media--night" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag">COMING SOON</span>
+                        <span class="game-panel-tag is-store">Google Play</span>
                         <h3 class="game-panel-name">나이트 투어</h3>
-                        <p class="game-panel-copy">중세 체스 규칙을 재해석한 모바일 캐주얼 보드게임.</p>
+                        <p class="game-panel-copy">중세 고딕 분위기와 다양한 커스텀 스킨으로 즐기는 나이트 투어 두뇌퍼즐게임.</p>
+                        <span class="game-panel-cta">스토어에서 받기</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="game-panel game-panel--soon" aria-label="프로젝트 합 준비 중">
-                    <div class="game-panel-media game-panel-media--hap" aria-hidden="true"></div>
+                <a class="game-panel game-panel--small js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer" aria-label="차지드라이브 Google Play">
+                    <div class="game-panel-media game-panel-media--charge" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag">IN DEVELOPMENT</span>
-                        <h3 class="game-panel-name">프로젝트 : 合</h3>
-                        <p class="game-panel-copy">로컬 멀티플레이 모바일 3D 턴제 SRPG.</p>
+                        <span class="game-panel-tag is-store">Google Play</span>
+                        <h3 class="game-panel-name">차지드라이브</h3>
+                        <span class="game-panel-cta">스토어에서 받기</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="game-panel game-panel--soon game-panel--wide" aria-label="프로젝트 XR 준비 중">
-                    <div class="game-panel-media game-panel-media--xr" aria-hidden="true"></div>
+                <a href="/play/fruit-valley/" class="game-panel game-panel--small">
+                    <div class="game-panel-media game-panel-media--fruit" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag">UPCOMING</span>
-                        <h3 class="game-panel-name">프로젝트 : XR</h3>
-                        <p class="game-panel-copy">몰입형 3D VR 액션, VRChat 프리뷰 예정.</p>
+                        <span class="game-panel-tag is-live">웹</span>
+                        <h3 class="game-panel-name">후르츠발리</h3>
+                        <p class="game-panel-copy">여름 감성의 캐주얼 발리볼.</p>
+                    </div>
+                </a>
+
+                <div class="game-panel game-panel--banner" aria-label="프로젝트 PZ 출시 예정">
+                    <div class="game-panel-media game-panel-media--pz" aria-hidden="true"></div>
+                    <div class="game-panel-fade" aria-hidden="true"></div>
+                    <div class="game-panel-body">
+                        <span class="game-panel-tag">출시 예정</span>
+                        <h3 class="game-panel-name">프로젝트 PZ</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="company-roadmap">
-        <div class="roadmap-container">
-            <div class="roadmap-header">
-                <h2>ROAD MAP</h2>
-            </div>
-            <div class="timeline-wrapper">
-                <div class="timeline-inner">
-                    <div class="timeline-line"></div>
-
-                    <div class="timeline-item type-top">
-                        <div class="timeline-dot">26.06</div>
-                        <div class="badge">2026. 06</div>
-                        <h3 class="item-title">울림게임즈 스튜디오 설립</h3>
-                        <p class="item-desc">세상에 새로운 울림을 전할 게임 개발사, 울림게임즈의 공식적인 첫 발걸음</p>
-                    </div>
-
-                    <div class="timeline-item type-bottom">
-                        <div class="timeline-dot">26.07</div>
-                        <div class="badge">2026. 07</div>
-                        <h3 class="item-title">나이트 투어 정식 출시</h3>
-                        <p class="item-desc">중세 체스의 유서 깊은 '나이트 투어' 규칙을 재해석한 독창적인 모바일 2D 캐주얼 보드게임 구글 플레이스토어 정식 런칭</p>
-                    </div>
-
-                    <div class="timeline-item type-top">
-                        <div class="timeline-dot">26.08</div>
-                        <div class="badge">2026. 08</div>
-                        <h3 class="item-title">프로젝트 : 合(합) 빌드 공개</h3>
-                        <p class="item-desc">로컬 멀티플레이를 지원하는 모바일 3D 실시간 턴제 SRPG 개발 및 플랫폼 최적화 테스트 진행</p>
-                    </div>
-
-                    <div class="timeline-item type-bottom">
-                        <div class="timeline-dot">26.09</div>
-                        <div class="badge">2026. 09</div>
-                        <h3 class="item-title">프로젝트 : XR 출시 예정</h3>
-                        <p class="item-desc">몰입감을 극대화한 3D VR 액션 게임 개발 및 메타버스 플랫폼 'VRChat'을 통한 독점 프리뷰 빌드 선공개 예정</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
 
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-left">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="울림게임즈 로고">
+                <img src="images/ullimgames_logo.png" alt="울림게임즈 로고">
             </div>
 
             <div class="footer-info">
@@ -300,9 +264,10 @@
             <div class="footer-menu-group">
                 <h4 class="menu-title">게임소개</h4>
                 <ul>
-                    <li><a href="#">나이트 투어</a></li>
-                    <li><a href="#">프로젝트:합</a></li>
-                    <li><a href="#">프로젝트:XR</a></li>
+                    <li><a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a></li>
+                    <li><a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a></li>
+                    <li><a href="/play/fruit-valley/">후르츠발리</a></li>
+                    <li><a href="#games">프로젝트 PZ</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
@@ -320,6 +285,7 @@
             </div>
         </div>
     </div>
+    <a class="admin-entry" href="admin/index.html">관리</a>
 </footer>
 
 <a href="/play/fruit-valley/" id="fruitValleyCta" class="play-cta play-cta--image" aria-label="후르츠발리 웹에서 바로 플레이">
@@ -435,6 +401,18 @@
                 });
                 footerObserver.observe(siteFooter);
             }
+        }
+
+        // Wire Night Tour Google Play links from config
+        if (window.UllimGamesConfig && window.UllimGamesConfig.nightTourPlayStoreUrl) {
+            document.querySelectorAll('.js-night-tour-store').forEach(function (el) {
+                el.href = window.UllimGamesConfig.nightTourPlayStoreUrl;
+            });
+        }
+        if (window.UllimGamesConfig && window.UllimGamesConfig.chargeDrivePlayStoreUrl) {
+            document.querySelectorAll('.js-charge-drive-store').forEach(function (el) {
+                el.href = window.UllimGamesConfig.chargeDrivePlayStoreUrl;
+            });
         }
     });
 </script>

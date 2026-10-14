@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개인정보 처리방침 | 울림게임즈</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=scroll2">
 </head>
 <body>
+<script src="js/theme-schedule.js"></script>
+<script src="js/theme.js?v=scroll2"></script>
 
 <header class="main-header">
     <div class="header-container">
         <div class="header-logo">
             <a href="index.html">
-                <img src="images/logo.png" alt="울림게임즈 로고">
+                <img src="images/ullimgames_logo.png" alt="울림게임즈 로고">
             </a>
         </div>
 
@@ -26,10 +28,10 @@
 
         <div class="header-right-zone">
             <div class="header-sns">
-                <a href="https://www.instagram.com/ullim_games/" target="_blank">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="인스타그램" class="sns-icon">
                 </a>
-                <a href="https://www.youtube.com/@ullimgames" target="_blank">
+                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer">
                     <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="유튜브" class="sns-icon">
                 </a>
             </div>
@@ -51,9 +53,10 @@
                     <a href="#">오시는길</a>
                 </div>
                 <div class="dropdown-column">
-                    <a href="#">나이트 투어</a>
-                    <a href="#">프로젝트:합</a>
-                    <a href="#">프로젝트:XR</a>
+                    <a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                    <a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                    <a href="/play/fruit-valley/">후르츠발리</a>
+                    <a href="index.html#games">프로젝트 PZ</a>
                 </div>
                 <div class="dropdown-column">
                     <a href="#">공지사항</a>
@@ -84,9 +87,10 @@
         <div class="sidebar-group">
             <div class="sidebar-title-btn">게임소개</div>
             <div class="sidebar-sub-menu">
-                <a href="#">나이트 투어</a>
-                <a href="#">프로젝트:합</a>
-                <a href="#">프로젝트:XR</a>
+                <a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                <a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                <a href="/play/fruit-valley/">후르츠발리</a>
+                <a href="index.html#games">프로젝트 PZ</a>
             </div>
         </div>
 
@@ -185,7 +189,7 @@
     <div class="footer-container">
         <div class="footer-left">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="울림게임즈 로고">
+                <img src="images/ullimgames_logo.png" alt="울림게임즈 로고">
             </div>
 
             <div class="footer-info">
@@ -227,9 +231,10 @@
             <div class="footer-menu-group">
                 <h4 class="menu-title">게임소개</h4>
                 <ul>
-                    <li><a href="#">나이트 투어</a></li>
-                    <li><a href="#">프로젝트:합</a></li>
-                    <li><a href="#">프로젝트:XR</a></li>
+                    <li><a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a></li>
+                    <li><a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a></li>
+                    <li><a href="/play/fruit-valley/">후르츠발리</a></li>
+                    <li><a href="index.html#games">프로젝트 PZ</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
@@ -247,10 +252,12 @@
             </div>
         </div>
     </div>
+    <a class="admin-entry" href="admin/index.html">관리</a>
 </footer>
 
 <div id="backToTop" class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">TOP</div>
 
+<script src="js/games-config.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // 모바일 사이드바 및 아코디언 메뉴 구동 로직
@@ -307,6 +314,17 @@
                         currentSubMenu.style.maxHeight = null;
                     }
                 });
+            });
+        }
+
+        if (window.UllimGamesConfig && window.UllimGamesConfig.nightTourPlayStoreUrl) {
+            document.querySelectorAll('.js-night-tour-store').forEach(function (el) {
+                el.href = window.UllimGamesConfig.nightTourPlayStoreUrl;
+            });
+        }
+        if (window.UllimGamesConfig && window.UllimGamesConfig.chargeDrivePlayStoreUrl) {
+            document.querySelectorAll('.js-charge-drive-store').forEach(function (el) {
+                el.href = window.UllimGamesConfig.chargeDrivePlayStoreUrl;
             });
         }
     });

@@ -1,0 +1,20 @@
+---
+description: Game add/update pipeline for homepage — assets, config, showcase, WebGL
+globs: index.html,js/games-config.js,images/games/**,games/**,play/**
+alwaysApply: false
+---
+
+# Homepage game pipeline
+
+When adding or updating a game on this site, **read and follow** `.cursor/skills/add-homepage-game/SKILL.md`.
+
+## Quick rules
+
+- URLs live in `js/games-config.js`; HTML uses hook classes (e.g. `.js-night-tour-store`), not hardcoded store links.
+- Assets: `images/games/{game-id}/cover.jpg`; optional `images/hero/{game-id}-slide.mp4`.
+- Showcase: `index.html` `.games-showcase-grid` + `css/style.css` `.game-panel-media--{game-id}`.
+- **One** seasonal floating CTA site-wide; ranking scaffold OK, **live ranking OFF**.
+- WebGL: `games/{id}/` + `play/{id}/`; `<base href="/games/{id}/">` after Unity rebuild.
+- Plan → approve → edit. Reply KO; code/commits EN.
+
+Full specs: `.cursor/skills/add-homepage-game/asset-specs.md` and `images/games/README.md`.

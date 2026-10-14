@@ -32,9 +32,11 @@ Static Korean company site: HTML + CSS + light JS. Domain: ullimgames.com. Brand
 - AI accent: soft cyan/teal with gentle gradient (neon only subtle)
 - Company palette separate from **Fruit Valley seasonal** CTA colors (summer)
 - Final company colors may follow future logo
-- Layout idea: company intro on top → **large game visuals before roadmap** → roadmap; avoid cluttered portal (e.g. game.naver style)
+- Layout idea: company intro on top → **large game visuals** → footer; avoid cluttered portal (e.g. game.naver style)
+- **No roadmap section** (removed; do not re-add unless owner asks)
 - Motion: soft hovers / light motion OK; owner will ask to remove excess
 - Font: keep current gothic company feel
+- Themes: month schedule in `js/theme-schedule.js`, applied by `js/theme.js`. Owner edits months in `admin/index.html`. Do not hardcode a season class on `body`. Guide: `docs/design-guide.md`
 
 ## Product priorities
 
@@ -49,3 +51,9 @@ Static Korean company site: HTML + CSS + light JS. Domain: ullimgames.com. Brand
 
 - Keep static HTML/CSS/JS unless owner approves new stack
 - No hardcoded secrets; when ranking server arrives, wire config without committing keys
+
+## Adding or updating a game
+
+- Follow **`.cursor/skills/add-homepage-game/SKILL.md`** (asset sizes, file map, WebGL branch, owner intake checklist).
+- Owner drops files under `images/games/{game-id}/`; agent wires config, showcase, menus.
+- Store/play URLs only in `js/games-config.js`.
