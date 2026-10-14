@@ -9,6 +9,7 @@
 </head>
 <body>
 <script src="../js/theme-schedule.js"></script>
+<script src="../js/admin-lock.js"></script>
 <script src="../js/theme.js?v=scroll2"></script>
 
 <main class="admin-main">
@@ -20,7 +21,7 @@
             <input id="adminPass" class="admin-input" type="password" autocomplete="current-password" required>
             <button class="admin-button" type="submit">들어가기</button>
         </form>
-        <p class="admin-note">이 비밀번호는 이 브라우저에만 저장됩니다. 홈페이지 방문자 화면을 막는 자물쇠는 아닙니다.</p>
+        <p class="admin-note">비밀번호는 이 컴퓨터의 설정 파일에만 있습니다.</p>
         <p><a href="../index.html">홈으로</a></p>
     </section>
 
@@ -52,7 +53,6 @@
         ["new-year", "새해"],
         ["winter", "겨울"]
     ];
-    var HASH_KEY = "ullim-admin-hash";
     var SESSION_KEY = "ullim-admin-session";
     var OVERRIDE_KEY = "ullim-theme-override";
     var gate = document.getElementById("adminGate");
@@ -140,29 +140,27 @@
             : "파일 일정을 보고 있습니다. 지금은 " + month + "월 테마가 홈에 나갑니다. 이 컴퓨터의 로컬 서버에서 저장하면 파일에 기록됩니다.";
     }
 
-    if (!localStorage.getItem(HASH_KEY)) {
-        gateCopy.textContent = "처음입니다. 이 브라우저에서 쓸 비밀번호를 정하세요.";
-        gateForm.querySelector("button").textContent = "비밀번호 정하기";
+    if (!window.UllimAdminLock) {
+        gateCopy.textContent = "비밀번호가 아직 설정되지 않았습니다.";
+        gateForm.hidden = true;
     }
 
-    if (sessionStorage.getItem(SESSION_KEY) === "ok") showPanel();
+    if (window.UllimAdminLock && sessionStorage.getItem(SESSION_KEY) === "ok") showPanel();
 
     gateForm.addEventListener("submit", function (event) {
         event.preventDefault();
         var value = passInput.value;
+        var expected = window.UllimAdminLock || "";
+        if (!expected) {
+            gateCopy.textContent = "비밀번호가 아직 설정되지 않았습니다.";
+            return;
+        }
         if (value.length < 4) {
             gateCopy.textContent = "비밀번호는 4자 이상으로 해주세요.";
             return;
         }
         hashText(value).then(function (hash) {
-            var saved = localStorage.getItem(HASH_KEY);
-            if (!saved) {
-                localStorage.setItem(HASH_KEY, hash);
-                sessionStorage.setItem(SESSION_KEY, "ok");
-                showPanel();
-                return;
-            }
-            if (hash !== saved) {
+            if (hash !== expected) {
                 gateCopy.textContent = "비밀번호가 다릅니다.";
                 return;
             }
