@@ -1791,7 +1791,7 @@ main,
         transform: translate3d(0, -8vh, 0) rotate(0deg);
     }
     100% {
-        transform: translate3d(var(--drift, 40px), 108vh, 0) rotate(var(--spin, 240deg));
+        transform: translate3d(var(--drift, 40px), calc(100vh + 80px), 0) rotate(var(--spin, 240deg));
     }
 }
 

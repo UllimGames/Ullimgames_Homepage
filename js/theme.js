@@ -77,29 +77,31 @@
         return pin;
     }
 
-    function startMotion() {
-        var spec = MOTION[theme];
-        var pattern = PATTERNS[theme];
-        if (!spec && !pattern) return;
-        if (document.querySelector(".season-pin")) return;
+    var motionLayer = null;
+    var motionSpec = null;
+    var laidHeight = 0;
+    var laidView = 0;
 
-        if (pattern) {
-            document.body.classList.add("season-sheet");
-            document.body.style.setProperty("--season-sheet", "url(\"/" + pattern + "\")");
-        }
-
-        var motionOff = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (spec && !motionOff) {
-            var front = makePin("front");
-            var layer = document.createElement("div");
-            layer.className = "season-fall";
-
-            for (var i = 0; i < spec.count; i++) {
+    function layoutPieces() {
+        if (!motionLayer || !motionSpec) return;
+        var spec = motionSpec;
+        var viewH = Math.max(window.innerHeight || 800, 320);
+        var pageH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, viewH);
+        if (motionLayer.childElementCount && Math.abs(pageH - laidHeight) < 40 && Math.abs(viewH - laidView) < 40) return;
+        laidHeight = pageH;
+        laidView = viewH;
+        var screens = Math.max(1, Math.ceil(pageH / viewH));
+        motionLayer.innerHTML = "";
+        var s;
+        var i;
+        for (s = 0; s < screens; s++) {
+            for (i = 0; i < spec.count; i++) {
                 var piece = pickWeighted(spec.weights);
                 var range = SIZE[piece] || [28, 42];
                 var bit = document.createElement("span");
                 bit.className = "season-piece is-" + piece;
                 bit.style.left = Math.random() * 100 + "%";
+                bit.style.top = Math.round(s * viewH - 48) + "px";
                 bit.style.animationDuration = 12 + Math.random() * 10 + "s";
                 bit.style.animationDelay = -Math.random() * 16 + "s";
                 bit.style.setProperty("--drift", Math.round(Math.random() * 80 - 40) + "px");
@@ -108,9 +110,29 @@
                 bit.style.opacity = spec.faint
                     ? (0.20 + Math.random() * 0.12).toFixed(2)
                     : (0.32 + Math.random() * 0.14).toFixed(2);
-                layer.appendChild(bit);
+                motionLayer.appendChild(bit);
             }
-            front.appendChild(layer);
+        }
+    }
+
+    function startMotion() {
+        var spec = MOTION[theme];
+        var pattern = PATTERNS[theme];
+        if (!spec && !pattern) return;
+
+        if (pattern) {
+            document.body.classList.add("season-sheet");
+            document.body.style.setProperty("--season-sheet", "url(\"/" + pattern + "?v=count1\")");
+        }
+
+        var motionOff = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (spec && !motionOff && !motionLayer) {
+            var front = makePin("front");
+            motionLayer = document.createElement("div");
+            motionLayer.className = "season-fall";
+            motionSpec = spec;
+            front.appendChild(motionLayer);
+            layoutPieces();
 
             if (spec.rudolph) {
                 var deer = document.createElement("div");
@@ -119,6 +141,13 @@
             }
         }
     }
+
+    var resizeTimer = 0;
+    window.addEventListener("resize", function () {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(layoutPieces, 200);
+    });
+    window.addEventListener("load", layoutPieces);
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", startMotion);
