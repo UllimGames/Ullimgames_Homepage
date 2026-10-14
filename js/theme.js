@@ -106,8 +106,8 @@
                 bit.style.setProperty("--spin", Math.round(80 + Math.random() * 200) + "deg");
                 bit.style.setProperty("--size", Math.round(range[0] + Math.random() * (range[1] - range[0])) + "px");
                 bit.style.opacity = spec.faint
-                    ? (0.34 + Math.random() * 0.16).toFixed(2)
-                    : (0.58 + Math.random() * 0.22).toFixed(2);
+                    ? (0.20 + Math.random() * 0.12).toFixed(2)
+                    : (0.32 + Math.random() * 0.14).toFixed(2);
                 layer.appendChild(bit);
             }
             front.appendChild(layer);

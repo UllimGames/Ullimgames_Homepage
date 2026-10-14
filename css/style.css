@@ -1609,7 +1609,7 @@ body.season-sheet::before {
     background-image: var(--season-sheet);
     background-repeat: repeat;
     background-position: left top;
-    opacity: 0.86;
+    opacity: 0.78;
 }
 
 .season-pin-back {
