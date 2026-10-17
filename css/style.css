@@ -468,9 +468,9 @@ a {
 }
 
 .vertical-line {
-    width: 1px;
+    width: 2px;
     height: 56px;
-    background: var(--brand);
+    background: linear-gradient(to bottom, transparent, var(--brand), var(--brand-deep), transparent);
     margin: 12px auto 28px;
 }
 
@@ -1718,28 +1718,66 @@ main,
     animation-iteration-count: infinite;
 }
 
-.season-piece.is-leaf {
-    background: url("../images/seasons/leaf.png") center / contain no-repeat;
-}
-
-.season-piece.is-leaf-b {
-    background: url("../images/seasons/leaf-b.png") center / contain no-repeat;
-}
-
+.season-piece.is-leaf,
+.season-piece.is-leaf-b,
+.season-piece.is-snow,
+.season-piece.is-snow-b,
+.season-piece.is-candy,
 .season-piece.is-bat {
-    background: url("../images/seasons/bat.png") center / contain no-repeat;
+    background: none;
 }
 
-.season-piece.is-candy {
-    background: url("../images/seasons/candy.png") center / contain no-repeat;
+.season-piece.is-leaf::before,
+.season-piece.is-leaf-b::before,
+.season-piece.is-snow::before,
+.season-piece.is-snow-b::before,
+.season-piece.is-candy::before,
+.season-piece.is-bat::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-name: piece-flutter;
+    animation-duration: var(--flutter, 2.8s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: var(--flutter-delay, 0s);
 }
 
-.season-piece.is-snow {
-    background: url("../images/seasons/snow.png") center / contain no-repeat;
+.season-piece.is-leaf::before {
+    background-image: url("../images/seasons/leaf.png");
 }
 
-.season-piece.is-snow-b {
-    background: url("../images/seasons/snow-b.png") center / contain no-repeat;
+.season-piece.is-leaf-b::before {
+    background-image: url("../images/seasons/leaf-b.png");
+}
+
+.season-piece.is-snow::before {
+    background-image: url("../images/seasons/snow.png");
+}
+
+.season-piece.is-snow-b::before {
+    background-image: url("../images/seasons/snow-b.png");
+}
+
+.season-piece.is-candy::before {
+    background-image: url("../images/seasons/candy.png");
+}
+
+.season-piece.is-bat::before {
+    background-image: url("../images/seasons/bat.png");
+}
+
+@keyframes piece-flutter {
+    from {
+        transform: translate3d(calc(var(--sway, 8px) * -1), 0, 0) rotate(calc(var(--tilt, 6deg) * -1));
+    }
+    to {
+        transform: translate3d(var(--sway, 8px), var(--bob, 0px), 0) rotate(var(--tilt, 6deg));
+    }
 }
 
 .season-piece.is-pumpkin {
@@ -1791,7 +1829,7 @@ main,
         transform: translate3d(0, -8vh, 0) rotate(0deg);
     }
     100% {
-        transform: translate3d(var(--drift, 40px), calc(100vh + 80px), 0) rotate(var(--spin, 240deg));
+        transform: translate3d(var(--drift, 40px), var(--fall, calc(100vh + 80px)), 0) rotate(var(--spin, 240deg));
     }
 }
 

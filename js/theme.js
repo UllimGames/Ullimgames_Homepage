@@ -5,11 +5,11 @@
 (function () {
     var THEMES = ["spring", "summer", "autumn", "halloween", "christmas", "new-year", "winter"];
     var MOTION = {
-        autumn: { count: 8, weights: [["leaf", 100]] },
-        halloween: { count: 10, weights: [["pumpkin", 65], ["candy", 20], ["bat", 15]] },
-        christmas: { count: 7, weights: [["snow", 65], ["snow-b", 35]], faint: true, rudolph: true },
-        winter: { count: 11, weights: [["snow", 65], ["snowman", 35]] },
-        "new-year": { count: 10, weights: [["pouch", 65], ["sunrise", 23], ["sheep", 12]] }
+        autumn: { count: 6, weights: [["leaf", 100]] },
+        halloween: { count: 8, weights: [["pumpkin", 65], ["candy", 20], ["bat", 15]] },
+        christmas: { count: 5, weights: [["snow", 65], ["snow-b", 35]], faint: true, rudolph: true },
+        winter: { count: 8, weights: [["snow", 65], ["snowman", 35]] },
+        "new-year": { count: 8, weights: [["pouch", 65], ["sunrise", 23], ["sheep", 12]] }
     };
     var SIZE = {
         leaf: [30, 44],
@@ -69,6 +69,40 @@
         "new-year": "images/seasons/new-year-pattern.png"
     };
 
+    function spinFor(piece) {
+        var range = {
+            leaf: [70, 150],
+            "leaf-b": [70, 150],
+            snow: [20, 60],
+            "snow-b": [12, 40],
+            candy: [24, 60],
+            bat: [6, 18],
+            pumpkin: [6, 18],
+            snowman: [4, 14],
+            pouch: [4, 14],
+            sheep: [4, 14],
+            sunrise: [2, 8]
+        }[piece] || [8, 20];
+        return Math.round(range[0] + Math.random() * (range[1] - range[0])) + "deg";
+    }
+
+    function flutterFor(bit, piece) {
+        var kind = {
+            leaf: ["11px", "8deg", "0px", 2.4, 3.1],
+            "leaf-b": ["11px", "8deg", "0px", 2.4, 3.1],
+            snow: ["7px", "5deg", "0px", 3.4, 4.6],
+            "snow-b": ["6px", "4deg", "0px", 3.6, 4.8],
+            candy: ["6px", "6deg", "0px", 2.8, 3.6],
+            bat: ["2px", "7deg", "3px", 0.9, 1.25]
+        }[piece];
+        if (!kind) return;
+        bit.style.setProperty("--sway", kind[0]);
+        bit.style.setProperty("--tilt", kind[1]);
+        bit.style.setProperty("--bob", kind[2]);
+        bit.style.setProperty("--flutter", (kind[3] + Math.random() * (kind[4] - kind[3])).toFixed(2) + "s");
+        bit.style.setProperty("--flutter-delay", (-Math.random() * 2).toFixed(2) + "s");
+    }
+
     function makePin(kind) {
         var pin = document.createElement("div");
         pin.className = "season-pin season-pin-" + kind;
@@ -91,27 +125,30 @@
         laidHeight = pageH;
         laidView = viewH;
         var screens = Math.max(1, Math.ceil(pageH / viewH));
+        var travel = pageH + 160;
+        var seconds = Math.max(18, 14 * (travel / viewH));
         motionLayer.innerHTML = "";
-        var s;
+        var n = spec.count * screens;
         var i;
-        for (s = 0; s < screens; s++) {
-            for (i = 0; i < spec.count; i++) {
-                var piece = pickWeighted(spec.weights);
-                var range = SIZE[piece] || [28, 42];
-                var bit = document.createElement("span");
-                bit.className = "season-piece is-" + piece;
-                bit.style.left = Math.random() * 100 + "%";
-                bit.style.top = Math.round(s * viewH - 48) + "px";
-                bit.style.animationDuration = 12 + Math.random() * 10 + "s";
-                bit.style.animationDelay = -Math.random() * 16 + "s";
-                bit.style.setProperty("--drift", Math.round(Math.random() * 80 - 40) + "px");
-                bit.style.setProperty("--spin", Math.round(80 + Math.random() * 200) + "deg");
-                bit.style.setProperty("--size", Math.round(range[0] + Math.random() * (range[1] - range[0])) + "px");
-                bit.style.opacity = spec.faint
-                    ? (0.20 + Math.random() * 0.12).toFixed(2)
-                    : (0.32 + Math.random() * 0.14).toFixed(2);
-                motionLayer.appendChild(bit);
-            }
+        for (i = 0; i < n; i++) {
+            var piece = pickWeighted(spec.weights);
+            var range = SIZE[piece] || [28, 42];
+            var bit = document.createElement("span");
+            var duration = seconds * (0.88 + Math.random() * 0.24);
+            bit.className = "season-piece is-" + piece;
+            bit.style.left = Math.random() * 100 + "%";
+            bit.style.top = "-48px";
+            bit.style.animationDuration = duration.toFixed(1) + "s";
+            bit.style.animationDelay = (-Math.random() * duration).toFixed(1) + "s";
+            bit.style.setProperty("--drift", Math.round(Math.random() * 80 - 40) + "px");
+            bit.style.setProperty("--spin", spinFor(piece));
+            bit.style.setProperty("--size", Math.round(range[0] + Math.random() * (range[1] - range[0])) + "px");
+            bit.style.setProperty("--fall", Math.round(travel) + "px");
+            flutterFor(bit, piece);
+            bit.style.opacity = spec.faint
+                ? (0.20 + Math.random() * 0.12).toFixed(2)
+                : (0.32 + Math.random() * 0.14).toFixed(2);
+            motionLayer.appendChild(bit);
         }
     }
 
@@ -122,7 +159,7 @@
 
         if (pattern) {
             document.body.classList.add("season-sheet");
-            document.body.style.setProperty("--season-sheet", "url(\"/" + pattern + "?v=count1\")");
+            document.body.style.setProperty("--season-sheet", "url(\"/" + pattern + "?v=even1\")");
         }
 
         var motionOff = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
