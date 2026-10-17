@@ -11,7 +11,7 @@ window.UllimThemeSchedule = {
     "8": "summer",
     "9": "autumn",
     "10": "halloween",
-    "11": "autumn",
+    "11": "winter",
     "12": "christmas"
   }
 };
