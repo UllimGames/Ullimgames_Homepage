@@ -6,7 +6,7 @@ Drop files here before asking the agent to wire a new or updated game.
 
 ```
 images/games/{game-id}/
-  cover.jpg     # required — showcase card background
+  cover.webp    # required (agent converts JPG/PNG to WebP) — showcase card background
   icon.png      # optional — 512×512 square
 
 images/hero/{game-id}-slide.mp4   # optional — main visual swiper

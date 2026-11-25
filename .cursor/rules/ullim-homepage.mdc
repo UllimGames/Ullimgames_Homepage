@@ -35,8 +35,8 @@ Static Korean company site: HTML + CSS + light JS. Domain: ullimgames.com. Brand
 - Layout idea: company intro on top → **large game visuals** → footer; avoid cluttered portal (e.g. game.naver style)
 - **No roadmap section** (removed; do not re-add unless owner asks)
 - Motion: soft hovers / light motion OK; owner will ask to remove excess
-- Font: keep current gothic company feel
-- Themes: month schedule in `js/theme-schedule.js`, applied by `js/theme.js`. Owner edits months in `admin/index.html`. Do not hardcode a season class on `body`. Guide: `docs/design-guide.md`
+- Font: Pretendard (web font, gothic like Malgun) for body, Do Hyeon for titles
+- Themes: catalog `js/theme-catalog.js`, month schedule `js/theme-schedule.js`, engine `js/theme.js`. Owner edits months in `admin/index.html`. Season art is flat SVG in `images/seasons/`; run `python tools/build_season_tiles.py` after changing pieces. Do not hardcode a season class on `body`. Guide: `docs/design-guide.md`
 
 ## Product priorities
 
@@ -50,6 +50,10 @@ Static Korean company site: HTML + CSS + light JS. Domain: ullimgames.com. Brand
 ## Tech
 
 - Keep static HTML/CSS/JS unless owner approves new stack
+- Shared header/footer: edit `partials/header.html` / `partials/footer.html`, then run `python tools/build_layout.py` (copies them into index, portfolio, privacy, terms between `<!-- layout:... -->` markers). Never edit the copied block in a page directly.
+- Shared JS: `js/site.js` (menu, links, TOP). Home only: `js/home.js` (slider).
+- Images: WebP for photos/illustrations, max 2x display size. Brand icons in `images/brand/` (SVG).
+- `_portfolio-reference/` holds the owner's old portfolio files: local reference only (gitignored), never publish.
 - No hardcoded secrets; when ranking server arrives, wire config without committing keys
 
 ## Adding or updating a game

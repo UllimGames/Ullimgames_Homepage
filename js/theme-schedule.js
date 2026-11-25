@@ -1,5 +1,4 @@
 window.UllimThemeSchedule = {
-  "manual": null,
   "months": {
     "1": "new-year",
     "2": "winter",

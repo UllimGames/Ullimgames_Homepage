@@ -1,194 +1,158 @@
 /**
- * Applies the month theme from js/theme-schedule.js.
- * A browser-only preview in localStorage wins until it is cleared.
+ * Season theme engine.
+ * Needs js/theme-catalog.js (what each theme looks like) and
+ * js/theme-schedule.js (which theme each month uses) loaded first.
+ *
+ * The theme always follows the calendar: schedule.months[current month].
+ * The admin page can call UllimTheme.show(name) to preview a theme on that
+ * page only. Nothing is saved in the browser.
  */
 (function () {
-    var THEMES = ["spring", "summer", "autumn", "halloween", "christmas", "new-year", "winter"];
-    var MOTION = {
-        autumn: { count: 6, weights: [["leaf", 100]] },
-        halloween: { count: 8, weights: [["pumpkin", 65], ["candy", 20], ["bat", 15]] },
-        christmas: { count: 5, weights: [["snow", 65], ["snow-b", 35]], faint: true, rudolph: true },
-        winter: { count: 8, weights: [["snow", 65], ["snowman", 35]] },
-        "new-year": { count: 8, weights: [["pouch", 65], ["sunrise", 23], ["sheep", 12]] }
-    };
-    var SIZE = {
-        leaf: [30, 44],
-        pumpkin: [34, 48],
-        candy: [26, 36],
-        bat: [28, 40],
-        snow: [20, 30],
-        "snow-b": [16, 24],
-        snowman: [36, 50],
-        pouch: [32, 46],
-        sunrise: [26, 36],
-        sheep: [20, 28]
+    "use strict";
+
+    var CATALOG = window.UllimThemeCatalog || {};
+    var NAMES = Object.keys(CATALOG);
+
+    // Clean up keys left by older versions (they could pin a theme forever).
+    try {
+        localStorage.removeItem("ullim-theme-override");
+        localStorage.removeItem("ullim-theme-preview");
+    } catch (e) {}
+
+    // How each piece moves.
+    //   leaf:  rocks left-right in a zigzag while it drops
+    //   snow:  light, slow, drifts a little
+    //   heavy: drops fairly straight, slight wobble
+    //   float: rises slowly (bubbles)
+    var STYLE = {
+        leaf:  { fall: [12, 16], sway: [28, 44], beat: [2.6, 3.6], spin: 0 },
+        snow:  { fall: [16, 24], sway: [8, 18],  beat: [3.5, 5.5], spin: 120 },
+        heavy: { fall: [9, 12],  sway: [2, 4],   beat: [1.8, 2.6], spin: 30 },
+        float: { fall: [12, 18], sway: [6, 12],  beat: [3, 4.5],   spin: 0 }
     };
 
-    function pickWeighted(weights) {
+    // Style and size range (px) for each piece.
+    var FEEL = {
+        petal:     { style: "leaf",  size: [16, 24] },
+        clover:    { style: "leaf",  size: [18, 26] },
+        maple:     { style: "leaf",  size: [24, 36] },
+        ginkgo:    { style: "leaf",  size: [22, 32] },
+        plum:      { style: "leaf",  size: [18, 26] },
+        snowflake: { style: "snow",  size: [14, 26] },
+        snowdot:   { style: "snow",  size: [6, 11] },
+        star:      { style: "snow",  size: [14, 22] },
+        bubble:    { style: "float", size: [18, 34] },
+        pumpkin:   { style: "heavy", size: [28, 40] },
+        candy:     { style: "heavy", size: [22, 30] },
+        bat:       { style: "heavy", size: [26, 38] },
+        pouch:     { style: "heavy", size: [26, 36] }
+    };
+
+    function isTheme(name) {
+        return NAMES.indexOf(name) !== -1;
+    }
+
+    function scheduledTheme(date) {
+        var schedule = window.UllimThemeSchedule || {};
+        var month = String((date || new Date()).getMonth() + 1);
+        var name = schedule.months && schedule.months[month];
+        return isTheme(name) ? name : NAMES[0];
+    }
+
+    function rand(min, max) {
+        return min + Math.random() * (max - min);
+    }
+
+    function pickWeighted(pieces) {
         var total = 0;
-        var i;
-        for (i = 0; i < weights.length; i++) total += weights[i][1];
+        pieces.forEach(function (p) { total += p[1]; });
         var roll = Math.random() * total;
-        var acc = 0;
-        for (i = 0; i < weights.length; i++) {
-            acc += weights[i][1];
-            if (roll < acc) return weights[i][0];
+        for (var i = 0; i < pieces.length; i++) {
+            roll -= pieces[i][1];
+            if (roll <= 0) return pieces[i][0];
         }
-        return weights[0][0];
+        return pieces[0][0];
     }
 
-    function loadSchedule() {
-        try {
-            var raw = localStorage.getItem("ullim-theme-override");
-            if (raw) return JSON.parse(raw);
-        } catch (e) {}
-        return window.UllimThemeSchedule || null;
+    var body = document.body;
+    var layer = null;
+    var current = null;
+
+    function applySkin(name) {
+        NAMES.forEach(function (n) { body.classList.remove("theme-" + n); });
+        body.classList.add("theme-" + name, "season-sheet");
+        body.style.setProperty("--season-sheet", 'url("/images/seasons/' + name + '-tile.svg?v=5")');
     }
 
-    function pick(schedule) {
-        if (!schedule) return "autumn";
-        if (schedule.manual && THEMES.indexOf(schedule.manual) !== -1) return schedule.manual;
-        var month = String(new Date().getMonth() + 1);
-        var theme = schedule.months && schedule.months[month];
-        if (THEMES.indexOf(theme) === -1) return "autumn";
-        return theme;
+    // Pieces live in one fixed, screen-sized layer, so the cost stays the same
+    // no matter how long the page is.
+    function renderPieces(name) {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (!layer) {
+            layer = document.createElement("div");
+            layer.className = "season-pin";
+            layer.setAttribute("aria-hidden", "true");
+            body.appendChild(layer);
+        }
+        var spec = CATALOG[name];
+        var rise = spec.motion === "rise";
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < spec.count; i++) {
+            var piece = pickWeighted(spec.pieces);
+            var feel = FEEL[piece] || { style: "snow", size: [20, 30] };
+            var style = STYLE[feel.style];
+            var duration = rand(style.fall[0], style.fall[1]);
+            var bit = document.createElement("span");
+            bit.className = "season-piece is-" + feel.style + (rise ? " is-rise" : "");
+            bit.style.left = rand(2, 98).toFixed(1) + "%";
+            bit.style.animationDuration = duration.toFixed(1) + "s";
+            bit.style.animationDelay = (-rand(0, duration)).toFixed(1) + "s";
+            bit.style.setProperty("--piece", 'url("/images/seasons/' + piece + '.svg")');
+            bit.style.setProperty("--size", Math.round(rand(feel.size[0], feel.size[1])) + "px");
+            bit.style.setProperty("--drift", Math.round(rand(-30, 30)) + "px");
+            bit.style.setProperty("--spin", Math.round(rand(-1, 1) * style.spin) + "deg");
+            bit.style.setProperty("--sway", Math.round(rand(style.sway[0], style.sway[1])) + "px");
+            bit.style.setProperty("--beat", rand(style.beat[0], style.beat[1]).toFixed(2) + "s");
+            bit.style.setProperty("--beat-delay", (-rand(0, 3)).toFixed(2) + "s");
+            bit.style.opacity = rand(0.55, 0.85).toFixed(2);
+            frag.appendChild(bit);
+        }
+        if (spec.flyer) {
+            var flyer = document.createElement("span");
+            flyer.className = "season-flyer";
+            flyer.style.setProperty("--piece", 'url("/images/seasons/' + spec.flyer + '.svg")');
+            flyer.style.top = rand(10, 24).toFixed(1) + "vh";
+            frag.appendChild(flyer);
+        }
+        layer.textContent = "";
+        layer.appendChild(frag);
     }
 
-    var theme = pick(loadSchedule());
-    THEMES.forEach(function (name) {
-        document.body.classList.remove("theme-" + name);
-    });
-    document.body.classList.remove("season-autumn", "season-spring", "season-summer", "season-winter");
-    document.body.classList.add("theme-" + theme);
+    function show(name) {
+        if (!isTheme(name) || name === current) return;
+        current = name;
+        applySkin(name);
+        renderPieces(name);
+        window.UllimTheme.current = name;
+    }
 
-    var PATTERNS = {
-        autumn: "images/seasons/autumn-pattern.png",
-        halloween: "images/seasons/halloween-pattern.png",
-        christmas: "images/seasons/christmas-pattern.png",
-        winter: "images/seasons/winter-pattern.png",
-        "new-year": "images/seasons/new-year-pattern.png"
+    window.UllimTheme = {
+        current: null,
+        scheduledTheme: scheduledTheme,
+        show: show
     };
 
-    function spinFor(piece) {
-        var range = {
-            leaf: [70, 150],
-            "leaf-b": [70, 150],
-            snow: [20, 60],
-            "snow-b": [12, 40],
-            candy: [24, 60],
-            bat: [6, 18],
-            pumpkin: [6, 18],
-            snowman: [4, 14],
-            pouch: [4, 14],
-            sheep: [4, 14],
-            sunrise: [2, 8]
-        }[piece] || [8, 20];
-        return Math.round(range[0] + Math.random() * (range[1] - range[0])) + "deg";
+    var initial = scheduledTheme();
+    applySkin(initial);
+    current = null;
+
+    function start() {
+        show(initial);
     }
-
-    function flutterFor(bit, piece) {
-        var kind = {
-            leaf: ["11px", "8deg", "0px", 2.4, 3.1],
-            "leaf-b": ["11px", "8deg", "0px", 2.4, 3.1],
-            snow: ["7px", "5deg", "0px", 3.4, 4.6],
-            "snow-b": ["6px", "4deg", "0px", 3.6, 4.8],
-            candy: ["6px", "6deg", "0px", 2.8, 3.6],
-            bat: ["2px", "7deg", "3px", 0.9, 1.25]
-        }[piece];
-        if (!kind) return;
-        bit.style.setProperty("--sway", kind[0]);
-        bit.style.setProperty("--tilt", kind[1]);
-        bit.style.setProperty("--bob", kind[2]);
-        bit.style.setProperty("--flutter", (kind[3] + Math.random() * (kind[4] - kind[3])).toFixed(2) + "s");
-        bit.style.setProperty("--flutter-delay", (-Math.random() * 2).toFixed(2) + "s");
-    }
-
-    function makePin(kind) {
-        var pin = document.createElement("div");
-        pin.className = "season-pin season-pin-" + kind;
-        pin.setAttribute("aria-hidden", "true");
-        document.body.appendChild(pin);
-        return pin;
-    }
-
-    var motionLayer = null;
-    var motionSpec = null;
-    var laidHeight = 0;
-    var laidView = 0;
-
-    function layoutPieces() {
-        if (!motionLayer || !motionSpec) return;
-        var spec = motionSpec;
-        var viewH = Math.max(window.innerHeight || 800, 320);
-        var pageH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, viewH);
-        if (motionLayer.childElementCount && Math.abs(pageH - laidHeight) < 40 && Math.abs(viewH - laidView) < 40) return;
-        laidHeight = pageH;
-        laidView = viewH;
-        var screens = Math.max(1, Math.ceil(pageH / viewH));
-        var travel = pageH + 160;
-        var seconds = Math.max(18, 14 * (travel / viewH));
-        motionLayer.innerHTML = "";
-        var n = spec.count * screens;
-        var i;
-        for (i = 0; i < n; i++) {
-            var piece = pickWeighted(spec.weights);
-            var range = SIZE[piece] || [28, 42];
-            var bit = document.createElement("span");
-            var duration = seconds * (0.88 + Math.random() * 0.24);
-            bit.className = "season-piece is-" + piece;
-            bit.style.left = Math.random() * 100 + "%";
-            bit.style.top = "-48px";
-            bit.style.animationDuration = duration.toFixed(1) + "s";
-            bit.style.animationDelay = (-Math.random() * duration).toFixed(1) + "s";
-            bit.style.setProperty("--drift", Math.round(Math.random() * 80 - 40) + "px");
-            bit.style.setProperty("--spin", spinFor(piece));
-            bit.style.setProperty("--size", Math.round(range[0] + Math.random() * (range[1] - range[0])) + "px");
-            bit.style.setProperty("--fall", Math.round(travel) + "px");
-            flutterFor(bit, piece);
-            bit.style.opacity = spec.faint
-                ? (0.20 + Math.random() * 0.12).toFixed(2)
-                : (0.32 + Math.random() * 0.14).toFixed(2);
-            motionLayer.appendChild(bit);
-        }
-    }
-
-    function startMotion() {
-        var spec = MOTION[theme];
-        var pattern = PATTERNS[theme];
-        if (!spec && !pattern) return;
-
-        if (pattern) {
-            document.body.classList.add("season-sheet");
-            document.body.style.setProperty("--season-sheet", "url(\"/" + pattern + "?v=even1\")");
-        }
-
-        var motionOff = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (spec && !motionOff && !motionLayer) {
-            var front = makePin("front");
-            motionLayer = document.createElement("div");
-            motionLayer.className = "season-fall";
-            motionSpec = spec;
-            front.appendChild(motionLayer);
-            layoutPieces();
-
-            if (spec.rudolph) {
-                var deer = document.createElement("div");
-                deer.className = "season-rudolph";
-                front.appendChild(deer);
-            }
-        }
-    }
-
-    var resizeTimer = 0;
-    window.addEventListener("resize", function () {
-        window.clearTimeout(resizeTimer);
-        resizeTimer = window.setTimeout(layoutPieces, 200);
-    });
-    window.addEventListener("load", layoutPieces);
 
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", startMotion);
+        document.addEventListener("DOMContentLoaded", start);
     } else {
-        startMotion();
+        start();
     }
 })();

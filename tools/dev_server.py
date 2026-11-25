@@ -12,9 +12,6 @@ PORT = 8765
 def valid_schedule(data):
     if not isinstance(data, dict):
         return False
-    manual = data.get("manual", None)
-    if manual is not None and manual not in THEMES:
-        return False
     months = data.get("months")
     if not isinstance(months, dict):
         return False
@@ -47,7 +44,6 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_error(400)
             return
         clean = {
-            "manual": data.get("manual"),
             "months": {str(month): data["months"][str(month)] for month in range(1, 13)},
         }
         text = "window.UllimThemeSchedule = " + json.dumps(clean, ensure_ascii=False, indent=2) + ";\n"

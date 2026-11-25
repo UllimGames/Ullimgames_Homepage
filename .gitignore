@@ -1,1 +1,9 @@
 .env
+
+# IDE settings (kept locally, not published)
+.idea/
+*.iml
+
+# Old portfolio materials: local reference only
+_portfolio-reference/*
+!_portfolio-reference/README.md

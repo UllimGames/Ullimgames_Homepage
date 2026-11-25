@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /partials/
+Disallow: /tools/
+
+Sitemap: https://ullimgames.com/sitemap.xml

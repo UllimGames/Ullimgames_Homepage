@@ -59,9 +59,9 @@ Game ID: night-tour 같은 영문 별명
 
 | Surface | File / location | Notes |
 |---------|-----------------|-------|
-| Store/play URLs | `js/games-config.js` | Single source; wire with JS classes like `.js-night-tour-store` |
+| Store/play URLs | `js/games-config.js` | Single source; HTML uses `data-link="key"`, then run `python tools/build_layout.py` |
 | Game showcase card | `index.html` → `.games-showcase-grid` | Tag, name, copy, CTA; link or `<div class="game-panel--soon">` |
-| Panel background | `css/style.css` → `.game-panel-media--{id}` | Prefer `url("../images/games/{id}/cover.jpg")` over gradient-only |
+| Panel background | `css/style.css` → `.game-panel-media--{id}` | Prefer `url("../images/games/{id}/cover.webp")` (owner may drop JPG/PNG; convert to WebP) over gradient-only |
 | Header / sidebar / footer menus | `index.html` | Match card link behavior |
 | Main hero swiper | `index.html` → `.mainSwiper .swiper-wrapper` | Optional `{game-id}-slide.mp4` in `images/hero/` |
 | Seasonal CTA (bottom-left) | `index.html` bottom `#…Cta` + `css/style.css` `.play-cta--*` | One seasonal CTA only; company colors ≠ Fruit Valley summer palette |

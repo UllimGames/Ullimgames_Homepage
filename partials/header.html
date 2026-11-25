@@ -1,0 +1,109 @@
+<script src="/js/theme-catalog.js?v=4"></script>
+<script src="/js/theme-schedule.js?v=4"></script>
+<script src="/js/theme.js?v=4"></script>
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="main-header">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="/" aria-label="울림게임즈 홈">
+                <img src="/images/ullimgames_logo.png" alt="" width="185" height="204">
+            </a>
+        </div>
+
+        <nav class="header-menu" aria-label="주 메뉴">
+            <ul class="header-menu-list">
+                <li class="menu-item"><a href="/#about">울림게임즈</a></li>
+                <li class="menu-item"><a href="/#games">게임소개</a></li>
+                <li class="menu-item"><a href="#">소식</a></li>
+                <li class="menu-item"><a href="#">고객지원</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right-zone">
+            <div class="header-sns">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 인스타그램 (새 창)">
+                    <img src="/images/brand/instagram.svg" alt="" class="sns-icon" width="30" height="30">
+                </a>
+                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 유튜브 (새 창)">
+                    <img src="/images/brand/youtube.svg" alt="" class="sns-icon" width="30" height="30">
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggleBtn" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="mobileSidebar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mega-dropdown">
+        <div class="mega-dropdown-container">
+            <div class="mega-dropdown-spacer mega-dropdown-spacer--logo" aria-hidden="true"></div>
+            <div class="mega-dropdown-menus">
+                <div class="dropdown-column">
+                    <a href="/#about">회사 소개</a>
+                    <a href="/portfolio.html">포트폴리오</a>
+                </div>
+                <div class="dropdown-column">
+                    <a data-link="nightTourPlayStoreUrl" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                    <a data-link="chargeDrivePlayStoreUrl" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                    <a data-link="fruitValleyPlayUrl" href="/play/fruit-valley/">후르츠발리</a>
+                    <a href="/#games">프로젝트 PZ</a>
+                </div>
+                <div class="dropdown-column">
+                    <a href="#">공지사항</a>
+                    <a href="#">보도자료</a>
+                </div>
+                <div class="dropdown-column">
+                    <a href="#">1:1문의</a>
+                </div>
+            </div>
+            <div class="mega-dropdown-spacer mega-dropdown-spacer--right" aria-hidden="true"></div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-sidebar" id="mobileSidebar" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="sidebar-header">
+        <button class="close-btn" id="closeSidebarBtn" type="button" aria-label="전체 메뉴 닫기">&times;</button>
+    </div>
+    <nav class="sidebar-menu" aria-label="전체 메뉴">
+        <div class="sidebar-group">
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub1">울림게임즈</button>
+            <div class="sidebar-sub-menu" id="sidebarSub1">
+                <a href="/#about">회사 소개</a>
+                <a href="/portfolio.html">포트폴리오</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2">게임소개</button>
+            <div class="sidebar-sub-menu" id="sidebarSub2">
+                <a data-link="nightTourPlayStoreUrl" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                <a data-link="chargeDrivePlayStoreUrl" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                <a data-link="fruitValleyPlayUrl" href="/play/fruit-valley/">후르츠발리</a>
+                <a href="/#games">프로젝트 PZ</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub3">소식</button>
+            <div class="sidebar-sub-menu" id="sidebarSub3">
+                <a href="#">공지사항</a>
+                <a href="#">보도자료</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub4">고객지원</button>
+            <div class="sidebar-sub-menu" id="sidebarSub4">
+                <a href="#">1:1문의</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>

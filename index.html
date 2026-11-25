@@ -4,49 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>울림게임즈 | Ullim Games</title>
+    <meta name="description" content="게임으로 전하는 새로운 울림, 울림게임즈(Ullim Games). 나이트 투어, 차지드라이브, 웹에서 바로 하는 후르츠발리를 만나보세요.">
+    <link rel="canonical" href="https://ullimgames.com/">
+    <meta name="theme-color" content="#f4efe6">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="울림게임즈">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:url" content="https://ullimgames.com/">
+    <meta property="og:title" content="울림게임즈 | Ullim Games">
+    <meta property="og:description" content="게임으로 전하는 새로운 울림. 울림게임즈가 만드는 게임을 만나보세요.">
+    <meta property="og:image" content="https://ullimgames.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="울림게임즈 로고와 '게임으로 전하는 새로운 울림' 문구">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "울림게임즈",
+        "alternateName": "Ullim Games",
+        "url": "https://ullimgames.com/",
+        "logo": "https://ullimgames.com/images/ullimgames_logo.png",
+        "email": "contact@ullimgames.com",
+        "sameAs": [
+            "https://www.instagram.com/ullim_games/",
+            "https://www.youtube.com/@ullimgames"
+        ]
+    }
+    </script>
+
     <link rel="icon" href="/favicon.ico?v=clear1" sizes="48x48">
     <link rel="icon" href="/images/favicon.png?v=clear1" type="image/png" sizes="192x192">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=clear1">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css?v=sway1">
-    <script src="js/games-config.js"></script>
+    <link rel="stylesheet" href="/css/style.css?v=4">
 </head>
 <body>
-<script src="js/theme-schedule.js"></script>
-<script src="js/theme.js?v=sway1"></script>
+<!-- layout:header -->
+<script src="/js/theme-catalog.js?v=4"></script>
+<script src="/js/theme-schedule.js?v=4"></script>
+<script src="/js/theme.js?v=4"></script>
+
+<a class="skip-link" href="#main">본문 바로가기</a>
 
 <header class="main-header">
     <div class="header-container">
         <div class="header-logo">
-            <a href="index.html">
-                <img src="images/ullimgames_logo.png" alt="울림게임즈 로고">
+            <a href="/" aria-label="울림게임즈 홈">
+                <img src="/images/ullimgames_logo.png" alt="" width="185" height="204">
             </a>
         </div>
 
-        <nav class="header-menu">
-            <div class="menu-item"><a href="#">울림게임즈</a></div>
-            <div class="menu-item"><a href="#">게임소개</a></div>
-            <div class="menu-item"><a href="#">소식</a></div>
-            <div class="menu-item"><a href="#">고객지원</a></div>
+        <nav class="header-menu" aria-label="주 메뉴">
+            <ul class="header-menu-list">
+                <li class="menu-item"><a href="/#about">울림게임즈</a></li>
+                <li class="menu-item"><a href="/#games">게임소개</a></li>
+                <li class="menu-item"><a href="#">소식</a></li>
+                <li class="menu-item"><a href="#">고객지원</a></li>
+            </ul>
         </nav>
 
         <div class="header-right-zone">
             <div class="header-sns">
-                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="인스타그램" class="sns-icon">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 인스타그램 (새 창)">
+                    <img src="/images/brand/instagram.svg" alt="" class="sns-icon" width="30" height="30">
                 </a>
-                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="유튜브" class="sns-icon">
+                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 유튜브 (새 창)">
+                    <img src="/images/brand/youtube.svg" alt="" class="sns-icon" width="30" height="30">
                 </a>
             </div>
 
-            <button class="menu-toggle" id="menuToggleBtn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="menu-toggle" id="menuToggleBtn" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="mobileSidebar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </button>
         </div>
     </div>
@@ -56,14 +95,14 @@
             <div class="mega-dropdown-spacer mega-dropdown-spacer--logo" aria-hidden="true"></div>
             <div class="mega-dropdown-menus">
                 <div class="dropdown-column">
-                    <a href="#">울림게임즈</a>
-                    <a href="#">오시는길</a>
+                    <a href="/#about">회사 소개</a>
+                    <a href="/portfolio.html">포트폴리오</a>
                 </div>
                 <div class="dropdown-column">
-                    <a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
-                    <a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
-                    <a href="/play/fruit-valley/">후르츠발리</a>
-                    <a href="#games">프로젝트 PZ</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                    <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a>
+                    <a href="/#games">프로젝트 PZ</a>
                 </div>
                 <div class="dropdown-column">
                     <a href="#">공지사항</a>
@@ -78,77 +117,81 @@
     </div>
 </header>
 
-<div class="mobile-sidebar" id="mobileSidebar">
+<div class="mobile-sidebar" id="mobileSidebar" role="dialog" aria-modal="true" aria-label="전체 메뉴">
     <div class="sidebar-header">
-        <button class="close-btn" id="closeSidebarBtn">&times;</button>
+        <button class="close-btn" id="closeSidebarBtn" type="button" aria-label="전체 메뉴 닫기">&times;</button>
     </div>
-    <nav class="sidebar-menu">
+    <nav class="sidebar-menu" aria-label="전체 메뉴">
         <div class="sidebar-group">
-            <div class="sidebar-title-btn">울림게임즈</div>
-            <div class="sidebar-sub-menu">
-                <a href="#">울림게임즈 소개</a>
-                <a href="#">오시는길</a>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub1">울림게임즈</button>
+            <div class="sidebar-sub-menu" id="sidebarSub1">
+                <a href="/#about">회사 소개</a>
+                <a href="/portfolio.html">포트폴리오</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <div class="sidebar-title-btn">게임소개</div>
-            <div class="sidebar-sub-menu">
-                <a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a>
-                <a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a>
-                <a href="/play/fruit-valley/">후르츠발리</a>
-                <a href="#games">프로젝트 PZ</a>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2">게임소개</button>
+            <div class="sidebar-sub-menu" id="sidebarSub2">
+                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a>
+                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a>
+                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a>
+                <a href="/#games">프로젝트 PZ</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <div class="sidebar-title-btn">소식</div>
-            <div class="sidebar-sub-menu">
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub3">소식</button>
+            <div class="sidebar-sub-menu" id="sidebarSub3">
                 <a href="#">공지사항</a>
                 <a href="#">보도자료</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <div class="sidebar-title-btn">고객지원</div>
-            <div class="sidebar-sub-menu">
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub4">고객지원</button>
+            <div class="sidebar-sub-menu" id="sidebarSub4">
                 <a href="#">1:1문의</a>
             </div>
         </div>
     </nav>
 </div>
 
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+<!-- /layout:header -->
 
-<main>
-    <section class="main-visual swiper mainSwiper">
+<main id="main" tabindex="-1">
+    <section class="main-visual swiper mainSwiper" aria-label="대표 영상">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <video src="images/mainvisual_1_replica.mp4" autoplay loop muted playsinline class="responsive-media"></video>
+                <video src="/images/mainvisual_1_replica.mp4" autoplay loop muted playsinline preload="auto" class="responsive-media" aria-hidden="true"></video>
             </div>
             <div class="swiper-slide">
-                <video src="images/main_visual_2.mp4" autoplay loop muted playsinline class="responsive-media"></video>
+                <video src="/images/main_visual_2.mp4" loop muted playsinline preload="none" class="responsive-media" aria-hidden="true"></video>
             </div>
             <div class="swiper-slide">
-                <video src="images/main_visual_3.mp4" autoplay loop muted playsinline class="responsive-media"></video>
+                <video src="/images/main_visual_3.mp4" loop muted playsinline preload="none" class="responsive-media" aria-hidden="true"></video>
             </div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
+        <button class="visual-pause" id="visualPauseBtn" type="button" aria-label="영상 일시정지" aria-pressed="false"></button>
     </section>
 
     <section class="company-intro">
-        <h2 class="intro-line-1">게임으로 전하는 새로운 울림</h2>
-        <h2 class="intro-line-2">Ullim Games</h2>
+        <h1>
+            <span class="intro-line-1">게임으로 전하는 새로운 울림</span>
+            <span class="intro-line-2">Ullim Games</span>
+        </h1>
     </section>
 
-    <div class="vertical-line"></div>
+    <div class="vertical-line" aria-hidden="true"></div>
 
-    <section class="detailed-intro">
-        <div class="intro-container">
+    <section class="detailed-intro" id="about" aria-labelledby="aboutTitle">
+        <div class="intro-container page-inner">
             <div class="intro-text">
-                <h3 class="about-title">ABOUT US</h3>
+                <h2 class="about-title" id="aboutTitle">ABOUT US</h2>
                 <p class="about-body">
                     <span class="line-block">울림게임즈는 전 세계 플레이어에게</span>
                     <span class="line-block">마음속 깊은 울림과 재미를 선사합니다.</span>
@@ -161,78 +204,87 @@
                 </p>
             </div>
             <div class="intro-image">
-                <img src="images/about-mark.png" alt="울림게임즈">
+                <img src="/images/about-mark.webp" alt="울림게임즈 심볼" width="595" height="595" loading="lazy">
             </div>
         </div>
     </section>
 
-    <section class="games-showcase" id="games" aria-label="울림게임즈 게임">
-        <div class="games-showcase-inner">
-            <header class="games-showcase-head">
-                <p class="games-showcase-kicker">GAMES</p>
-                <h2 class="games-showcase-title">울림이 만드는 게임</h2>
-                <p class="games-showcase-desc">출시한 게임을 앞에 두고, 브라우저에서 하는 게임도 같이 모읍니다.</p>
+    <section class="games-showcase" id="games" aria-labelledby="gamesTitle">
+        <div class="page-inner">
+            <header class="section-head">
+                <p class="section-kicker">GAMES</p>
+                <h2 class="section-title" id="gamesTitle">울림이 만드는 게임</h2>
+                <p class="section-desc">출시한 게임을 앞에 두고, 브라우저에서 하는 게임도 같이 모읍니다.</p>
             </header>
 
             <div class="games-showcase-grid">
-                <a class="game-panel game-panel--main js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer" aria-label="나이트 투어 Google Play">
+                <article class="game-panel game-panel--main is-linked">
                     <div class="game-panel-media game-panel-media--night" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
+                    <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" class="game-panel-hit" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" aria-label="나이트 투어 Google Play에서 받기 (새 창)"></a>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag is-store">Google Play</span>
+                        <span class="game-panel-tag is-store">모바일</span>
                         <h3 class="game-panel-name">나이트 투어</h3>
                         <p class="game-panel-copy">중세 고딕 분위기와 다양한 커스텀 스킨으로 즐기는 나이트 투어 두뇌퍼즐게임.</p>
-                        <span class="game-panel-cta">스토어에서 받기</span>
+                        <ul class="store-badges" aria-label="나이트 투어 받는 곳">
+                            <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" class="store-badge" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer"><img src="/images/brand/google-play.svg" alt="" width="18" height="18">Google Play</a></li>
+                            <li><a class="store-badge" data-link="nightTourTossUrl"><img src="/images/brand/toss.svg" alt="" width="18" height="18">토스</a></li>
+                        </ul>
                     </div>
-                </a>
+                </article>
 
-                <a class="game-panel game-panel--small js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer" aria-label="차지드라이브 Google Play">
+                <article class="game-panel game-panel--small is-linked">
                     <div class="game-panel-media game-panel-media--charge" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
+                    <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" class="game-panel-hit" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" aria-label="차지드라이브 Google Play에서 받기 (새 창)"></a>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag is-store">Google Play</span>
+                        <span class="game-panel-tag is-store">모바일</span>
                         <h3 class="game-panel-name">차지드라이브</h3>
-                        <span class="game-panel-cta">스토어에서 받기</span>
+                        <ul class="store-badges" aria-label="차지드라이브 받는 곳">
+                            <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" class="store-badge" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer"><img src="/images/brand/google-play.svg" alt="" width="18" height="18">Google Play</a></li>
+                            <li><a class="store-badge" data-link="chargeDriveTossUrl"><img src="/images/brand/toss.svg" alt="" width="18" height="18">토스</a></li>
+                        </ul>
                     </div>
-                </a>
+                </article>
 
-                <a href="/play/fruit-valley/" class="game-panel game-panel--small">
+                <article class="game-panel game-panel--small is-linked">
                     <div class="game-panel-media game-panel-media--fruit" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
+                    <a href="/play/fruit-valley/" class="game-panel-hit" data-link="fruitValleyPlayUrl" aria-label="후르츠발리 웹에서 바로 플레이"></a>
                     <div class="game-panel-body">
                         <span class="game-panel-tag is-live">웹</span>
                         <h3 class="game-panel-name">후르츠발리</h3>
                         <p class="game-panel-copy">여름 감성의 캐주얼 발리볼.</p>
                     </div>
-                </a>
+                </article>
 
-                <div class="game-panel game-panel--banner" aria-label="프로젝트 PZ 출시 예정">
+                <article class="game-panel game-panel--banner">
                     <div class="game-panel-media game-panel-media--pz" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag">출시 예정</span>
+                        <span class="game-panel-tag">2027년 1분기 출시 예정</span>
                         <h3 class="game-panel-name">프로젝트 PZ</h3>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
-
 </main>
 
+<!-- layout:footer -->
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-left">
             <div class="footer-logo">
-                <img src="images/ullimgames_logo.png" alt="울림게임즈 로고">
+                <img src="/images/ullimgames_logo.png" alt="울림게임즈" width="185" height="204" loading="lazy">
             </div>
 
             <div class="footer-info">
                 <div class="info-row">
                     <span><strong>상호</strong> 울림게임즈</span>
-                    <span class="bar"></span>
+                    <span class="bar" aria-hidden="true"></span>
                     <span><strong>대표</strong> 황승현</span>
-                    <span class="bar"></span>
+                    <span class="bar" aria-hidden="true"></span>
                     <span><strong>사업자등록번호</strong> 804-61-00970</span>
                 </div>
                 <div class="info-row">
@@ -242,181 +294,71 @@
                     <span class="address-text"><strong>주소</strong> 충청남도 천안시 동남구 백석대학로 1-3,<br> 학생복지동 3층 311-4호</span>
                 </div>
                 <div class="info-row email-row">
-                    <span class="email-text"><strong>이메일</strong> contact@ullimgames.com</span>
+                    <span class="email-text"><strong>이메일</strong> <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a></span>
                 </div>
 
                 <div class="footer-links">
-                    <a href="privacy.html"><strong>개인정보처리방침</strong></a>
-                    <span class="bar"></span>
-                    <a href="terms.html">이용약관</a>
+                    <a href="/privacy.html"><strong>개인정보처리방침</strong></a>
+                    <span class="bar" aria-hidden="true"></span>
+                    <a href="/terms.html">이용약관</a>
                 </div>
 
                 <p class="copyright">&copy; 2026 Ullim Games. All Rights Reserved.</p>
             </div>
         </div>
 
-        <div class="footer-right">
+        <nav class="footer-right" aria-label="사이트 메뉴">
             <div class="footer-menu-group">
-                <h4 class="menu-title">울림게임즈</h4>
+                <h2 class="menu-title">울림게임즈</h2>
                 <ul>
-                    <li><a href="#">울림게임즈</a></li>
-                    <li><a href="#">오시는길</a></li>
+                    <li><a href="/#about">회사 소개</a></li>
+                    <li><a href="/portfolio.html">포트폴리오</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h4 class="menu-title">게임소개</h4>
+                <h2 class="menu-title">게임소개</h2>
                 <ul>
-                    <li><a class="js-night-tour-store" href="#" target="_blank" rel="noopener noreferrer">나이트 투어</a></li>
-                    <li><a class="js-charge-drive-store" href="#" target="_blank" rel="noopener noreferrer">차지드라이브</a></li>
-                    <li><a href="/play/fruit-valley/">후르츠발리</a></li>
-                    <li><a href="#games">프로젝트 PZ</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a></li>
+                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a></li>
+                    <li><a href="/#games">프로젝트 PZ</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h4 class="menu-title">소식</h4>
+                <h2 class="menu-title">소식</h2>
                 <ul>
                     <li><a href="#">공지사항</a></li>
                     <li><a href="#">보도자료</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h4 class="menu-title">고객지원</h4>
+                <h2 class="menu-title">고객지원</h2>
                 <ul>
                     <li><a href="#">1:1문의</a></li>
                 </ul>
             </div>
-        </div>
+        </nav>
     </div>
-    <a class="admin-entry" href="admin/index.html">관리</a>
+    <a class="admin-entry" href="/admin/" rel="nofollow">관리</a>
 </footer>
 
-<a href="/play/fruit-valley/" id="fruitValleyCta" class="play-cta play-cta--image" aria-label="후르츠발리 웹에서 바로 플레이">
+<button id="backToTop" class="top-btn" type="button" aria-label="맨 위로">TOP</button>
+
+<script src="/js/games-config.js"></script>
+<script src="/js/site.js?v=2"></script>
+<!-- /layout:footer -->
+
+<a href="/play/fruit-valley/" id="fruitValleyCta" class="play-cta" aria-label="후르츠발리 웹에서 바로 플레이">
     <span class="play-cta-visual">
-        <img
-            class="play-cta-img"
-            src="images/cta-fruit-valley.png"
-            alt=""
-            width="176"
-            height="176"
-            onerror="this.closest('.play-cta').classList.add('is-fallback');"
-        >
-        <span class="play-cta-text">
+        <img class="play-cta-img" src="/images/cta-fruit-valley.webp" alt="" width="176" height="176"
+             onerror="this.closest('.play-cta').classList.add('is-fallback');">
+        <span class="play-cta-text" aria-hidden="true">
             <span class="play-cta-label">지금 바로<br>플레이</span>
         </span>
     </span>
 </a>
 
-<div id="backToTop" class="top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">TOP</div>
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 1. 메인 비주얼 슬라이더 구동
-        var swiper = new Swiper(".mainSwiper", {
-            loop: true,
-            autoplay: { delay: 8000 },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
-
-        // 2. 모바일 사이드바 및 아코디언 메뉴 구동 로직
-        const menuToggleBtn = document.getElementById('menuToggleBtn');
-        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-        const mobileSidebar = document.getElementById('mobileSidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const backToTopBtn = document.getElementById('backToTop');
-        const fruitValleyCta = document.getElementById('fruitValleyCta');
-
-        if (menuToggleBtn && closeSidebarBtn && mobileSidebar && sidebarOverlay) {
-            // 사이드바 열기
-            menuToggleBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                mobileSidebar.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                if (backToTopBtn) backToTopBtn.style.display = 'none';
-                if (fruitValleyCta) fruitValleyCta.classList.add('is-sidebar-open');
-            });
-
-            // 사이드바 닫기 함수
-            function closeSidebar() {
-                mobileSidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                if (backToTopBtn) backToTopBtn.style.display = 'flex';
-                if (fruitValleyCta) fruitValleyCta.classList.remove('is-sidebar-open');
-
-                document.querySelectorAll('.sidebar-group').forEach(g => {
-                    g.classList.remove('active');
-                    g.querySelector('.sidebar-sub-menu').style.maxHeight = null;
-                });
-            }
-
-            closeSidebarBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                closeSidebar();
-            });
-
-            sidebarOverlay.addEventListener('click', closeSidebar);
-
-            // 대제목 클릭 시 아코디언 슬라이드 작동
-            const titleBtns = document.querySelectorAll('.sidebar-title-btn');
-            titleBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const currentGroup = this.parentElement;
-                    const currentSubMenu = currentGroup.querySelector('.sidebar-sub-menu');
-
-                    document.querySelectorAll('.sidebar-group').forEach(group => {
-                        if (group !== currentGroup) {
-                            group.classList.remove('active');
-                            group.querySelector('.sidebar-sub-menu').style.maxHeight = null;
-                        }
-                    });
-
-                    currentGroup.classList.toggle('active');
-
-                    if (currentGroup.classList.contains('active')) {
-                        currentSubMenu.style.maxHeight = currentSubMenu.scrollHeight + "px";
-                    } else {
-                        currentSubMenu.style.maxHeight = null;
-                    }
-                });
-            });
-        }
-
-        // Hide seasonal CTA when footer enters the viewport
-        if (fruitValleyCta && 'IntersectionObserver' in window) {
-            const siteFooter = document.querySelector('.site-footer');
-            if (siteFooter) {
-                const footerObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        fruitValleyCta.classList.toggle('is-near-footer', entry.isIntersecting);
-                    });
-                }, {
-                    root: null,
-                    threshold: 0,
-                    rootMargin: '0px 0px 0px 0px'
-                });
-                footerObserver.observe(siteFooter);
-            }
-        }
-
-        // Wire Night Tour Google Play links from config
-        if (window.UllimGamesConfig && window.UllimGamesConfig.nightTourPlayStoreUrl) {
-            document.querySelectorAll('.js-night-tour-store').forEach(function (el) {
-                el.href = window.UllimGamesConfig.nightTourPlayStoreUrl;
-            });
-        }
-        if (window.UllimGamesConfig && window.UllimGamesConfig.chargeDrivePlayStoreUrl) {
-            document.querySelectorAll('.js-charge-drive-store').forEach(function (el) {
-                el.href = window.UllimGamesConfig.chargeDrivePlayStoreUrl;
-            });
-        }
-    });
-</script>
+<script src="/js/home.js?v=2"></script>
 </body>
 </html>

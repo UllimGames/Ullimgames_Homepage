@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>테마 관리 | 울림게임즈</title>
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="/favicon.ico?v=clear1" sizes="48x48">
     <link rel="icon" href="/images/favicon.png?v=clear1" type="image/png" sizes="192x192">
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=clear1">
-    <link rel="stylesheet" href="../css/style.css?v=sway1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap">
+    <link rel="stylesheet" href="/css/style.css?v=4">
 </head>
 <body>
-<script src="../js/theme-schedule.js"></script>
-<script src="../js/admin-lock.js"></script>
-<script src="../js/theme.js?v=sway1"></script>
+<script src="/js/theme-catalog.js?v=4"></script>
+<script src="/js/theme-schedule.js?v=4"></script>
+<script src="/js/admin-lock.js"></script>
+<script src="/js/theme.js?v=4"></script>
 
 <main class="admin-main">
     <section id="adminGate" class="admin-card">
@@ -23,79 +26,66 @@
             <input id="adminPass" class="admin-input" type="password" autocomplete="current-password" required>
             <button class="admin-button" type="submit">들어가기</button>
         </form>
-        <p><a href="../index.html">홈으로</a></p>
+        <p><a href="/">홈으로</a></p>
     </section>
 
     <section id="adminPanel" class="admin-card" hidden>
         <h1>달별 테마</h1>
-        <p id="adminStatus" class="admin-note"></p>
+        <p id="adminStatus" class="admin-note" role="status"></p>
+
         <form id="themeForm">
-            <label class="admin-label" for="manualTheme">지금 화면</label>
-            <select id="manualTheme" class="admin-input"></select>
+            <p class="admin-note">홈페이지 테마는 항상 이 달력대로, 매달 1일에 자동으로 바뀝니다.</p>
+
             <div id="monthList" class="admin-months"></div>
+
             <div class="admin-actions">
-                <button class="admin-button" type="submit">저장</button>
-                <button class="admin-button admin-button--quiet" id="clearOverride" type="button">임시 설정 지우기</button>
+                <button class="admin-button" type="submit">파일에 저장</button>
                 <button class="admin-button admin-button--quiet" id="logoutBtn" type="button">나가기</button>
             </div>
         </form>
-        <p><a href="../index.html">홈으로</a></p>
+
+        <h2 class="admin-subtitle">테마 미리보기</h2>
+        <p class="admin-note">누르면 이 화면의 배경과 떨어지는 효과가 바로 바뀝니다. 저장되지 않으며 홈페이지에는 영향이 없습니다.</p>
+        <div id="previewList" class="admin-preview-list"></div>
+
+        <p><a href="/">홈으로</a></p>
     </section>
 </main>
 
 <script>
 (function () {
-    var THEMES = [
-        ["spring", "봄"],
-        ["summer", "여름"],
-        ["autumn", "가을 (단풍)"],
-        ["halloween", "할로윈"],
-        ["christmas", "크리스마스"],
-        ["new-year", "새해"],
-        ["winter", "겨울"]
-    ];
+    "use strict";
+
+    var CATALOG = window.UllimThemeCatalog || {};
+    var NAMES = Object.keys(CATALOG);
     var SESSION_KEY = "ullim-admin-session";
-    var OVERRIDE_KEY = "ullim-theme-override";
     var gate = document.getElementById("adminGate");
     var panel = document.getElementById("adminPanel");
     var gateCopy = document.getElementById("gateCopy");
     var gateForm = document.getElementById("gateForm");
-    var passInput = document.getElementById("adminPass");
     var monthList = document.getElementById("monthList");
-    var manualTheme = document.getElementById("manualTheme");
     var status = document.getElementById("adminStatus");
 
+    function label(name) {
+        return CATALOG[name] ? CATALOG[name].label : name;
+    }
+
     function hashText(text) {
-        var data = new TextEncoder().encode(text);
-        return crypto.subtle.digest("SHA-256", data).then(function (buf) {
+        return crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)).then(function (buf) {
             return Array.from(new Uint8Array(buf)).map(function (n) {
                 return n.toString(16).padStart(2, "0");
             }).join("");
         });
     }
 
-    function currentSchedule() {
-        try {
-            var raw = localStorage.getItem(OVERRIDE_KEY);
-            if (raw) return JSON.parse(raw);
-        } catch (e) {}
-        return JSON.parse(JSON.stringify(window.UllimThemeSchedule));
+    function option(value, text) {
+        var el = document.createElement("option");
+        el.value = value;
+        el.textContent = text;
+        return el;
     }
 
     function fillForm(schedule) {
-        manualTheme.innerHTML = "";
-        var auto = document.createElement("option");
-        auto.value = "";
-        auto.textContent = "이번 달 일정대로";
-        manualTheme.appendChild(auto);
-        THEMES.forEach(function (item) {
-            var option = document.createElement("option");
-            option.value = item[0];
-            option.textContent = "고정: " + item[1];
-            manualTheme.appendChild(option);
-        });
-        manualTheme.value = schedule.manual || "";
-
         monthList.innerHTML = "";
         for (var month = 1; month <= 12; month++) {
             var row = document.createElement("label");
@@ -105,17 +95,32 @@
             var select = document.createElement("select");
             select.className = "admin-input";
             select.dataset.month = String(month);
-            THEMES.forEach(function (item) {
-                var option = document.createElement("option");
-                option.value = item[0];
-                option.textContent = item[1];
-                select.appendChild(option);
+            NAMES.forEach(function (theme) {
+                select.appendChild(option(theme, label(theme)));
             });
-            select.value = (schedule.months && schedule.months[String(month)]) || "autumn";
+            select.value = (schedule.months && schedule.months[String(month)]) || NAMES[0];
             row.appendChild(name);
             row.appendChild(select);
             monthList.appendChild(row);
         }
+    }
+
+    function fillPreviews() {
+        var list = document.getElementById("previewList");
+        NAMES.forEach(function (name) {
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "admin-button admin-button--quiet";
+            btn.textContent = label(name);
+            btn.setAttribute("aria-pressed", String(name === window.UllimTheme.current));
+            btn.addEventListener("click", function () {
+                window.UllimTheme.show(name);
+                list.querySelectorAll("button").forEach(function (b) {
+                    b.setAttribute("aria-pressed", String(b === btn));
+                });
+            });
+            list.appendChild(btn);
+        });
     }
 
     function readForm() {
@@ -123,45 +128,34 @@
         monthList.querySelectorAll("select").forEach(function (select) {
             months[select.dataset.month] = select.value;
         });
-        return {
-            manual: manualTheme.value || null,
-            months: months
-        };
+        return { months: months };
+    }
+
+    function describeNow() {
+        var month = new Date().getMonth() + 1;
+        var now = window.UllimTheme ? window.UllimTheme.scheduledTheme() : "";
+        status.textContent = "지금은 " + month + "월이라 '" + label(now) + "' 테마가 홈페이지에 나갑니다.";
     }
 
     function showPanel() {
         gate.hidden = true;
         panel.hidden = false;
-        var schedule = currentSchedule();
-        fillForm(schedule);
-        var localOnly = !!localStorage.getItem(OVERRIDE_KEY);
-        var month = new Date().getMonth() + 1;
-        status.textContent = localOnly
-            ? "이 브라우저에만 임시로 적용 중입니다. 다른 사람 화면은 저장된 파일 일정을 봅니다."
-            : "파일 일정을 보고 있습니다. 지금은 " + month + "월 테마가 홈에 나갑니다. 이 컴퓨터의 로컬 서버에서 저장하면 파일에 기록됩니다.";
+        fillForm(window.UllimThemeSchedule || { months: {} });
+        fillPreviews();
+        describeNow();
     }
 
     if (!window.UllimAdminLock) {
         gateCopy.textContent = "비밀번호가 아직 설정되지 않았습니다.";
         gateForm.hidden = true;
+    } else if (sessionStorage.getItem(SESSION_KEY) === "ok") {
+        showPanel();
     }
-
-    if (window.UllimAdminLock && sessionStorage.getItem(SESSION_KEY) === "ok") showPanel();
 
     gateForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        var value = passInput.value;
-        var expected = window.UllimAdminLock || "";
-        if (!expected) {
-            gateCopy.textContent = "비밀번호가 아직 설정되지 않았습니다.";
-            return;
-        }
-        if (value.length < 4) {
-            gateCopy.textContent = "비밀번호는 4자 이상으로 해주세요.";
-            return;
-        }
-        hashText(value).then(function (hash) {
-            if (hash !== expected) {
+        hashText(document.getElementById("adminPass").value).then(function (hash) {
+            if (hash !== window.UllimAdminLock) {
                 gateCopy.textContent = "비밀번호가 다릅니다.";
                 return;
             }
@@ -172,44 +166,23 @@
 
     document.getElementById("themeForm").addEventListener("submit", function (event) {
         event.preventDefault();
-        var schedule = readForm();
         status.textContent = "저장하는 중...";
         fetch("/api/theme-schedule", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(schedule)
+            body: JSON.stringify(readForm())
         }).then(function (res) {
             if (!res.ok) throw new Error("save failed");
-            localStorage.removeItem(OVERRIDE_KEY);
-            sessionStorage.setItem("ullim-admin-flash", "file");
-            location.reload();
+            status.textContent = "js/theme-schedule.js 파일에 저장했습니다. GitHub에 올리면(커밋·푸시) 공개 홈페이지에 반영됩니다.";
         }).catch(function () {
-            localStorage.setItem(OVERRIDE_KEY, JSON.stringify(schedule));
-            sessionStorage.setItem("ullim-admin-flash", "local");
-            location.reload();
+            status.textContent = "저장하지 못했습니다. 저장은 이 컴퓨터에서 'python tools/dev_server.py'로 연 관리 페이지에서만 됩니다. (공개 홈페이지에서는 저장 기능이 없습니다.)";
         });
-    });
-
-    document.getElementById("clearOverride").addEventListener("click", function () {
-        localStorage.removeItem(OVERRIDE_KEY);
-        location.reload();
     });
 
     document.getElementById("logoutBtn").addEventListener("click", function () {
         sessionStorage.removeItem(SESSION_KEY);
-        location.href = "../index.html";
+        location.href = "/";
     });
-
-    var flash = sessionStorage.getItem("ullim-admin-flash");
-    if (flash) {
-        sessionStorage.removeItem("ullim-admin-flash");
-        window.addEventListener("DOMContentLoaded", function () {
-            if (!status) return;
-            status.textContent = flash === "file"
-                ? "파일에 저장했습니다. 홈을 새로고침하면 같은 컴퓨터의 서버에서도 이 일정이 보입니다."
-                : "이 브라우저에만 저장했습니다. 공개 홈페이지에 반영하려면 채팅으로 올려 달라고 해주세요.";
-        });
-    }
 })();
 </script>
 </body>
