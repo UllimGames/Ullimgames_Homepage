@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-title-en="Fruit Volley | Ullim Games">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/i18n-boot.js?v=1"></script>
     <title>후르츠발리 | 울림게임즈</title>
     <meta name="description" content="울림게임즈의 캐주얼 발리볼 게임 후르츠발리. 설치 없이 브라우저에서 바로 플레이하세요.">
     <link rel="canonical" href="https://ullimgames.com/play/fruit-valley/">
@@ -21,23 +22,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=4">
+    <link rel="stylesheet" href="/css/style.css?v=5">
 </head>
 <body class="play-page">
 
 <header class="play-header">
     <div class="play-header-inner">
-        <a class="play-back" href="/">← 홈으로</a>
+        <a class="play-back" href="/" data-en="← Home">← 홈으로</a>
         <div class="play-title-wrap">
-            <img src="/images/ullimgames_logo.png" alt="울림게임즈" class="play-logo">
-            <h1 class="play-title">후르츠발리</h1>
+            <img src="/images/ullimgames_logo.png" alt="울림게임즈" data-en-alt="Ullim Games" class="play-logo">
+            <h1 class="play-title" data-en="Fruit Volley">후르츠발리</h1>
         </div>
-        <span class="play-header-spacer" aria-hidden="true"></span>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="언어 변경: English로 보기" data-en-aria-label="Change language: view in Korean">
+            <svg class="lang-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9M12 3C9.4 5.6 8.1 8.6 8.1 12s1.3 6.4 3.9 9"/></svg>
+            <span class="lang-code" data-lang-code="ko">KO</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-code" data-lang-code="en">EN</span>
+        </button>
     </div>
 </header>
 
 <main class="play-main">
-    <section class="play-stage" aria-label="후르츠발리 게임 화면">
+    <section class="play-stage" aria-label="후르츠발리 게임 화면" data-en-aria-label="Fruit Volley game screen">
         <div class="play-frame-wrap">
             <!-- Unity WebGL build lives in /games/fruit-valley/ (drop-in replace) -->
             <iframe
@@ -51,16 +55,16 @@
     </section>
 
     <!-- Ranking UI ready; data wiring stays OFF until server exists (data-ranking-enabled). -->
-    <aside class="play-ranking" aria-label="후르츠발리 랭킹" data-ranking-enabled="false">
+    <aside class="play-ranking" aria-label="후르츠발리 랭킹" data-en-aria-label="Fruit Volley ranking" data-ranking-enabled="false">
         <div class="play-ranking-head">
-            <p class="play-ranking-kicker">FRUIT VALLEY</p>
-            <h2 class="play-ranking-title">랭킹</h2>
+            <p class="play-ranking-kicker">FRUIT VOLLEY</p>
+            <h2 class="play-ranking-title" data-en="Ranking">랭킹</h2>
         </div>
 
         <div class="play-ranking-cols" aria-hidden="true">
-            <span>순위</span>
-            <span>닉네임</span>
-            <span>점수</span>
+            <span data-en="Rank">순위</span>
+            <span data-en="Player">닉네임</span>
+            <span data-en="Score">점수</span>
         </div>
 
         <ol class="play-ranking-list" id="fruitValleyRankingList">
@@ -111,5 +115,6 @@
         };
     })();
 </script>
+<script src="/js/i18n.js?v=1"></script>
 </body>
 </html>

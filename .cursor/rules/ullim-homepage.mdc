@@ -45,7 +45,7 @@ Static Korean company site: HTML + CSS + light JS. Domain: ullimgames.com. Brand
 3. When ranking later: higher score better; nickname or fruit+4digit guest
 4. No homepage membership (Google Play accounts for mobile games later)
 5. Only pages owner requests (no 오시는길 unless asked)
-6. Korean first; English later
+6. Korean + English. Korean stays in HTML; English sits beside it (`data-en`, `data-en-html`, `data-en-aria-label`, `data-en-alt`, or `data-lang="ko"/"en"` blocks for long pages). `js/i18n-boot.js` (head) picks the language: saved choice > browser language (Korean browser = Korean, others = English). `js/i18n.js` swaps text; the header KO/EN button toggles. Every new visible text needs its English twin.
 
 ## Tech
 

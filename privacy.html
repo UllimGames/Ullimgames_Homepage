@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-title-en="Privacy Policy | Ullim Games">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/i18n-boot.js?v=1"></script>
     <title>개인정보처리방침 | 울림게임즈</title>
     <meta name="description" content="울림게임즈(Ullim Games) 개인정보처리방침입니다.">
     <link rel="canonical" href="https://ullimgames.com/privacy.html">
@@ -18,7 +19,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=clear1">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=4">
+    <link rel="stylesheet" href="/css/style.css?v=5">
 </head>
 <body>
 <!-- layout:header -->
@@ -26,36 +27,46 @@
 <script src="/js/theme-schedule.js?v=4"></script>
 <script src="/js/theme.js?v=4"></script>
 
-<a class="skip-link" href="#main">본문 바로가기</a>
+<a class="skip-link" href="#main" data-en="Skip to content">본문 바로가기</a>
 
 <header class="main-header">
     <div class="header-container">
         <div class="header-logo">
-            <a href="/" aria-label="울림게임즈 홈">
+            <a href="/" aria-label="울림게임즈 홈" data-en-aria-label="Ullim Games home">
                 <img src="/images/ullimgames_logo.png" alt="" width="185" height="204">
             </a>
         </div>
 
-        <nav class="header-menu" aria-label="주 메뉴">
+        <nav class="header-menu" aria-label="주 메뉴" data-en-aria-label="Main menu">
             <ul class="header-menu-list">
-                <li class="menu-item"><a href="/#about">울림게임즈</a></li>
-                <li class="menu-item"><a href="/#games">게임소개</a></li>
-                <li class="menu-item"><a href="#">소식</a></li>
-                <li class="menu-item"><a href="#">고객지원</a></li>
+                <li class="menu-item"><a href="/#about" data-en="About">울림게임즈</a></li>
+                <li class="menu-item"><a href="/#games" data-en="Games">게임소개</a></li>
+                <li class="menu-item"><a href="#" data-en="News">소식</a></li>
+                <li class="menu-item"><a href="#" data-en="Support">고객지원</a></li>
             </ul>
         </nav>
 
         <div class="header-right-zone">
             <div class="header-sns">
-                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 인스타그램 (새 창)">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 인스타그램 (새 창)" data-en-aria-label="Ullim Games on Instagram (new window)">
                     <img src="/images/brand/instagram.svg" alt="" class="sns-icon" width="30" height="30">
                 </a>
-                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 유튜브 (새 창)">
+                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 유튜브 (새 창)" data-en-aria-label="Ullim Games on YouTube (new window)">
                     <img src="/images/brand/youtube.svg" alt="" class="sns-icon" width="30" height="30">
                 </a>
             </div>
 
-            <button class="menu-toggle" id="menuToggleBtn" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="mobileSidebar">
+            <button class="lang-toggle" id="langToggle" type="button" aria-label="언어 변경: English로 보기" data-en-aria-label="Change language: view in Korean">
+                <svg class="lang-globe" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9M12 3C9.4 5.6 8.1 8.6 8.1 12s1.3 6.4 3.9 9"/>
+                </svg>
+                <span class="lang-code" data-lang-code="ko">KO</span>
+                <span class="lang-sep" aria-hidden="true">/</span>
+                <span class="lang-code" data-lang-code="en">EN</span>
+            </button>
+
+            <button class="menu-toggle" id="menuToggleBtn" type="button" aria-label="전체 메뉴 열기" data-en-aria-label="Open menu" aria-expanded="false" aria-controls="mobileSidebar">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -64,67 +75,63 @@
     </div>
 
     <div class="mega-dropdown">
-        <div class="mega-dropdown-container">
-            <div class="mega-dropdown-spacer mega-dropdown-spacer--logo" aria-hidden="true"></div>
-            <div class="mega-dropdown-menus">
-                <div class="dropdown-column">
-                    <a href="/#about">회사 소개</a>
-                    <a href="/portfolio.html">포트폴리오</a>
-                </div>
-                <div class="dropdown-column">
-                    <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a>
-                    <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a>
-                    <a href="/#games">프로젝트 PZ</a>
-                </div>
-                <div class="dropdown-column">
-                    <a href="#">공지사항</a>
-                    <a href="#">보도자료</a>
-                </div>
-                <div class="dropdown-column">
-                    <a href="#">1:1문의</a>
-                </div>
+        <div class="mega-dropdown-menus">
+            <div class="dropdown-column">
+                <a href="/#about" data-en="About Us">회사 소개</a>
+                <a href="/portfolio.html" data-en="Portfolio">포트폴리오</a>
             </div>
-            <div class="mega-dropdown-spacer mega-dropdown-spacer--right" aria-hidden="true"></div>
+            <div class="dropdown-column">
+                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
+                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
+                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
+                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#" data-en="Notices">공지사항</a>
+                <a href="#" data-en="Press">보도자료</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#" data-en="Contact Us">1:1문의</a>
+            </div>
         </div>
     </div>
 </header>
 
-<div class="mobile-sidebar" id="mobileSidebar" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+<div class="mobile-sidebar" id="mobileSidebar" role="dialog" aria-modal="true" aria-label="전체 메뉴" data-en-aria-label="Menu">
     <div class="sidebar-header">
-        <button class="close-btn" id="closeSidebarBtn" type="button" aria-label="전체 메뉴 닫기">&times;</button>
+        <button class="close-btn" id="closeSidebarBtn" type="button" aria-label="전체 메뉴 닫기" data-en-aria-label="Close menu">&times;</button>
     </div>
-    <nav class="sidebar-menu" aria-label="전체 메뉴">
+    <nav class="sidebar-menu" aria-label="전체 메뉴" data-en-aria-label="Menu">
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub1">울림게임즈</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub1" data-en="About">울림게임즈</button>
             <div class="sidebar-sub-menu" id="sidebarSub1">
-                <a href="/#about">회사 소개</a>
-                <a href="/portfolio.html">포트폴리오</a>
+                <a href="/#about" data-en="About Us">회사 소개</a>
+                <a href="/portfolio.html" data-en="Portfolio">포트폴리오</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2">게임소개</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2" data-en="Games">게임소개</button>
             <div class="sidebar-sub-menu" id="sidebarSub2">
-                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a>
-                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a>
-                <a href="/#games">프로젝트 PZ</a>
+                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
+                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
+                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
+                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub3">소식</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub3" data-en="News">소식</button>
             <div class="sidebar-sub-menu" id="sidebarSub3">
-                <a href="#">공지사항</a>
-                <a href="#">보도자료</a>
+                <a href="#" data-en="Notices">공지사항</a>
+                <a href="#" data-en="Press">보도자료</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub4">고객지원</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub4" data-en="Support">고객지원</button>
             <div class="sidebar-sub-menu" id="sidebarSub4">
-                <a href="#">1:1문의</a>
+                <a href="#" data-en="Contact Us">1:1문의</a>
             </div>
         </div>
     </nav>
@@ -136,86 +143,173 @@
 <main id="main" tabindex="-1">
     <section class="legal-section">
         <div class="page-inner">
-            <h1 class="legal-title">개인정보처리방침</h1>
-            <p class="legal-subtitle">울림게임즈는 「개인정보 보호법」에 따라 이용자의 개인정보를 보호하고, 관련 고충을 신속하게 처리하기 위해 다음과 같이 개인정보처리방침을 공개합니다.</p>
+            <div data-lang="ko">
+                <h1 class="legal-title">개인정보처리방침</h1>
+                <p class="legal-subtitle">울림게임즈는 「개인정보 보호법」에 따라 이용자의 개인정보를 보호하고, 관련 고충을 신속하게 처리하기 위해 다음과 같이 개인정보처리방침을 공개합니다.</p>
 
-            <div class="legal-content">
-                <p class="effective-date">시행일: 2026년 6월 25일 · 최종 수정일: 2026년 11월 25일</p>
+                <div class="legal-content">
+                    <p class="effective-date">시행일: 2026년 6월 25일 · 최종 수정일: 2026년 11월 25일</p>
 
-                <h2>제1조 (적용 범위)</h2>
-                <p>이 방침은 울림게임즈(이하 "회사")가 운영하는 홈페이지(ullimgames.com), 홈페이지에서 제공하는 웹 게임, 그리고 Google Play·토스에서 제공하는 회사의 모바일 게임(나이트 투어, 차지드라이브)(이하 "서비스")에 적용됩니다.</p>
-                <p>회사의 서비스에는 회원 가입과 로그인 기능이 없습니다. 앱 설치, 결제, 플랫폼 계정처럼 Google Play·토스가 직접 처리하는 개인정보에는 각 플랫폼의 개인정보처리방침이 적용됩니다.</p>
+                    <h2>제1조 (적용 범위)</h2>
+                    <p>이 방침은 울림게임즈(이하 "회사")가 운영하는 홈페이지(ullimgames.com), 홈페이지에서 제공하는 웹 게임, 그리고 Google Play·토스에서 제공하는 회사의 모바일 게임(나이트 투어, 차지드라이브)(이하 "서비스")에 적용됩니다.</p>
+                    <p>회사의 서비스에는 회원 가입과 로그인 기능이 없습니다. 앱 설치, 결제, 플랫폼 계정처럼 Google Play·토스가 직접 처리하는 개인정보에는 각 플랫폼의 개인정보처리방침이 적용됩니다.</p>
 
-                <h2>제2조 (처리하는 개인정보 항목과 목적)</h2>
-                <table>
-                    <thead>
-                        <tr><th scope="col">구분</th><th scope="col">항목</th><th scope="col">목적</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>이메일 문의</td><td>이메일 주소, 이름(입력한 경우), 문의 내용</td><td>문의 확인, 답변, 처리 결과 안내</td></tr>
-                        <tr><td>홈페이지 접속 시 자동 생성</td><td>접속 IP 주소, 접속 일시, 브라우저·기기 정보</td><td>서비스 제공, 보안 및 부정 이용 방지</td></tr>
-                        <tr><td>나이트 투어 (모바일 앱)</td><td>기기 또는 기타 ID(광고 ID 등), 앱 상호작용 기록, 오류·성능 진단 정보</td><td>광고 제공, 이용 통계 분석, 오류 수정 및 앱 안정성 개선</td></tr>
-                        <tr><td>차지드라이브 (모바일 앱)</td><td>수집하지 않음</td><td>-</td></tr>
-                    </tbody>
-                </table>
-                <p>회사는 위 목적 외의 용도로 개인정보를 이용하지 않으며, 목적이 바뀌는 경우 사전에 알리고 필요한 동의를 받습니다.</p>
-                <p>웹 게임의 점수 기록·랭킹 기능은 현재 제공하지 않습니다. 해당 기능을 도입하는 경우 처리 항목과 목적을 이 방침에 먼저 반영한 뒤 시행합니다.</p>
+                    <h2>제2조 (처리하는 개인정보 항목과 목적)</h2>
+                    <table>
+                        <thead>
+                            <tr><th scope="col">구분</th><th scope="col">항목</th><th scope="col">목적</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>이메일 문의</td><td>이메일 주소, 이름(입력한 경우), 문의 내용</td><td>문의 확인, 답변, 처리 결과 안내</td></tr>
+                            <tr><td>홈페이지 접속 시 자동 생성</td><td>접속 IP 주소, 접속 일시, 브라우저·기기 정보</td><td>서비스 제공, 보안 및 부정 이용 방지</td></tr>
+                            <tr><td>나이트 투어 (모바일 앱)</td><td>기기 또는 기타 ID(광고 ID 등), 앱 상호작용 기록, 오류·성능 진단 정보</td><td>광고 제공, 이용 통계 분석, 오류 수정 및 앱 안정성 개선</td></tr>
+                            <tr><td>차지드라이브 (모바일 앱)</td><td>수집하지 않음</td><td>-</td></tr>
+                        </tbody>
+                    </table>
+                    <p>회사는 위 목적 외의 용도로 개인정보를 이용하지 않으며, 목적이 바뀌는 경우 사전에 알리고 필요한 동의를 받습니다.</p>
+                    <p>웹 게임의 점수 기록·랭킹 기능은 현재 제공하지 않습니다. 해당 기능을 도입하는 경우 처리 항목과 목적을 이 방침에 먼저 반영한 뒤 시행합니다.</p>
 
-                <h2>제3조 (보유 및 이용 기간)</h2>
-                <ul>
-                    <li>이메일 문의 기록: 처리 완료 후 3년 (분쟁 대응 목적)</li>
-                    <li>접속 기록: 호스팅 사업자의 보관 정책에 따름 (회사가 별도로 보관하지 않음)</li>
-                    <li>모바일 앱 이용 정보: 각 광고·분석 서비스 제공자의 보관 정책에 따름 (회사가 별도로 보관하지 않음)</li>
-                </ul>
-                <p>보유 기간이 끝나거나 목적을 달성한 개인정보는 지체 없이 파기합니다. 다른 법령에서 보관을 요구하는 경우에는 그 기간 동안 보관합니다.</p>
+                    <h2>제3조 (보유 및 이용 기간)</h2>
+                    <ul>
+                        <li>이메일 문의 기록: 처리 완료 후 3년 (분쟁 대응 목적)</li>
+                        <li>접속 기록: 호스팅 사업자의 보관 정책에 따름 (회사가 별도로 보관하지 않음)</li>
+                        <li>모바일 앱 이용 정보: 각 광고·분석 서비스 제공자의 보관 정책에 따름 (회사가 별도로 보관하지 않음)</li>
+                    </ul>
+                    <p>보유 기간이 끝나거나 목적을 달성한 개인정보는 지체 없이 파기합니다. 다른 법령에서 보관을 요구하는 경우에는 그 기간 동안 보관합니다.</p>
 
-                <h2>제4조 (제3자 제공)</h2>
-                <p>회사는 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만 이용자가 동의한 경우와 법령에 따라 요구되는 경우는 예외로 합니다. 모바일 앱에서 광고·분석 도구로 전송되는 정보는 아래 제5조에 따릅니다.</p>
+                    <h2>제4조 (제3자 제공)</h2>
+                    <p>회사는 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만 이용자가 동의한 경우와 법령에 따라 요구되는 경우는 예외로 합니다. 모바일 앱에서 광고·분석 도구로 전송되는 정보는 아래 제5조에 따릅니다.</p>
 
-                <h2>제5조 (처리 위탁 및 국외 이전)</h2>
-                <p>회사는 홈페이지 운영을 위해 다음 외부 서비스를 이용하며, 이 과정에서 접속 정보가 국외에서 처리될 수 있습니다.</p>
-                <table>
-                    <thead>
-                        <tr><th scope="col">수탁자</th><th scope="col">위탁 업무</th><th scope="col">이전 국가</th><th scope="col">이전 항목</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>GitHub, Inc.</td><td>홈페이지 호스팅 (GitHub Pages)</td><td>미국</td><td>접속 IP 주소, 접속 기록</td></tr>
-                        <tr><td>jsDelivr, Google LLC</td><td>글꼴·화면 구성 파일 전송</td><td>미국 등</td><td>접속 IP 주소, 브라우저 정보</td></tr>
-                        <tr><td>모바일 앱 광고·분석 도구 제공자</td><td>앱 내 광고 제공, 이용 통계·오류 분석 (나이트 투어)</td><td>미국 등</td><td>기기 또는 기타 ID, 앱 상호작용 기록, 진단 정보</td></tr>
-                    </tbody>
-                </table>
-                <p>정보는 홈페이지에 접속하거나 앱을 이용할 때 네트워크를 통해 암호화되어 전송되며, 각 사업자의 보관 정책에 따라 보관됩니다. 국외 이전을 원하지 않는 경우 서비스 이용을 중단할 수 있습니다. 광고 맞춤 설정은 기기 설정(Android: 설정 &gt; Google &gt; 광고)에서 광고 ID를 재설정하거나 삭제해 거부할 수 있습니다.</p>
+                    <h2>제5조 (처리 위탁 및 국외 이전)</h2>
+                    <p>회사는 홈페이지 운영을 위해 다음 외부 서비스를 이용하며, 이 과정에서 접속 정보가 국외에서 처리될 수 있습니다.</p>
+                    <table>
+                        <thead>
+                            <tr><th scope="col">수탁자</th><th scope="col">위탁 업무</th><th scope="col">이전 국가</th><th scope="col">이전 항목</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>GitHub, Inc.</td><td>홈페이지 호스팅 (GitHub Pages)</td><td>미국</td><td>접속 IP 주소, 접속 기록</td></tr>
+                            <tr><td>jsDelivr, Google LLC</td><td>글꼴·화면 구성 파일 전송</td><td>미국 등</td><td>접속 IP 주소, 브라우저 정보</td></tr>
+                            <tr><td>모바일 앱 광고·분석 도구 제공자</td><td>앱 내 광고 제공, 이용 통계·오류 분석 (나이트 투어)</td><td>미국 등</td><td>기기 또는 기타 ID, 앱 상호작용 기록, 진단 정보</td></tr>
+                        </tbody>
+                    </table>
+                    <p>정보는 홈페이지에 접속하거나 앱을 이용할 때 네트워크를 통해 암호화되어 전송되며, 각 사업자의 보관 정책에 따라 보관됩니다. 국외 이전을 원하지 않는 경우 서비스 이용을 중단할 수 있습니다. 광고 맞춤 설정은 기기 설정(Android: 설정 &gt; Google &gt; 광고)에서 광고 ID를 재설정하거나 삭제해 거부할 수 있습니다.</p>
 
-                <h2>제6조 (파기 절차 및 방법)</h2>
-                <p>전자 파일은 복구할 수 없는 방법으로 삭제하고, 종이 문서는 분쇄하거나 소각합니다.</p>
+                    <h2>제6조 (파기 절차 및 방법)</h2>
+                    <p>전자 파일은 복구할 수 없는 방법으로 삭제하고, 종이 문서는 분쇄하거나 소각합니다.</p>
 
-                <h2>제7조 (이용자의 권리와 행사 방법)</h2>
-                <p>이용자는 언제든지 자신의 개인정보 열람, 정정, 삭제, 처리 정지를 요구할 수 있습니다. 아래 연락처로 요청하시면 지체 없이 조치합니다. 법정대리인이나 위임받은 사람을 통해서도 요청할 수 있습니다.</p>
+                    <h2>제7조 (이용자의 권리와 행사 방법)</h2>
+                    <p>이용자는 언제든지 자신의 개인정보 열람, 정정, 삭제, 처리 정지를 요구할 수 있습니다. 아래 연락처로 요청하시면 지체 없이 조치합니다. 법정대리인이나 위임받은 사람을 통해서도 요청할 수 있습니다.</p>
 
-                <h2>제8조 (쿠키 등 자동 수집 장치)</h2>
-                <p>회사는 광고나 방문 통계를 위한 쿠키를 사용하지 않습니다. 화면 표시 설정을 저장하기 위해 브라우저 저장소(localStorage)를 사용할 수 있으며, 여기에는 개인을 알아볼 수 있는 정보가 담기지 않습니다. 브라우저 설정에서 언제든 삭제할 수 있습니다.</p>
+                    <h2>제8조 (쿠키 등 자동 수집 장치)</h2>
+                    <p>회사는 광고나 방문 통계를 위한 쿠키를 사용하지 않습니다. 언어 등 화면 표시 설정을 저장하기 위해 브라우저 저장소(localStorage)를 사용할 수 있으며, 여기에는 개인을 알아볼 수 있는 정보가 담기지 않습니다. 브라우저 설정에서 언제든 삭제할 수 있습니다.</p>
 
-                <h2>제9조 (안전성 확보 조치)</h2>
-                <p>회사는 HTTPS 암호화 전송, 관리 권한 최소화, 문의 메일 계정 접근 통제 등 개인정보 보호에 필요한 조치를 하고 있습니다.</p>
+                    <h2>제9조 (안전성 확보 조치)</h2>
+                    <p>회사는 HTTPS 암호화 전송, 관리 권한 최소화, 문의 메일 계정 접근 통제 등 개인정보 보호에 필요한 조치를 하고 있습니다.</p>
 
-                <h2>제10조 (개인정보 보호책임자)</h2>
-                <div class="contact-box">
-                    <strong>개인정보 보호책임자</strong><br>
-                    성명: 황승현 (대표)<br>
-                    이메일: <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a>
+                    <h2>제10조 (개인정보 보호책임자)</h2>
+                    <div class="contact-box">
+                        <strong>개인정보 보호책임자</strong><br>
+                        성명: 황승현 (대표)<br>
+                        이메일: <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a>
+                    </div>
+
+                    <h2>제11조 (권익침해 구제 방법)</h2>
+                    <p>개인정보 침해에 대한 신고나 상담이 필요하면 아래 기관에 문의할 수 있습니다.</p>
+                    <ul>
+                        <li>개인정보분쟁조정위원회: 1833-6972 (www.kopico.go.kr)</li>
+                        <li>개인정보침해신고센터: 118 (privacy.kisa.or.kr)</li>
+                        <li>대검찰청: 1301 (www.spo.go.kr)</li>
+                        <li>경찰청: 182 (ecrm.police.go.kr)</li>
+                    </ul>
+
+                    <h2>제12조 (방침의 변경)</h2>
+                    <p>이 방침의 내용이 바뀌면 시행 7일 전에 홈페이지에 알립니다. 이용자 권리에 중요한 변경이 있으면 30일 전에 알립니다.</p>
                 </div>
+            </div>
 
-                <h2>제11조 (권익침해 구제 방법)</h2>
-                <p>개인정보 침해에 대한 신고나 상담이 필요하면 아래 기관에 문의할 수 있습니다.</p>
-                <ul>
-                    <li>개인정보분쟁조정위원회: 1833-6972 (www.kopico.go.kr)</li>
-                    <li>개인정보침해신고센터: 118 (privacy.kisa.or.kr)</li>
-                    <li>대검찰청: 1301 (www.spo.go.kr)</li>
-                    <li>경찰청: 182 (ecrm.police.go.kr)</li>
-                </ul>
+            <div data-lang="en" lang="en" hidden>
+                <h1 class="legal-title">Privacy Policy</h1>
+                <p class="legal-subtitle">Ullim Games publishes this policy under the Personal Information Protection Act of Korea to protect your personal information and to handle related requests quickly.</p>
 
-                <h2>제12조 (방침의 변경)</h2>
-                <p>이 방침의 내용이 바뀌면 시행 7일 전에 홈페이지에 알립니다. 이용자 권리에 중요한 변경이 있으면 30일 전에 알립니다.</p>
+                <div class="legal-content">
+                    <p class="effective-date">Effective: June 25, 2026 · Last updated: November 25, 2026</p>
+                    <p class="legal-note">This English version is provided for convenience. If there is any difference, the Korean version applies.</p>
+
+                    <h2>1. Scope</h2>
+                    <p>This policy applies to the website operated by Ullim Games ("we", ullimgames.com), the web games offered on it, and our mobile games on Google Play and Toss (Knight's Tour, Charge Drive) (together, the "Services").</p>
+                    <p>Our Services have no sign-up or login. Personal information handled directly by Google Play or Toss, such as app installs, payments and platform accounts, is covered by each platform's own privacy policy.</p>
+
+                    <h2>2. Information we process and why</h2>
+                    <table>
+                        <thead>
+                            <tr><th scope="col">Situation</th><th scope="col">Information</th><th scope="col">Purpose</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Email inquiries</td><td>Email address, name (if given), message content</td><td>Reading and answering your inquiry</td></tr>
+                            <tr><td>Visiting the website (created automatically)</td><td>IP address, time of visit, browser and device details</td><td>Providing the Services, security, preventing misuse</td></tr>
+                            <tr><td>Knight's Tour (mobile app)</td><td>Device or other IDs (such as the advertising ID), in-app activity, crash and performance diagnostics</td><td>Showing ads, usage statistics, fixing errors and improving stability</td></tr>
+                            <tr><td>Charge Drive (mobile app)</td><td>None collected</td><td>-</td></tr>
+                        </tbody>
+                    </table>
+                    <p>We do not use personal information for any other purpose. If a purpose changes, we will tell you first and ask for consent where required.</p>
+                    <p>Score records and rankings for web games are not offered at this time. If we add them, we will update this policy before they start.</p>
+
+                    <h2>3. How long we keep it</h2>
+                    <ul>
+                        <li>Email inquiries: 3 years after the inquiry is closed (for handling disputes)</li>
+                        <li>Website access records: as set by the hosting provider (we do not keep a separate copy)</li>
+                        <li>Mobile app usage data: as set by each advertising and analytics provider (we do not keep a separate copy)</li>
+                    </ul>
+                    <p>When the retention period ends or the purpose is fulfilled, we delete the information without delay, unless another law requires us to keep it.</p>
+
+                    <h2>4. Sharing with third parties</h2>
+                    <p>We do not give your personal information to third parties, except with your consent or when required by law. Data sent to advertising and analytics tools in our mobile apps is described in Section 5.</p>
+
+                    <h2>5. Service providers and transfers abroad</h2>
+                    <p>We use the following outside services. Through them, access data may be processed outside Korea.</p>
+                    <table>
+                        <thead>
+                            <tr><th scope="col">Provider</th><th scope="col">Task</th><th scope="col">Country</th><th scope="col">Data</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>GitHub, Inc.</td><td>Website hosting (GitHub Pages)</td><td>United States</td><td>IP address, access records</td></tr>
+                            <tr><td>jsDelivr, Google LLC</td><td>Delivering fonts and page files</td><td>United States and others</td><td>IP address, browser details</td></tr>
+                            <tr><td>Mobile app advertising and analytics providers</td><td>In-app ads, usage and crash analysis (Knight's Tour)</td><td>United States and others</td><td>Device or other IDs, in-app activity, diagnostics</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Data is sent encrypted over the network when you visit the website or use an app, and is kept according to each provider's retention policy. If you do not want your data transferred abroad, you may stop using the Services. You can opt out of personalized ads by resetting or deleting your advertising ID in your device settings (Android: Settings &gt; Google &gt; Ads).</p>
+
+                    <h2>6. How we delete data</h2>
+                    <p>Electronic files are deleted so they cannot be recovered. Paper records are shredded or burned.</p>
+
+                    <h2>7. Your rights</h2>
+                    <p>You may ask at any time to see, correct, delete, or stop the processing of your personal information. Contact us at the address below and we will act without delay. A legal representative or someone you authorize may also make the request.</p>
+
+                    <h2>8. Cookies and similar technologies</h2>
+                    <p>We do not use cookies for advertising or visitor statistics. We may use browser storage (localStorage) to remember display settings such as your language. It does not hold information that identifies you, and you can clear it in your browser settings at any time.</p>
+
+                    <h2>9. Security</h2>
+                    <p>We protect personal information with HTTPS encryption, minimal access rights, and access control on our inquiry mailbox.</p>
+
+                    <h2>10. Privacy officer</h2>
+                    <div class="contact-box">
+                        <strong>Privacy officer</strong><br>
+                        Name: Seunghyun Hwang (CEO)<br>
+                        Email: <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a>
+                    </div>
+
+                    <h2>11. Help with privacy concerns (Korea)</h2>
+                    <p>To report or get advice about a privacy issue, you can contact the following Korean agencies.</p>
+                    <ul>
+                        <li>Personal Information Dispute Mediation Committee: +82 1833-6972 (www.kopico.go.kr)</li>
+                        <li>Personal Information Infringement Report Center: 118 (privacy.kisa.or.kr)</li>
+                        <li>Supreme Prosecutors' Office: 1301 (www.spo.go.kr)</li>
+                        <li>Korean National Police Agency: 182 (ecrm.police.go.kr)</li>
+                    </ul>
+
+                    <h2>12. Changes to this policy</h2>
+                    <p>We will post changes on the website 7 days before they take effect, or 30 days before for important changes to your rights.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -226,76 +320,77 @@
     <div class="footer-container">
         <div class="footer-left">
             <div class="footer-logo">
-                <img src="/images/ullimgames_logo.png" alt="울림게임즈" width="185" height="204" loading="lazy">
+                <img src="/images/ullimgames_logo.png" alt="울림게임즈" data-en-alt="Ullim Games" width="185" height="204" loading="lazy">
             </div>
 
             <div class="footer-info">
                 <div class="info-row">
-                    <span><strong>상호</strong> 울림게임즈</span>
+                    <span data-en-html="&lt;strong&gt;Company&lt;/strong&gt; Ullim Games"><strong>상호</strong> 울림게임즈</span>
                     <span class="bar" aria-hidden="true"></span>
-                    <span><strong>대표</strong> 황승현</span>
+                    <span data-en-html="&lt;strong&gt;CEO&lt;/strong&gt; Seunghyun Hwang"><strong>대표</strong> 황승현</span>
                     <span class="bar" aria-hidden="true"></span>
-                    <span><strong>사업자등록번호</strong> 804-61-00970</span>
+                    <span data-en-html="&lt;strong&gt;Business Reg. No.&lt;/strong&gt; 804-61-00970"><strong>사업자등록번호</strong> 804-61-00970</span>
                 </div>
                 <div class="info-row">
-                    <span><strong>게임제작업등록</strong> 제 2026-33호</span>
+                    <span data-en-html="&lt;strong&gt;Game Developer Reg. No.&lt;/strong&gt; 2026-33"><strong>게임제작업등록</strong> 제 2026-33호</span>
                 </div>
                 <div class="info-row address-row">
-                    <span class="address-text"><strong>주소</strong> 충청남도 천안시 동남구 백석대학로 1-3,<br> 학생복지동 3층 311-4호</span>
+                    <span class="address-text" data-en-html="&lt;strong&gt;Address&lt;/strong&gt; Room 311-4, 3F Student Welfare Bldg.,&lt;br&gt; 1-3 Baekseokdaehak-ro, Dongnam-gu, Cheonan-si,&lt;br&gt; Chungcheongnam-do, Republic of Korea"><strong>주소</strong> 충청남도 천안시 동남구 백석대학로 1-3,<br> 학생복지동 3층 311-4호</span>
                 </div>
                 <div class="info-row email-row">
-                    <span class="email-text"><strong>이메일</strong> <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a></span>
+                    <span class="email-text"><strong data-en="Email">이메일</strong> <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a></span>
                 </div>
 
                 <div class="footer-links">
-                    <a href="/privacy.html"><strong>개인정보처리방침</strong></a>
+                    <a href="/privacy.html"><strong data-en="Privacy Policy">개인정보처리방침</strong></a>
                     <span class="bar" aria-hidden="true"></span>
-                    <a href="/terms.html">이용약관</a>
+                    <a href="/terms.html" data-en="Terms of Service">이용약관</a>
                 </div>
 
                 <p class="copyright">&copy; 2026 Ullim Games. All Rights Reserved.</p>
             </div>
         </div>
 
-        <nav class="footer-right" aria-label="사이트 메뉴">
+        <nav class="footer-right" aria-label="사이트 메뉴" data-en-aria-label="Site menu">
             <div class="footer-menu-group">
-                <h2 class="menu-title">울림게임즈</h2>
+                <h2 class="menu-title" data-en="About">울림게임즈</h2>
                 <ul>
-                    <li><a href="/#about">회사 소개</a></li>
-                    <li><a href="/portfolio.html">포트폴리오</a></li>
+                    <li><a href="/#about" data-en="About Us">회사 소개</a></li>
+                    <li><a href="/portfolio.html" data-en="Portfolio">포트폴리오</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h2 class="menu-title">게임소개</h2>
+                <h2 class="menu-title" data-en="Games">게임소개</h2>
                 <ul>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a></li>
-                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a></li>
-                    <li><a href="/#games">프로젝트 PZ</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a></li>
+                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a></li>
+                    <li><a href="/#games" data-en="Project PZ">프로젝트 PZ</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h2 class="menu-title">소식</h2>
+                <h2 class="menu-title" data-en="News">소식</h2>
                 <ul>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">보도자료</a></li>
+                    <li><a href="#" data-en="Notices">공지사항</a></li>
+                    <li><a href="#" data-en="Press">보도자료</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h2 class="menu-title">고객지원</h2>
+                <h2 class="menu-title" data-en="Support">고객지원</h2>
                 <ul>
-                    <li><a href="#">1:1문의</a></li>
+                    <li><a href="#" data-en="Contact Us">1:1문의</a></li>
                 </ul>
             </div>
         </nav>
     </div>
-    <a class="admin-entry" href="/admin/" rel="nofollow">관리</a>
+    <a class="admin-entry" href="/admin/" rel="nofollow" data-en="Admin">관리</a>
 </footer>
 
-<button id="backToTop" class="top-btn" type="button" aria-label="맨 위로">TOP</button>
+<button id="backToTop" class="top-btn" type="button" aria-label="맨 위로" data-en-aria-label="Back to top">TOP</button>
 
 <script src="/js/games-config.js"></script>
-<script src="/js/site.js?v=2"></script>
+<script src="/js/site.js?v=3"></script>
+<script src="/js/i18n.js?v=1"></script>
 <!-- /layout:footer -->
 </body>
 </html>

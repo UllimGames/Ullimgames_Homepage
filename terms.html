@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-title-en="Terms of Service | Ullim Games">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/i18n-boot.js?v=1"></script>
     <title>이용약관 | 울림게임즈</title>
     <meta name="description" content="울림게임즈(Ullim Games) 홈페이지와 웹 게임 서비스 이용약관입니다.">
     <link rel="canonical" href="https://ullimgames.com/terms.html">
@@ -18,7 +19,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=clear1">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=4">
+    <link rel="stylesheet" href="/css/style.css?v=5">
 </head>
 <body>
 <!-- layout:header -->
@@ -26,36 +27,46 @@
 <script src="/js/theme-schedule.js?v=4"></script>
 <script src="/js/theme.js?v=4"></script>
 
-<a class="skip-link" href="#main">본문 바로가기</a>
+<a class="skip-link" href="#main" data-en="Skip to content">본문 바로가기</a>
 
 <header class="main-header">
     <div class="header-container">
         <div class="header-logo">
-            <a href="/" aria-label="울림게임즈 홈">
+            <a href="/" aria-label="울림게임즈 홈" data-en-aria-label="Ullim Games home">
                 <img src="/images/ullimgames_logo.png" alt="" width="185" height="204">
             </a>
         </div>
 
-        <nav class="header-menu" aria-label="주 메뉴">
+        <nav class="header-menu" aria-label="주 메뉴" data-en-aria-label="Main menu">
             <ul class="header-menu-list">
-                <li class="menu-item"><a href="/#about">울림게임즈</a></li>
-                <li class="menu-item"><a href="/#games">게임소개</a></li>
-                <li class="menu-item"><a href="#">소식</a></li>
-                <li class="menu-item"><a href="#">고객지원</a></li>
+                <li class="menu-item"><a href="/#about" data-en="About">울림게임즈</a></li>
+                <li class="menu-item"><a href="/#games" data-en="Games">게임소개</a></li>
+                <li class="menu-item"><a href="#" data-en="News">소식</a></li>
+                <li class="menu-item"><a href="#" data-en="Support">고객지원</a></li>
             </ul>
         </nav>
 
         <div class="header-right-zone">
             <div class="header-sns">
-                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 인스타그램 (새 창)">
+                <a href="https://www.instagram.com/ullim_games/" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 인스타그램 (새 창)" data-en-aria-label="Ullim Games on Instagram (new window)">
                     <img src="/images/brand/instagram.svg" alt="" class="sns-icon" width="30" height="30">
                 </a>
-                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 유튜브 (새 창)">
+                <a href="https://www.youtube.com/@ullimgames" target="_blank" rel="noopener noreferrer" aria-label="울림게임즈 유튜브 (새 창)" data-en-aria-label="Ullim Games on YouTube (new window)">
                     <img src="/images/brand/youtube.svg" alt="" class="sns-icon" width="30" height="30">
                 </a>
             </div>
 
-            <button class="menu-toggle" id="menuToggleBtn" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="mobileSidebar">
+            <button class="lang-toggle" id="langToggle" type="button" aria-label="언어 변경: English로 보기" data-en-aria-label="Change language: view in Korean">
+                <svg class="lang-globe" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9M12 3C9.4 5.6 8.1 8.6 8.1 12s1.3 6.4 3.9 9"/>
+                </svg>
+                <span class="lang-code" data-lang-code="ko">KO</span>
+                <span class="lang-sep" aria-hidden="true">/</span>
+                <span class="lang-code" data-lang-code="en">EN</span>
+            </button>
+
+            <button class="menu-toggle" id="menuToggleBtn" type="button" aria-label="전체 메뉴 열기" data-en-aria-label="Open menu" aria-expanded="false" aria-controls="mobileSidebar">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -64,67 +75,63 @@
     </div>
 
     <div class="mega-dropdown">
-        <div class="mega-dropdown-container">
-            <div class="mega-dropdown-spacer mega-dropdown-spacer--logo" aria-hidden="true"></div>
-            <div class="mega-dropdown-menus">
-                <div class="dropdown-column">
-                    <a href="/#about">회사 소개</a>
-                    <a href="/portfolio.html">포트폴리오</a>
-                </div>
-                <div class="dropdown-column">
-                    <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a>
-                    <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a>
-                    <a href="/#games">프로젝트 PZ</a>
-                </div>
-                <div class="dropdown-column">
-                    <a href="#">공지사항</a>
-                    <a href="#">보도자료</a>
-                </div>
-                <div class="dropdown-column">
-                    <a href="#">1:1문의</a>
-                </div>
+        <div class="mega-dropdown-menus">
+            <div class="dropdown-column">
+                <a href="/#about" data-en="About Us">회사 소개</a>
+                <a href="/portfolio.html" data-en="Portfolio">포트폴리오</a>
             </div>
-            <div class="mega-dropdown-spacer mega-dropdown-spacer--right" aria-hidden="true"></div>
+            <div class="dropdown-column">
+                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
+                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
+                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
+                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#" data-en="Notices">공지사항</a>
+                <a href="#" data-en="Press">보도자료</a>
+            </div>
+            <div class="dropdown-column">
+                <a href="#" data-en="Contact Us">1:1문의</a>
+            </div>
         </div>
     </div>
 </header>
 
-<div class="mobile-sidebar" id="mobileSidebar" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+<div class="mobile-sidebar" id="mobileSidebar" role="dialog" aria-modal="true" aria-label="전체 메뉴" data-en-aria-label="Menu">
     <div class="sidebar-header">
-        <button class="close-btn" id="closeSidebarBtn" type="button" aria-label="전체 메뉴 닫기">&times;</button>
+        <button class="close-btn" id="closeSidebarBtn" type="button" aria-label="전체 메뉴 닫기" data-en-aria-label="Close menu">&times;</button>
     </div>
-    <nav class="sidebar-menu" aria-label="전체 메뉴">
+    <nav class="sidebar-menu" aria-label="전체 메뉴" data-en-aria-label="Menu">
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub1">울림게임즈</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub1" data-en="About">울림게임즈</button>
             <div class="sidebar-sub-menu" id="sidebarSub1">
-                <a href="/#about">회사 소개</a>
-                <a href="/portfolio.html">포트폴리오</a>
+                <a href="/#about" data-en="About Us">회사 소개</a>
+                <a href="/portfolio.html" data-en="Portfolio">포트폴리오</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2">게임소개</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2" data-en="Games">게임소개</button>
             <div class="sidebar-sub-menu" id="sidebarSub2">
-                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a>
-                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a>
-                <a href="/#games">프로젝트 PZ</a>
+                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
+                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
+                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
+                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub3">소식</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub3" data-en="News">소식</button>
             <div class="sidebar-sub-menu" id="sidebarSub3">
-                <a href="#">공지사항</a>
-                <a href="#">보도자료</a>
+                <a href="#" data-en="Notices">공지사항</a>
+                <a href="#" data-en="Press">보도자료</a>
             </div>
         </div>
 
         <div class="sidebar-group">
-            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub4">고객지원</button>
+            <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub4" data-en="Support">고객지원</button>
             <div class="sidebar-sub-menu" id="sidebarSub4">
-                <a href="#">1:1문의</a>
+                <a href="#" data-en="Contact Us">1:1문의</a>
             </div>
         </div>
     </nav>
@@ -136,76 +143,154 @@
 <main id="main" tabindex="-1">
     <section class="legal-section">
         <div class="page-inner">
-            <h1 class="legal-title">이용약관</h1>
-            <p class="legal-subtitle">울림게임즈 홈페이지와 웹 게임 서비스의 이용 조건을 안내합니다.</p>
+            <div data-lang="ko">
+                <h1 class="legal-title">이용약관</h1>
+                <p class="legal-subtitle">울림게임즈 홈페이지와 웹 게임 서비스의 이용 조건을 안내합니다.</p>
 
-            <div class="legal-content">
-                <p class="effective-date">시행일: 2026년 6월 25일 · 최종 수정일: 2026년 11월 25일</p>
+                <div class="legal-content">
+                    <p class="effective-date">시행일: 2026년 6월 25일 · 최종 수정일: 2026년 11월 25일</p>
 
-                <h2>제1조 (목적)</h2>
-                <p>이 약관은 울림게임즈(이하 "회사")가 운영하는 홈페이지와 홈페이지에서 제공하는 웹 게임 등 온라인 서비스(이하 "서비스")를 이용하는 데 필요한 회사와 이용자의 권리, 의무 및 책임 사항을 정합니다.</p>
+                    <h2>제1조 (목적)</h2>
+                    <p>이 약관은 울림게임즈(이하 "회사")가 운영하는 홈페이지와 홈페이지에서 제공하는 웹 게임 등 온라인 서비스(이하 "서비스")를 이용하는 데 필요한 회사와 이용자의 권리, 의무 및 책임 사항을 정합니다.</p>
 
-                <h2>제2조 (정의)</h2>
-                <ul>
-                    <li>"이용자"란 이 약관에 따라 서비스를 이용하는 사람을 말합니다.</li>
-                    <li>"콘텐츠"란 서비스에서 제공하는 게임, 영상, 이미지, 글, 소프트웨어 등 모든 자료를 말합니다.</li>
-                </ul>
+                    <h2>제2조 (정의)</h2>
+                    <ul>
+                        <li>"이용자"란 이 약관에 따라 서비스를 이용하는 사람을 말합니다.</li>
+                        <li>"콘텐츠"란 서비스에서 제공하는 게임, 영상, 이미지, 글, 소프트웨어 등 모든 자료를 말합니다.</li>
+                    </ul>
 
-                <h2>제3조 (약관의 게시와 변경)</h2>
-                <ul>
-                    <li>회사는 이 약관을 홈페이지에 게시합니다.</li>
-                    <li>회사는 관련 법령을 위반하지 않는 범위에서 약관을 변경할 수 있으며, 변경 내용과 시행일을 시행 7일 전(이용자에게 불리한 변경은 30일 전)부터 홈페이지에 알립니다.</li>
-                    <li>이용자는 변경된 약관에 동의하지 않으면 서비스 이용을 중단할 수 있습니다.</li>
-                </ul>
+                    <h2>제3조 (약관의 게시와 변경)</h2>
+                    <ul>
+                        <li>회사는 이 약관을 홈페이지에 게시합니다.</li>
+                        <li>회사는 관련 법령을 위반하지 않는 범위에서 약관을 변경할 수 있으며, 변경 내용과 시행일을 시행 7일 전(이용자에게 불리한 변경은 30일 전)부터 홈페이지에 알립니다.</li>
+                        <li>이용자는 변경된 약관에 동의하지 않으면 서비스 이용을 중단할 수 있습니다.</li>
+                    </ul>
 
-                <h2>제4조 (서비스의 제공)</h2>
-                <ul>
-                    <li>회사는 회사 소개, 게임 안내, 웹 게임 플레이 등 서비스를 무료로 제공합니다.</li>
-                    <li>홈페이지에는 회원 가입 기능이 없으며, 웹 게임의 점수 기록·랭킹 기능은 현재 제공하지 않습니다.</li>
-                    <li>서비스는 연중무휴 24시간 제공을 원칙으로 하지만, 점검, 장애, 통신 문제 등이 있으면 일시적으로 중단될 수 있습니다.</li>
-                </ul>
+                    <h2>제4조 (서비스의 제공)</h2>
+                    <ul>
+                        <li>회사는 회사 소개, 게임 안내, 웹 게임 플레이 등 서비스를 무료로 제공합니다.</li>
+                        <li>홈페이지에는 회원 가입 기능이 없으며, 웹 게임의 점수 기록·랭킹 기능은 현재 제공하지 않습니다.</li>
+                        <li>서비스는 연중무휴 24시간 제공을 원칙으로 하지만, 점검, 장애, 통신 문제 등이 있으면 일시적으로 중단될 수 있습니다.</li>
+                    </ul>
 
-                <h2>제5조 (외부 플랫폼에서 제공하는 게임)</h2>
-                <p>Google Play, 토스 등 외부 플랫폼을 통해 제공하는 회사의 게임은 해당 플랫폼의 약관과 정책이 함께 적용됩니다. 결제, 환불, 계정 관련 사항은 해당 플랫폼의 기준을 따릅니다.</p>
+                    <h2>제5조 (외부 플랫폼에서 제공하는 게임)</h2>
+                    <p>Google Play, 토스 등 외부 플랫폼을 통해 제공하는 회사의 게임은 해당 플랫폼의 약관과 정책이 함께 적용됩니다. 결제, 환불, 계정 관련 사항은 해당 플랫폼의 기준을 따릅니다.</p>
 
-                <h2>제6조 (회사의 의무)</h2>
-                <ul>
-                    <li>회사는 관련 법령과 이 약관을 지키며, 안정적으로 서비스를 제공하기 위해 노력합니다.</li>
-                    <li>회사는 개인정보처리방침에 따라 이용자의 개인정보를 보호합니다.</li>
-                    <li>회사는 이용자의 의견과 불만을 확인하고 성실히 답변합니다.</li>
-                </ul>
+                    <h2>제6조 (회사의 의무)</h2>
+                    <ul>
+                        <li>회사는 관련 법령과 이 약관을 지키며, 안정적으로 서비스를 제공하기 위해 노력합니다.</li>
+                        <li>회사는 개인정보처리방침에 따라 이용자의 개인정보를 보호합니다.</li>
+                        <li>회사는 이용자의 의견과 불만을 확인하고 성실히 답변합니다.</li>
+                    </ul>
 
-                <h2>제7조 (이용자의 의무)</h2>
-                <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
-                <ul>
-                    <li>다른 사람의 정보를 도용하는 행위</li>
-                    <li>회사나 다른 사람의 지식재산권, 명예 등 권리를 침해하는 행위</li>
-                    <li>해킹, 악성 프로그램 유포, 비정상적인 방법의 점수 조작 등 서비스 운영을 방해하는 행위</li>
-                    <li>그 밖에 법령이나 이 약관을 위반하는 행위</li>
-                </ul>
+                    <h2>제7조 (이용자의 의무)</h2>
+                    <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
+                    <ul>
+                        <li>다른 사람의 정보를 도용하는 행위</li>
+                        <li>회사나 다른 사람의 지식재산권, 명예 등 권리를 침해하는 행위</li>
+                        <li>해킹, 악성 프로그램 유포, 비정상적인 방법의 점수 조작 등 서비스 운영을 방해하는 행위</li>
+                        <li>그 밖에 법령이나 이 약관을 위반하는 행위</li>
+                    </ul>
 
-                <h2>제8조 (지식재산권)</h2>
-                <p>서비스와 콘텐츠의 지식재산권은 회사 또는 정당한 권리자에게 있습니다. 이용자는 회사의 사전 동의 없이 콘텐츠를 복제, 배포, 수정하거나 상업적으로 이용할 수 없습니다.</p>
+                    <h2>제8조 (지식재산권)</h2>
+                    <p>서비스와 콘텐츠의 지식재산권은 회사 또는 정당한 권리자에게 있습니다. 이용자는 회사의 사전 동의 없이 콘텐츠를 복제, 배포, 수정하거나 상업적으로 이용할 수 없습니다.</p>
 
-                <h2>제9조 (서비스의 변경과 종료)</h2>
-                <p>회사는 운영상 또는 기술상 필요한 경우 서비스의 전부 또는 일부를 변경하거나 종료할 수 있으며, 이 경우 미리 홈페이지에 알립니다. 부득이한 경우에는 사후에 알릴 수 있습니다.</p>
+                    <h2>제9조 (서비스의 변경과 종료)</h2>
+                    <p>회사는 운영상 또는 기술상 필요한 경우 서비스의 전부 또는 일부를 변경하거나 종료할 수 있으며, 이 경우 미리 홈페이지에 알립니다. 부득이한 경우에는 사후에 알릴 수 있습니다.</p>
 
-                <h2>제10조 (책임의 제한)</h2>
-                <ul>
-                    <li>천재지변, 통신 사업자의 서비스 중단 등 회사가 통제할 수 없는 사유로 서비스를 제공하지 못한 경우 회사는 책임을 지지 않습니다.</li>
-                    <li>이용자의 잘못으로 생긴 서비스 이용 장애에 대해서는 회사가 책임을 지지 않습니다.</li>
-                    <li>회사는 무료로 제공하는 서비스와 관련하여 회사의 고의 또는 중대한 과실이 없는 한 손해에 대한 책임을 지지 않습니다.</li>
-                </ul>
+                    <h2>제10조 (책임의 제한)</h2>
+                    <ul>
+                        <li>천재지변, 통신 사업자의 서비스 중단 등 회사가 통제할 수 없는 사유로 서비스를 제공하지 못한 경우 회사는 책임을 지지 않습니다.</li>
+                        <li>이용자의 잘못으로 생긴 서비스 이용 장애에 대해서는 회사가 책임을 지지 않습니다.</li>
+                        <li>회사는 무료로 제공하는 서비스와 관련하여 회사의 고의 또는 중대한 과실이 없는 한 손해에 대한 책임을 지지 않습니다.</li>
+                    </ul>
 
-                <h2>제11조 (준거법과 관할)</h2>
-                <p>이 약관은 대한민국 법에 따라 해석하며, 서비스와 관련한 분쟁은 「민사소송법」에 따른 관할 법원에서 해결합니다.</p>
+                    <h2>제11조 (준거법과 관할)</h2>
+                    <p>이 약관은 대한민국 법에 따라 해석하며, 서비스와 관련한 분쟁은 「민사소송법」에 따른 관할 법원에서 해결합니다.</p>
 
-                <h2>부칙</h2>
-                <p>이 약관은 2026년 6월 25일부터 시행합니다. 2026년 11월 25일 변경 내용은 2026년 12월 2일부터 적용합니다.</p>
+                    <h2>부칙</h2>
+                    <p>이 약관은 2026년 6월 25일부터 시행합니다. 2026년 11월 25일 변경 내용은 2026년 12월 2일부터 적용합니다.</p>
 
-                <div class="contact-box">
-                    <strong>약관 관련 문의</strong><br>
-                    이메일: <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a>
+                    <div class="contact-box">
+                        <strong>약관 관련 문의</strong><br>
+                        이메일: <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-lang="en" lang="en" hidden>
+                <h1 class="legal-title">Terms of Service</h1>
+                <p class="legal-subtitle">The terms for using the Ullim Games website and web games.</p>
+
+                <div class="legal-content">
+                    <p class="effective-date">Effective: June 25, 2026 · Last updated: November 25, 2026</p>
+                    <p class="legal-note">This English version is provided for convenience. If there is any difference, the Korean version applies.</p>
+
+                    <h2>Article 1 (Purpose)</h2>
+                    <p>These terms set out the rights, duties and responsibilities of Ullim Games ("we") and users when using our website and the online services offered on it, such as web games (the "Services").</p>
+
+                    <h2>Article 2 (Definitions)</h2>
+                    <ul>
+                        <li>"User" means anyone who uses the Services under these terms.</li>
+                        <li>"Content" means all material provided in the Services, including games, videos, images, text and software.</li>
+                    </ul>
+
+                    <h2>Article 3 (Posting and changing the terms)</h2>
+                    <ul>
+                        <li>We post these terms on our website.</li>
+                        <li>We may change these terms within the limits of the law. We will post the changes and their effective date on the website 7 days in advance (30 days for changes that are unfavorable to users).</li>
+                        <li>If you do not agree with the changed terms, you may stop using the Services.</li>
+                    </ul>
+
+                    <h2>Article 4 (The Services)</h2>
+                    <ul>
+                        <li>We provide company information, game information and web games free of charge.</li>
+                        <li>The website has no sign-up, and score records and rankings for web games are not offered at this time.</li>
+                        <li>The Services are available 24 hours a day, all year round, but may stop for a while due to maintenance, outages or network problems.</li>
+                    </ul>
+
+                    <h2>Article 5 (Games on outside platforms)</h2>
+                    <p>Our games offered through outside platforms such as Google Play and Toss are also covered by those platforms' terms and policies. Payments, refunds and accounts follow the rules of each platform.</p>
+
+                    <h2>Article 6 (Our duties)</h2>
+                    <ul>
+                        <li>We follow the law and these terms, and work to provide the Services reliably.</li>
+                        <li>We protect your personal information according to our Privacy Policy.</li>
+                        <li>We review your feedback and complaints and answer them sincerely.</li>
+                    </ul>
+
+                    <h2>Article 7 (User duties)</h2>
+                    <p>You must not:</p>
+                    <ul>
+                        <li>use someone else's information</li>
+                        <li>infringe the intellectual property, reputation or other rights of Ullim Games or others</li>
+                        <li>disrupt the Services, for example by hacking, spreading malware or manipulating scores</li>
+                        <li>do anything else that breaks the law or these terms</li>
+                    </ul>
+
+                    <h2>Article 8 (Intellectual property)</h2>
+                    <p>Intellectual property rights in the Services and Content belong to Ullim Games or their rightful owners. You may not copy, distribute, modify or use the Content commercially without our prior consent.</p>
+
+                    <h2>Article 9 (Changes to or end of the Services)</h2>
+                    <p>We may change or end all or part of the Services for operational or technical reasons. We will announce this on the website in advance, or afterwards if advance notice is not possible.</p>
+
+                    <h2>Article 10 (Limitation of liability)</h2>
+                    <ul>
+                        <li>We are not responsible when we cannot provide the Services because of events beyond our control, such as natural disasters or outages at network providers.</li>
+                        <li>We are not responsible for problems caused by the user's own fault.</li>
+                        <li>For Services provided free of charge, we are not liable for damages unless caused by our intent or gross negligence.</li>
+                    </ul>
+
+                    <h2>Article 11 (Governing law and jurisdiction)</h2>
+                    <p>These terms are governed by the laws of the Republic of Korea. Disputes about the Services will be settled in the court with jurisdiction under the Korean Civil Procedure Act.</p>
+
+                    <h2>Addendum</h2>
+                    <p>These terms take effect on June 25, 2026. The changes made on November 25, 2026 apply from December 2, 2026.</p>
+
+                    <div class="contact-box">
+                        <strong>Questions about these terms</strong><br>
+                        Email: <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -217,76 +302,77 @@
     <div class="footer-container">
         <div class="footer-left">
             <div class="footer-logo">
-                <img src="/images/ullimgames_logo.png" alt="울림게임즈" width="185" height="204" loading="lazy">
+                <img src="/images/ullimgames_logo.png" alt="울림게임즈" data-en-alt="Ullim Games" width="185" height="204" loading="lazy">
             </div>
 
             <div class="footer-info">
                 <div class="info-row">
-                    <span><strong>상호</strong> 울림게임즈</span>
+                    <span data-en-html="&lt;strong&gt;Company&lt;/strong&gt; Ullim Games"><strong>상호</strong> 울림게임즈</span>
                     <span class="bar" aria-hidden="true"></span>
-                    <span><strong>대표</strong> 황승현</span>
+                    <span data-en-html="&lt;strong&gt;CEO&lt;/strong&gt; Seunghyun Hwang"><strong>대표</strong> 황승현</span>
                     <span class="bar" aria-hidden="true"></span>
-                    <span><strong>사업자등록번호</strong> 804-61-00970</span>
+                    <span data-en-html="&lt;strong&gt;Business Reg. No.&lt;/strong&gt; 804-61-00970"><strong>사업자등록번호</strong> 804-61-00970</span>
                 </div>
                 <div class="info-row">
-                    <span><strong>게임제작업등록</strong> 제 2026-33호</span>
+                    <span data-en-html="&lt;strong&gt;Game Developer Reg. No.&lt;/strong&gt; 2026-33"><strong>게임제작업등록</strong> 제 2026-33호</span>
                 </div>
                 <div class="info-row address-row">
-                    <span class="address-text"><strong>주소</strong> 충청남도 천안시 동남구 백석대학로 1-3,<br> 학생복지동 3층 311-4호</span>
+                    <span class="address-text" data-en-html="&lt;strong&gt;Address&lt;/strong&gt; Room 311-4, 3F Student Welfare Bldg.,&lt;br&gt; 1-3 Baekseokdaehak-ro, Dongnam-gu, Cheonan-si,&lt;br&gt; Chungcheongnam-do, Republic of Korea"><strong>주소</strong> 충청남도 천안시 동남구 백석대학로 1-3,<br> 학생복지동 3층 311-4호</span>
                 </div>
                 <div class="info-row email-row">
-                    <span class="email-text"><strong>이메일</strong> <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a></span>
+                    <span class="email-text"><strong data-en="Email">이메일</strong> <a href="mailto:contact@ullimgames.com">contact@ullimgames.com</a></span>
                 </div>
 
                 <div class="footer-links">
-                    <a href="/privacy.html"><strong>개인정보처리방침</strong></a>
+                    <a href="/privacy.html"><strong data-en="Privacy Policy">개인정보처리방침</strong></a>
                     <span class="bar" aria-hidden="true"></span>
-                    <a href="/terms.html">이용약관</a>
+                    <a href="/terms.html" data-en="Terms of Service">이용약관</a>
                 </div>
 
                 <p class="copyright">&copy; 2026 Ullim Games. All Rights Reserved.</p>
             </div>
         </div>
 
-        <nav class="footer-right" aria-label="사이트 메뉴">
+        <nav class="footer-right" aria-label="사이트 메뉴" data-en-aria-label="Site menu">
             <div class="footer-menu-group">
-                <h2 class="menu-title">울림게임즈</h2>
+                <h2 class="menu-title" data-en="About">울림게임즈</h2>
                 <ul>
-                    <li><a href="/#about">회사 소개</a></li>
-                    <li><a href="/portfolio.html">포트폴리오</a></li>
+                    <li><a href="/#about" data-en="About Us">회사 소개</a></li>
+                    <li><a href="/portfolio.html" data-en="Portfolio">포트폴리오</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h2 class="menu-title">게임소개</h2>
+                <h2 class="menu-title" data-en="Games">게임소개</h2>
                 <ul>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer">나이트 투어</a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer">차지드라이브</a></li>
-                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl">후르츠발리</a></li>
-                    <li><a href="/#games">프로젝트 PZ</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a></li>
+                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a></li>
+                    <li><a href="/#games" data-en="Project PZ">프로젝트 PZ</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h2 class="menu-title">소식</h2>
+                <h2 class="menu-title" data-en="News">소식</h2>
                 <ul>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">보도자료</a></li>
+                    <li><a href="#" data-en="Notices">공지사항</a></li>
+                    <li><a href="#" data-en="Press">보도자료</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
-                <h2 class="menu-title">고객지원</h2>
+                <h2 class="menu-title" data-en="Support">고객지원</h2>
                 <ul>
-                    <li><a href="#">1:1문의</a></li>
+                    <li><a href="#" data-en="Contact Us">1:1문의</a></li>
                 </ul>
             </div>
         </nav>
     </div>
-    <a class="admin-entry" href="/admin/" rel="nofollow">관리</a>
+    <a class="admin-entry" href="/admin/" rel="nofollow" data-en="Admin">관리</a>
 </footer>
 
-<button id="backToTop" class="top-btn" type="button" aria-label="맨 위로">TOP</button>
+<button id="backToTop" class="top-btn" type="button" aria-label="맨 위로" data-en-aria-label="Back to top">TOP</button>
 
 <script src="/js/games-config.js"></script>
-<script src="/js/site.js?v=2"></script>
+<script src="/js/site.js?v=3"></script>
+<script src="/js/i18n.js?v=1"></script>
 <!-- /layout:footer -->
 </body>
 </html>

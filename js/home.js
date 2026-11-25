@@ -51,7 +51,10 @@
         function renderPauseButton() {
             if (!pauseBtn) return;
             pauseBtn.setAttribute("aria-pressed", paused ? "true" : "false");
-            pauseBtn.setAttribute("aria-label", paused ? "영상 재생" : "영상 일시정지");
+            var en = window.UllimLang === "en";
+            pauseBtn.setAttribute("aria-label", paused
+                ? (en ? "Play video" : "영상 재생")
+                : (en ? "Pause video" : "영상 일시정지"));
             pauseBtn.classList.toggle("is-paused", paused);
         }
 
@@ -67,6 +70,7 @@
             });
         }
         renderPauseButton();
+        document.addEventListener("ullim:lang", renderPauseButton);
     }
 
     if (document.readyState === "loading") {
