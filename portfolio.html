@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko" data-title-en="Portfolio | Ullim Games">
+<html lang="ko" data-title-en="Portfolio | Ullim Games" data-no-theme>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/js/i18n-boot.js?v=1"></script>
     <title>포트폴리오 | 울림게임즈</title>
-    <meta name="description" content="울림게임즈(Ullim Games)가 만든 게임과 프로젝트를 소개합니다. 나이트 투어, 차지드라이브, 후르츠발리, 프로젝트 PZ.">
+    <meta name="description" content="울림게임즈(Ullim Games)가 만든 게임과 프로젝트를 소개합니다. 게임과 AI로 새로운 울림을 전하는 나이트 투어, 차지드라이브 개발사입니다.">
     <link rel="canonical" href="https://ullimgames.com/portfolio.html">
-    <meta name="theme-color" content="#f4efe6">
+    <meta name="theme-color" content="#1b1712">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="울림게임즈">
     <meta property="og:locale" content="ko_KR">
@@ -25,14 +25,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap">
-    <link rel="stylesheet" href="/css/style.css?v=5">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Serif+KR:wght@600;700&display=swap">
+    <link rel="stylesheet" href="/css/style.css?v=13">
 </head>
 <body>
 <!-- layout:header -->
 <script src="/js/theme-catalog.js?v=4"></script>
 <script src="/js/theme-schedule.js?v=4"></script>
-<script src="/js/theme.js?v=4"></script>
+<script src="/js/theme.js?v=5"></script>
 
 <a class="skip-link" href="#main" data-en="Skip to content">본문 바로가기</a>
 
@@ -47,7 +47,7 @@
         <nav class="header-menu" aria-label="주 메뉴" data-en-aria-label="Main menu">
             <ul class="header-menu-list">
                 <li class="menu-item"><a href="/#about" data-en="About">울림게임즈</a></li>
-                <li class="menu-item"><a href="/#games" data-en="Games">게임소개</a></li>
+                <li class="menu-item"><a href="/games.html" data-en="Games">게임소개</a></li>
                 <li class="menu-item"><a href="#" data-en="News">소식</a></li>
                 <li class="menu-item"><a href="#" data-en="Support">고객지원</a></li>
             </ul>
@@ -88,10 +88,10 @@
                 <a href="/portfolio.html" data-en="Portfolio">포트폴리오</a>
             </div>
             <div class="dropdown-column">
-                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
-                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
-                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
+                <a href="/games.html#knight-tour" data-en="Knight's Tour">나이트 투어</a>
+                <a href="/games.html#charge-drive" data-en="Charge Drive">차지드라이브</a>
+                <a href="/games.html#project-latte" data-en="Project Latte">프로젝트 Latte</a>
+                <a href="/games.html#puzzling-together">Puzzling Together</a>
             </div>
             <div class="dropdown-column">
                 <a href="#" data-en="Notices">공지사항</a>
@@ -120,10 +120,10 @@
         <div class="sidebar-group">
             <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2" data-en="Games">게임소개</button>
             <div class="sidebar-sub-menu" id="sidebarSub2">
-                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
-                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
-                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
+                <a href="/games.html#knight-tour" data-en="Knight's Tour">나이트 투어</a>
+                <a href="/games.html#charge-drive" data-en="Charge Drive">차지드라이브</a>
+                <a href="/games.html#project-latte" data-en="Project Latte">프로젝트 Latte</a>
+                <a href="/games.html#puzzling-together">Puzzling Together</a>
             </div>
         </div>
 
@@ -147,86 +147,195 @@
 <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 <!-- /layout:header -->
 
-<main id="main" tabindex="-1">
-    <section class="page-hero" aria-labelledby="portfolioTitle">
-        <div class="page-inner">
-            <p class="section-kicker">PORTFOLIO</p>
-            <h1 class="section-title" id="portfolioTitle" data-en="What we have made">울림게임즈가 만든 것들</h1>
-            <p class="section-desc" data-en="From released games to projects in the works, all in one place.">출시한 게임부터 준비 중인 프로젝트까지 한곳에 모았습니다.</p>
+<main id="main" tabindex="-1" class="pf">
+    <!--
+        Portfolio content comes from the CEO. Ask before changing copy.
+        Planned entries (Project XR, Project UR): see docs/portfolio-roadmap.md
+    -->
+    <section class="pf-hero" aria-labelledby="pfTitle">
+        <div class="page-inner pf-hero-inner">
+            <div class="pf-emblem">
+                <div class="pf-ripple" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                <img src="/images/about-mark.webp" alt="울림게임즈 로고" data-en-alt="Ullim Games logo" width="595" height="595">
+            </div>
+            <div class="pf-hero-copy">
+            <p class="pf-hero-name" data-en-html="Ullim Games">울림게임즈 <span lang="en">Ullim Games</span></p>
+            <h1 class="pf-hero-title" id="pfTitle" data-en-html="New resonance&lt;br&gt;through games and AI">게임과 AI로<br>새로운 울림을 전합니다</h1>
+            <div class="pf-hero-text">
+                <p data-en="We make games whose resonance stays deep in your heart long after the last round.">게임이 끝난 뒤에도 마음 깊이 울림이 남는 게임을 만듭니다.</p>
+                <p data-en="We understand AI deeply and keep honing how we use it, to create new kinds of fun and emotion.">AI를 깊이 이해하고 끊임없이 단련해, 새로운 재미와 감동을 만듭니다.</p>
+                <p data-en="At Ullim Games, we put our whole heart into every piece of content, however small.">울림게임즈는 작은 콘텐츠 하나에도 진심을 다합니다.</p>
+            </div>
+            <figure class="pf-founder">
+                <blockquote>
+                    <p data-en-html="I have loved games since I was a kid, and that love led me to start a company.&lt;br&gt;I am Seunghyun Hwang: I jump in first, and I will keep growing for years to come.">어릴 때부터 게임이 너무 좋아 창업까지 왔습니다.<br>일단 부딪혀 보고, 앞으로도 쭉 성장해 나갈 황승현입니다.</p>
+                </blockquote>
+                <figcaption data-en="CEO, Ullim Games">울림게임즈 대표</figcaption>
+            </figure>
+            </div>
         </div>
     </section>
 
-    <!--
-        Add a project: copy one <li class="portfolio-item"> block below.
-        Reference materials (older portfolio) live in _portfolio-reference/ (not published).
-    -->
-    <div class="page-inner">
-        <ul class="portfolio-list">
-            <li class="portfolio-item">
-                <div class="portfolio-media game-panel-media--night">
-                    <span class="game-panel-tag is-store" data-en="Released">출시</span>
-                </div>
-                <div class="portfolio-body">
-                    <h2 class="portfolio-name" data-en="Knight's Tour">나이트 투어</h2>
-                    <p class="portfolio-copy" data-en="A 2D brain puzzle that reimagines the classic chess Knight's Tour. Enjoy it with a gothic mood and a wide range of custom skins.">중세 체스의 '나이트 투어' 규칙을 다시 해석한 2D 두뇌퍼즐 게임입니다. 고딕 분위기와 다양한 커스텀 스킨으로 즐길 수 있습니다.</p>
-                    <dl class="portfolio-meta">
-                        <dt data-en="Genre">장르</dt><dd data-en="Casual puzzle">캐주얼 퍼즐</dd>
-                        <dt data-en="Platform">플랫폼</dt><dd data-en="Mobile (Android), Toss">모바일 (Android), 토스</dd>
+    <section class="pf-section" aria-labelledby="pfGames">
+        <div class="page-inner">
+            <h2 class="pf-heading" id="pfGames" data-en="Games">게임</h2>
+
+            <article class="pf-work">
+                <div class="pf-work-media game-panel-media--night" role="img" aria-label="나이트 투어 대표 이미지" data-en-aria-label="Knight's Tour key art"></div>
+                <div class="pf-work-body">
+                    <p class="pf-status is-live" data-en="Released">출시</p>
+                    <h3 class="pf-work-name" data-en="Knight's Tour">나이트 투어</h3>
+                    <p class="pf-work-copy" data-en="A gothic 2D brain puzzle that reimagines the classic chess Knight's Tour.">중세 체스 '나이트 투어'를 다시 해석한 고딕 분위기 2D 두뇌 퍼즐</p>
+                    <dl class="pf-meta">
+                        <dt data-en="Genre">장르</dt><dd data-en="Casual puzzle, brain puzzle">캐주얼 퍼즐, 두뇌 퍼즐</dd>
+                        <dt data-en="Platform">플랫폼</dt><dd data-en="Android (Google Play), Toss mini app">Android (Google Play), 토스 미니앱</dd>
                         <dt data-en="Released">출시</dt><dd data-en="July 2026">2026년 7월</dd>
+                        <dt data-en="Role">역할</dt><dd data-en="Planning, development, release">기획, 개발, 출시</dd>
                     </dl>
+                    <ol class="pf-story">
+                        <li><b data-en="Why">이유</b><span data-en="Bring a classic chess puzzle to mobile">클래식 체스 퍼즐을 모바일로</span></li>
+                        <li><b data-en="How">제작</b><span data-en="Board, skins and store builds in Unity 2D">Unity 2D로 보드, 스킨, 스토어 빌드</span></li>
+                        <li><b data-en="Result">결과</b><span data-en="Released on Google Play and Toss">Google Play, 토스 출시</span></li>
+                    </ol>
+                    <ul class="pf-tags" aria-label="기술 태그" data-en-aria-label="Tech tags">
+                        <li>#Unity</li><li>#Cursor</li><li data-en="#2D puzzle">#2D퍼즐</li><li data-en="#Mobile">#모바일</li><li data-en="#Toss mini app">#토스미니앱</li>
+                    </ul>
                     <ul class="store-badges" aria-label="나이트 투어 받는 곳" data-en-aria-label="Where to get Knight's Tour">
                         <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" class="store-badge" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer"><img src="/images/brand/google-play.svg" alt="" width="18" height="18">Google Play</a></li>
                         <li><a class="store-badge" data-link="nightTourTossUrl"><img src="/images/brand/toss.svg" alt="" width="18" height="18"><span data-en="Toss">토스</span></a></li>
                     </ul>
                 </div>
-            </li>
+            </article>
 
-            <li class="portfolio-item">
-                <div class="portfolio-media game-panel-media--charge">
-                    <span class="game-panel-tag is-store" data-en="Released">출시</span>
-                </div>
-                <div class="portfolio-body">
-                    <h2 class="portfolio-name" data-en="Charge Drive">차지드라이브</h2>
-                    <p class="portfolio-copy" data-en="A mobile game by Ullim Games.">울림게임즈의 모바일 게임입니다.</p>
-                    <dl class="portfolio-meta">
-                        <dt data-en="Platform">플랫폼</dt><dd data-en="Mobile (Android), Toss">모바일 (Android), 토스</dd>
+            <article class="pf-work">
+                <div class="pf-work-media pf-work-media--charge" role="img" aria-label="차지드라이브 대표 이미지" data-en-aria-label="Charge Drive key art"></div>
+                <div class="pf-work-body">
+                    <p class="pf-status is-live" data-en="Released">출시</p>
+                    <h3 class="pf-work-name" data-en="Charge Drive">차지드라이브</h3>
+                    <p class="pf-work-copy" data-en="A casual driving race where you grow dramatically in one short run.">짧은 한 판으로 극적으로 성장하는 캐주얼 드라이브 레이싱</p>
+                    <dl class="pf-meta">
+                        <dt data-en="Genre">장르</dt><dd data-en="Casual racing, driving">캐주얼 레이싱, 드라이브</dd>
+                        <dt data-en="Platform">플랫폼</dt><dd data-en="Android (Google Play), Toss mini app">Android (Google Play), 토스 미니앱</dd>
+                        <dt data-en="Released">출시</dt><dd data-en="October 2026">2026년 10월</dd>
+                        <dt data-en="Role">역할</dt><dd data-en="Planning, development, release">기획, 개발, 출시</dd>
                     </dl>
+                    <ol class="pf-story">
+                        <li><b data-en="Why">이유</b><span data-en="A casual game with short runs and a strong sense of growth">짧은 세션과 성장감이 있는 캐주얼 게임</span></li>
+                        <li><b data-en="How">제작</b><span data-en="Controls and growth loop built in Unity">Unity로 조작과 성장 루프 제작</span></li>
+                        <li><b data-en="Result">결과</b><span data-en="Released on Google Play and Toss">Google Play, 토스 출시</span></li>
+                    </ol>
+                    <ul class="pf-tags" aria-label="기술 태그" data-en-aria-label="Tech tags">
+                        <li>#Unity</li><li>#Cursor</li><li data-en="#Racing">#레이싱</li><li data-en="#Mobile">#모바일</li><li data-en="#Toss mini app">#토스미니앱</li>
+                    </ul>
                     <ul class="store-badges" aria-label="차지드라이브 받는 곳" data-en-aria-label="Where to get Charge Drive">
                         <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" class="store-badge" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer"><img src="/images/brand/google-play.svg" alt="" width="18" height="18">Google Play</a></li>
                         <li><a class="store-badge" data-link="chargeDriveTossUrl"><img src="/images/brand/toss.svg" alt="" width="18" height="18"><span data-en="Toss">토스</span></a></li>
                     </ul>
                 </div>
-            </li>
+            </article>
 
-            <li class="portfolio-item">
-                <div class="portfolio-media game-panel-media--fruit">
-                    <span class="game-panel-tag is-live" data-en="Web">웹</span>
+            <article class="pf-work pf-work--soon">
+                <div class="pf-work-media pf-work-media--pz" aria-hidden="true">
+                    <span class="pf-media-word">PZ</span>
                 </div>
-                <div class="portfolio-body">
-                    <h2 class="portfolio-name" data-en="Fruit Volley">후르츠발리</h2>
-                    <p class="portfolio-copy" data-en="A casual volleyball game full of summer vibes. Play it right in your browser, no install needed.">여름 감성의 캐주얼 발리볼 게임입니다. 설치 없이 브라우저에서 바로 플레이할 수 있습니다.</p>
-                    <dl class="portfolio-meta">
-                        <dt data-en="Genre">장르</dt><dd data-en="Casual sports">캐주얼 스포츠</dd>
-                        <dt data-en="Platform">플랫폼</dt><dd data-en="Web (Unity WebGL)">웹 (Unity WebGL)</dd>
-                    </dl>
-                    <a href="/play/fruit-valley/" class="portfolio-link" data-link="fruitValleyPlayUrl" data-en="Play in your browser →">웹에서 바로 플레이 &rarr;</a>
+                <div class="pf-work-body">
+                    <p class="pf-status" data-en="In preparation · Planned for the first half of 2027">준비 중 · 2027년 상반기 출시 예정</p>
+                    <h3 class="pf-work-name">Puzzling Together</h3>
+                    <p class="pf-work-copy" data-en="A 3D puzzle game in the friendslop genre. Team up with a few friends in small online co-op and solve puzzles together, laughing all the way. We plan to release it on Steam.">친구와 함께 푸는 프렌드슬롭(Friendslop) 장르의 3D 퍼즐 게임입니다. 소규모 온라인 멀티플레이로 친구들과 왁자지껄 머리를 맞대는 재미를 담아, 스팀에 출시할 계획입니다.</p>
+                    <ul class="pf-tags" aria-label="기술 태그" data-en-aria-label="Tech tags">
+                        <li data-en="#3D puzzle">#3D퍼즐</li><li data-en="#Online co-op">#온라인협동</li><li>#Steam</li>
+                    </ul>
                 </div>
-            </li>
+            </article>
 
-            <li class="portfolio-item">
-                <div class="portfolio-media game-panel-media--pz">
-                    <span class="game-panel-tag" data-en="In development">개발 중</span>
+            <h3 class="pf-subheading" data-en="Other projects">그 밖의 프로젝트</h3>
+            <article class="pf-mini">
+                <div class="pf-mini-media game-panel-media--fruit" aria-hidden="true"></div>
+                <div class="pf-mini-body">
+                    <span class="pf-badge" data-en="Event entry">이벤트 참가작</span>
+                    <h4 class="pf-mini-name" data-en="Fruit Volley">후르츠발리</h4>
+                    <p class="pf-mini-copy" data-en="Made for the Unity Summer Challenge. Built with Unity WebGL so it plays in the browser.">유니티 썸머 챌린지 참가작. Unity WebGL로 만들어 브라우저에서 바로 플레이할 수 있습니다.</p>
+                    <ul class="pf-tags" aria-label="기술 태그" data-en-aria-label="Tech tags">
+                        <li>#Unity</li><li>#WebGL</li><li data-en="#Web game">#웹게임</li>
+                    </ul>
                 </div>
-                <div class="portfolio-body">
-                    <h2 class="portfolio-name" data-en="Project PZ">프로젝트 PZ</h2>
-                    <p class="portfolio-copy" data-en="A new project Ullim Games is working on.">울림게임즈가 준비하고 있는 새 프로젝트입니다.</p>
-                    <dl class="portfolio-meta">
-                        <dt data-en="Release">출시</dt><dd data-en="Planned for Q1 2027">2027년 1분기 예정</dd>
-                    </dl>
+                <a href="/play/fruit-valley/" class="pf-mini-link" data-link="fruitValleyPlayUrl" data-en="Play in browser">웹에서 플레이</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="pf-section pf-section--split" aria-labelledby="pfTimeline">
+        <div class="page-inner pf-split">
+            <h2 class="pf-heading" id="pfTimeline" data-en="Timeline">걸어온 길</h2>
+            <ol class="pf-timeline">
+                <li>
+                    <time datetime="2026-06-18">2026.06.18</time>
+                    <p class="pf-tl-title" data-en="Ullim Games founded">울림게임즈 창업</p>
+                    <p class="pf-tl-body" data-en="Took a leave of absence from university to run the company.">창업과 동시에 창업휴학</p>
+                </li>
+                <li>
+                    <time datetime="2026-07">2026.07</time>
+                    <p class="pf-tl-title" data-en="Knight's Tour on Google Play">나이트 투어 Google Play 출시</p>
+                    <p class="pf-tl-body" data-en="Our first released title.">울림게임즈의 첫 출시작</p>
+                </li>
+                <li>
+                    <time datetime="2026-07">2026.07</time>
+                    <p class="pf-tl-title" data-en="Unity Summer Challenge">유니티 썸머 챌린지 참가</p>
+                    <p class="pf-tl-body" data-en="Entered Fruit Volley, a Unity WebGL game.">Unity WebGL 게임 후르츠발리 제출</p>
+                </li>
+                <li>
+                    <time datetime="2026-10">2026.10</time>
+                    <p class="pf-tl-title" data-en="Knight's Tour on Toss">나이트 투어 토스 미니앱 출시</p>
+                </li>
+                <li>
+                    <time datetime="2026-10">2026.10</time>
+                    <p class="pf-tl-title" data-en="Charge Drive on Google Play">차지드라이브 Google Play 출시</p>
+                </li>
+                <li>
+                    <time datetime="2026-11">2026.11</time>
+                    <p class="pf-tl-title" data-en="Charge Drive on Toss">차지드라이브 토스 미니앱 출시</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="pf-section pf-section--split" aria-labelledby="pfSkills">
+        <div class="page-inner pf-split">
+            <h2 class="pf-heading" id="pfSkills" data-en="What we can build">할 수 있는 것</h2>
+            <div>
+                <ul class="pf-skills">
+                    <li>#Unity</li>
+                    <li>#Unreal Engine</li>
+                    <li data-en="#VR (Meta Quest)">#VR (Meta Quest)</li>
+                    <li data-en="#AI in games">#게임 속 AI 연동</li>
+                    <li data-en="#AI-assisted development">#AI 활용 개발</li>
+                    <li data-en="#Google Play release">#Google Play 출시</li>
+                    <li data-en="#Toss mini apps">#토스 미니앱</li>
+                    <li>#WebGL</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="pf-section pf-section--split" aria-labelledby="pfMore">
+        <div class="page-inner pf-split">
+            <h2 class="pf-heading" id="pfMore" data-en="Results and activities">성과와 활동</h2>
+            <div class="pf-notes">
+                <div>
+                    <h3 class="pf-notes-title" data-en="Awards and selections">수상·선정</h3>
+                    <p class="pf-empty" data-en="When we win an award or get selected, we will record it here.">수상이나 선정 소식이 생기면 이곳에 기록합니다.</p>
                 </div>
-            </li>
-        </ul>
-    </div>
+                <div>
+                    <h3 class="pf-notes-title" data-en="Activities">활동</h3>
+                    <ul class="pf-activity">
+                        <li><time datetime="2026">2026</time><span data-en="Lead of three teams building cognitive-care apps for older adults (planning and schedule)">노인 인지기능 앱 3개 팀 총괄팀장 (기획, 일정 관리)</span></li>
+                        <li><time datetime="2025">2025</time><span data-en="Vice President, Student Council of the School of Advanced IT, Baekseok University">백석대학교 첨단IT학부 부학생회장</span></li>
+                        <li><time datetime="2025-01">2025.01 – 02</time><span data-en="Work-experience program in Japan at G&amp;G Service Co., Ltd. (Minato, Tokyo · software)">일본 일경험 학습, 주식회사 지앤지서비스 (G&amp;G Service · 도쿄 미나토구, 소프트웨어 분야)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <!-- layout:footer -->
@@ -276,10 +385,11 @@
             <div class="footer-menu-group">
                 <h2 class="menu-title" data-en="Games">게임소개</h2>
                 <ul>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a></li>
-                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a></li>
-                    <li><a href="/#games" data-en="Project PZ">프로젝트 PZ</a></li>
+                    <li><a href="/games.html#knight-tour" data-en="Knight's Tour">나이트 투어</a></li>
+                    <li><a href="/games.html#charge-drive" data-en="Charge Drive">차지드라이브</a></li>
+                    <li><a href="/games.html#project-latte" data-en="Project Latte">프로젝트 Latte</a></li>
+                    <li><a href="/games.html#puzzling-together">Puzzling Together</a></li>
+                    <li><a href="/play/" data-en="Play Zone">플레이 공간</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
@@ -300,10 +410,20 @@
     <a class="admin-entry" href="/admin/" rel="nofollow" data-en="Admin">관리</a>
 </footer>
 
+<a href="/play/" id="playZoneCta" class="play-cta" aria-label="플레이 공간: 브라우저에서 바로 하는 웹게임" data-en-aria-label="Play Zone: web games you can play in your browser">
+    <span class="play-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v1.5a3.5 3.5 0 0 1-6.3 2.1L14.5 14h-5l-1.2 1.6A3.5 3.5 0 0 1 2 13.5V12a4 4 0 0 1 4-4z"/><path d="M7.5 10.5v3M6 12h3"/><path d="M16 10.6h.01M17.8 12.8h.01"/></svg>
+    </span>
+    <span class="play-cta-text" aria-hidden="true">
+        <span class="play-cta-kicker">PLAY ZONE</span>
+        <span class="play-cta-label" data-en="Play Zone">플레이 공간</span>
+    </span>
+</a>
+
 <button id="backToTop" class="top-btn" type="button" aria-label="맨 위로" data-en-aria-label="Back to top">TOP</button>
 
 <script src="/js/games-config.js"></script>
-<script src="/js/site.js?v=3"></script>
+<script src="/js/site.js?v=4"></script>
 <script src="/js/i18n.js?v=1"></script>
 <!-- /layout:footer -->
 </body>

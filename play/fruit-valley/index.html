@@ -2,11 +2,12 @@
 <html lang="ko" data-title-en="Fruit Volley | Ullim Games">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <script src="/js/i18n-boot.js?v=1"></script>
     <title>후르츠발리 | 울림게임즈</title>
     <meta name="description" content="울림게임즈의 캐주얼 발리볼 게임 후르츠발리. 설치 없이 브라우저에서 바로 플레이하세요.">
     <link rel="canonical" href="https://ullimgames.com/play/fruit-valley/">
+    <meta name="theme-color" content="#1b1712">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="울림게임즈">
     <meta property="og:locale" content="ko_KR">
@@ -20,19 +21,21 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=clear1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Serif+KR:wght@600;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=5">
+    <link rel="stylesheet" href="/css/style.css?v=13">
 </head>
 <body class="play-page">
 
 <header class="play-header">
     <div class="play-header-inner">
-        <a class="play-back" href="/" data-en="← Home">← 홈으로</a>
-        <div class="play-title-wrap">
-            <img src="/images/ullimgames_logo.png" alt="울림게임즈" data-en-alt="Ullim Games" class="play-logo">
-            <h1 class="play-title" data-en="Fruit Volley">후르츠발리</h1>
-        </div>
+        <a class="play-back" href="/play/" aria-label="플레이 공간으로" data-en-aria-label="Back to Play Zone">
+            <span aria-hidden="true">←</span>
+            <span class="play-back-label" data-en="Play Zone">플레이 공간</span>
+        </a>
+        <a class="play-home" href="/" aria-label="울림게임즈 홈" data-en-aria-label="Ullim Games home">
+            <img src="/images/ullimgames_logo.png" alt="" class="play-logo" width="185" height="204">
+        </a>
         <button class="lang-toggle" id="langToggle" type="button" aria-label="언어 변경: English로 보기" data-en-aria-label="Change language: view in Korean">
             <svg class="lang-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9M12 3C9.4 5.6 8.1 8.6 8.1 12s1.3 6.4 3.9 9"/></svg>
             <span class="lang-code" data-lang-code="ko">KO</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-code" data-lang-code="en">EN</span>
@@ -40,37 +43,66 @@
     </div>
 </header>
 
-<main class="play-main">
-    <section class="play-stage" aria-label="후르츠발리 게임 화면" data-en-aria-label="Fruit Volley game screen">
-        <div class="play-frame-wrap">
-            <!-- Unity WebGL build lives in /games/fruit-valley/ (drop-in replace) -->
-            <iframe
-                id="fruitValleyFrame"
-                class="play-frame"
-                src="/games/fruit-valley/?v=20260723c"
-                title="후르츠발리 WebGL"
-                allow="fullscreen; autoplay; gamepad; clipboard-write"
-            ></iframe>
-        </div>
-    </section>
+<main class="pf pv">
+    <div class="pv-layout">
+        <section class="pv-info" aria-labelledby="pvTitle">
+            <p class="pv-kicker">WEB GAME</p>
+            <span class="pf-badge" data-en="Event entry">이벤트 참가작</span>
+            <h1 class="pv-title" id="pvTitle" data-en="Fruit Volley">후르츠발리</h1>
+            <p class="pv-copy" data-en="A casual volleyball game full of summer vibes. Play it right here, no install needed.">여름 감성의 캐주얼 발리볼. 설치 없이 이 화면에서 바로 즐길 수 있습니다.</p>
+            <ul class="device-list" aria-label="플레이 가능 기기" data-en-aria-label="Playable on">
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg><span data-en="Mobile">모바일</span></li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.8"/><path d="M9 20h6M12 16v4"/></svg><span>PC</span></li>
+            </ul>
+            <ul class="pf-tags" aria-label="기술 태그" data-en-aria-label="Tech tags">
+                <li>#Unity</li><li>#WebGL</li>
+            </ul>
+            <div class="pv-actions">
+                <button class="pv-btn is-primary" id="pvFullscreen" type="button" hidden>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+                    <span data-en="Full screen">전체화면</span>
+                </button>
+                <a class="pv-btn" href="/play/">
+                    <span data-en="More web games">다른 웹게임</span>
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+            <p class="pv-note" data-en="The first load can take a few seconds.">처음 불러올 때 몇 초 걸릴 수 있습니다.</p>
+        </section>
 
-    <!-- Ranking UI ready; data wiring stays OFF until server exists (data-ranking-enabled). -->
-    <aside class="play-ranking" aria-label="후르츠발리 랭킹" data-en-aria-label="Fruit Volley ranking" data-ranking-enabled="false">
-        <div class="play-ranking-head">
-            <p class="play-ranking-kicker">FRUIT VOLLEY</p>
-            <h2 class="play-ranking-title" data-en="Ranking">랭킹</h2>
-        </div>
+        <section class="pv-stage" aria-label="후르츠발리 게임 화면" data-en-aria-label="Fruit Volley game screen">
+            <div class="play-frame-wrap" id="pvFrameWrap">
+                <!-- Unity WebGL build lives in /games/fruit-valley/ (drop-in replace) -->
+                <iframe
+                    id="fruitValleyFrame"
+                    class="play-frame"
+                    src="/games/fruit-valley/?v=20260723c"
+                    title="후르츠발리 WebGL"
+                    allow="fullscreen; autoplay; gamepad; clipboard-write"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
 
-        <div class="play-ranking-cols" aria-hidden="true">
-            <span data-en="Rank">순위</span>
-            <span data-en="Player">닉네임</span>
-            <span data-en="Score">점수</span>
-        </div>
+        <!-- Ranking UI ready; data wiring stays OFF until server exists (data-ranking-enabled). -->
+        <aside class="play-ranking" aria-label="후르츠발리 랭킹" data-en-aria-label="Fruit Volley ranking" data-ranking-enabled="false">
+            <div class="play-ranking-head">
+                <p class="play-ranking-kicker">FRUIT VOLLEY</p>
+                <h2 class="play-ranking-title" data-en="Ranking">랭킹</h2>
+            </div>
 
-        <ol class="play-ranking-list" id="fruitValleyRankingList">
-            <!-- Rows filled by JS (empty placeholders until server ranking is enabled) -->
-        </ol>
-    </aside>
+            <div class="play-ranking-cols" aria-hidden="true">
+                <span data-en="Rank">순위</span>
+                <span data-en="Player">닉네임</span>
+                <span data-en="Score">점수</span>
+            </div>
+
+            <ol class="play-ranking-list" id="fruitValleyRankingList">
+                <!-- Rows filled by JS (empty placeholders until server ranking is enabled) -->
+            </ol>
+            <p class="play-ranking-foot" data-en="Ranking opens soon.">랭킹은 곧 열립니다.</p>
+        </aside>
+    </div>
 </main>
 
 <script>
@@ -79,13 +111,19 @@
         var listEl = document.getElementById('fruitValleyRankingList');
         var boardEl = document.querySelector('.play-ranking');
 
+        function escapeText(value) {
+            return String(value).replace(/[&<>"']/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
         function renderRows(entries) {
             if (!listEl) return;
             var html = '';
             for (var i = 0; i < RANK_LIMIT; i++) {
                 var entry = entries[i];
                 var rank = i + 1;
-                var name = entry && entry.name ? entry.name : '—';
+                var name = entry && entry.name ? escapeText(entry.name) : '—';
                 var score = entry && typeof entry.score === 'number' ? entry.score.toLocaleString('ko-KR') : '—';
                 var medal = rank === 1 ? ' is-gold' : rank === 2 ? ' is-silver' : rank === 3 ? ' is-bronze' : '';
                 html +=
@@ -113,6 +151,20 @@
                 if (boardEl) boardEl.setAttribute('data-ranking-enabled', on ? 'true' : 'false');
             }
         };
+
+        // Full screen: only shown where the browser supports it (not on iPhone Safari).
+        var fsBtn = document.getElementById('pvFullscreen');
+        var wrap = document.getElementById('pvFrameWrap');
+        if (fsBtn && wrap && wrap.requestFullscreen) {
+            fsBtn.hidden = false;
+            fsBtn.addEventListener('click', function () {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    wrap.requestFullscreen().catch(function () {});
+                }
+            });
+        }
     })();
 </script>
 <script src="/js/i18n.js?v=1"></script>

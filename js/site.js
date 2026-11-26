@@ -108,8 +108,13 @@
     }
 
     function setupFloatingCta() {
-        var cta = document.getElementById("fruitValleyCta");
+        var cta = document.getElementById("playZoneCta");
         var footer = document.querySelector(".site-footer");
+        // No need to point at the Play Zone while already inside it.
+        if (cta && location.pathname.indexOf("/play/") === 0) {
+            cta.remove();
+            return;
+        }
         if (!cta || !footer || !("IntersectionObserver" in window)) return;
         new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {

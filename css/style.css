@@ -337,6 +337,27 @@ html.i18n-pending body {
 .dropdown-column a {
     font-size: 15px;
     color: var(--text-muted);
+    /* Long names (Puzzling Together) stay on one line, centered under the menu. */
+    white-space: nowrap;
+}
+
+/* Menu links that leave the site (store pages) show a small "opens outside" icon. */
+.has-ext {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ext-icon {
+    flex: none;
+    width: 0.85em;
+    height: 0.85em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.7;
 }
 
 
@@ -599,12 +620,16 @@ html.i18n-pending body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    /* Wider gap pushes text and logo apart by the same amount on both sides. */
+    gap: clamp(40px, 9vw, 160px);
 }
 
 .intro-text {
-    flex: 0 0 50%;
+    flex: 1 1 0;
     max-width: 600px;
+    /* Center the text block in its column so it mirrors the logo on the right. */
+    display: grid;
+    justify-content: center;
 }
 
 .about-title {
@@ -628,10 +653,10 @@ html.i18n-pending body {
 }
 
 .intro-image {
-    flex: 0 0 50%;
+    flex: 1 1 0;
     max-width: 600px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .intro-image img {
@@ -652,6 +677,48 @@ html.i18n-pending body {
 
 .section-head {
     margin-bottom: 36px;
+}
+
+/* Heading on the left, "View all" link on the right. */
+.section-head--row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.section-head--row .section-title {
+    margin-bottom: 0;
+}
+
+.section-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    transition: border-color 0.2s ease, color 0.2s ease, gap 0.2s ease;
+}
+
+.section-more:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+    gap: 10px;
+}
+
+.section-more svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .section-kicker {
@@ -732,7 +799,13 @@ html.i18n-pending body {
 }
 
 .game-panel-media--charge {
-    background-color: #3f2a22;
+    background-image:
+        linear-gradient(90deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.35) 55%, rgba(15, 23, 42, 0.05) 100%),
+        url("../images/games/charge-drive/card.webp");
+    /* Full key art with the game logo painted out, so it does not clash with the card title.
+       Pushed down a little; the strip above is filled with the art's own sky color. */
+    background-color: #f5feff;
+    background-position: center, 70% 14px;
 }
 
 .game-panel-media--fruit {
@@ -746,6 +819,27 @@ html.i18n-pending body {
 
 .game-panel-media--pz {
     background-color: #2c2420;
+}
+
+/* Placeholder art until Project Latte has a concept image: milk foam on espresso. */
+.game-panel-media--latte {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 18px 24px;
+    background:
+        radial-gradient(circle at 78% 38%, rgba(255, 244, 228, 0.55) 0 14%, transparent 15%),
+        radial-gradient(circle at 78% 38%, rgba(183, 121, 72, 0.9) 0 22%, transparent 23%),
+        radial-gradient(circle at 78% 38%, rgba(240, 222, 196, 0.5) 0 30%, transparent 31%),
+        linear-gradient(150deg, #8a5a3b, #3b2418);
+}
+
+.game-panel-word {
+    font-family: var(--font-title);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    color: rgba(255, 244, 228, 0.35);
+    letter-spacing: 0.04em;
 }
 
 .game-panel-fade {
@@ -865,100 +959,612 @@ a.store-badge[href]:hover {
 /* ============================================================= */
 /* 07. Portfolio page                                             */
 /* ============================================================= */
-.page-hero {
-    padding: calc(var(--header-h) + 72px) 0 40px;
+/*
+   Dark warm "night stage" look carried over from the old portfolio.
+   The page skips season themes (<html data-no-theme>), so these colors stay fixed.
+   One bold element: the logo sitting on the glowing ripple rings.
+*/
+.pf {
+    --pf-bg: #1b1712;
+    --pf-panel: #231e18;
+    --pf-fg: #f3ece0;
+    --pf-muted: #b8aa94;
+    --pf-gold: #d9a85b;
+    --pf-gold-soft: rgba(217, 168, 91, 0.14);
+    --pf-line: rgba(217, 168, 91, 0.18);
+    --pf-serif: "Noto Serif KR", "Nanum Myeongjo", serif;
+
+    background: var(--pf-bg);
+    color: var(--pf-fg);
 }
 
-.page-hero .section-title {
-    font-size: clamp(34px, 4.4vw, 56px);
+.pf ::selection {
+    background: rgba(217, 168, 91, 0.32);
 }
 
-.portfolio-list {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    padding-bottom: 96px;
-    list-style: none;
-}
-
-.portfolio-item {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    background: var(--bg-elevated);
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    overflow: hidden;
-}
-
-.portfolio-media {
+/* Hero */
+.pf-hero {
     position: relative;
-    min-height: 300px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #ffffff;
+    overflow: hidden;
+    padding: calc(var(--header-h) + 96px) 0 112px;
+    border-bottom: 1px solid var(--pf-line);
+    background:
+        radial-gradient(ellipse 70% 55% at 50% -12%, rgba(217, 168, 91, 0.16), transparent 60%),
+        var(--pf-bg);
 }
 
-.portfolio-media .game-panel-tag {
-    position: absolute;
-    left: 20px;
-    top: 20px;
+.pf-hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 48px;
+    align-items: center;
 }
 
-.portfolio-body {
-    padding: 32px 36px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/* Text on the left, logo emblem on the right. */
+.pf-hero-copy {
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.portfolio-name {
-    font-family: var(--font-title);
-    font-weight: 400;
-    font-size: clamp(26px, 2.6vw, 36px);
-    color: var(--brand-deep);
-    margin-bottom: 10px;
+.pf-emblem {
+    grid-column: 2;
+    grid-row: 1;
 }
 
-.portfolio-copy {
+.pf-hero-name {
     font-size: 15px;
-    line-height: 1.75;
-    color: var(--text);
+    font-weight: 700;
+    color: var(--pf-gold);
     margin-bottom: 20px;
 }
 
-.portfolio-meta {
+.pf-hero-name span {
+    color: var(--pf-muted);
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.pf-hero-title {
+    font-family: var(--pf-serif);
+    font-weight: 600;
+    font-size: clamp(36px, 5.2vw, 72px);
+    line-height: 1.22;
+    letter-spacing: -0.03em;
+    color: var(--pf-fg);
+    text-wrap: balance;
+}
+
+.pf-hero-text {
+    margin-top: 32px;
+    max-width: 34em;
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--pf-muted);
+}
+
+.pf-founder {
+    margin-top: 44px;
+    max-width: 34em;
+    padding-left: 20px;
+    border-left: 2px solid var(--pf-gold);
+}
+
+.pf-founder blockquote p {
+    font-family: var(--pf-serif);
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 600;
+    color: var(--pf-fg);
+}
+
+.pf-founder figcaption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--pf-muted);
+}
+
+/* Logo on the ripple rings. The light core lets the dark logo read on a dark page. */
+.pf-emblem {
+    position: relative;
+    justify-self: center;
+    width: min(460px, 100%);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+}
+
+.pf-emblem::before {
+    content: "";
+    position: absolute;
+    width: 46%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f6ecd9 0%, #ead9b8 52%, rgba(217, 168, 91, 0.55) 72%, transparent 74%);
+    box-shadow: 0 0 120px 30px rgba(217, 168, 91, 0.22);
+}
+
+.pf-ripple {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.pf-ripple span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 1.5px solid var(--pf-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pf-ripple span:nth-child(1) { width: 64%;  height: 64%;  opacity: 0.55; }
+.pf-ripple span:nth-child(2) { width: 84%;  height: 84%;  opacity: 0.3; }
+.pf-ripple span:nth-child(3) { width: 108%; height: 108%; opacity: 0.16; }
+.pf-ripple span:nth-child(4) { width: 140%; height: 140%; opacity: 0.08; }
+
+.pf-emblem img {
+    position: relative;
+    width: 34%;
+    height: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .pf-ripple span {
+        animation: pf-ripple-in 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+    .pf-ripple span:nth-child(2) { animation-delay: 0.14s; }
+    .pf-ripple span:nth-child(3) { animation-delay: 0.28s; }
+    .pf-ripple span:nth-child(4) { animation-delay: 0.42s; }
+}
+
+@keyframes pf-ripple-in {
+    from { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
+}
+
+/* Shared section frame */
+.pf-section {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--pf-line);
+}
+
+.pf-section:last-of-type {
+    border-bottom: 0;
+    padding-bottom: 128px;
+}
+
+.pf-heading {
+    font-family: var(--pf-serif);
+    font-weight: 600;
+    font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.02em;
+    color: var(--pf-fg);
+    margin-bottom: 40px;
+}
+
+/* Heading on the left, content on the right. */
+.pf-split {
+    display: grid;
+    grid-template-columns: minmax(180px, 320px) minmax(0, 1fr);
+    gap: 32px 64px;
+    align-items: start;
+}
+
+.pf-split .pf-heading {
+    margin-bottom: 0;
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+}
+
+/* Main titles: the game art fills the panel and fades out where the text starts. */
+.pf-work {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: 560px;
+    margin-bottom: 28px;
+    border-radius: 24px;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--pf-panel);
+    border: 1px solid var(--pf-line);
+}
+
+.pf-work-media {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 72%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* The art itself fades out, so no hard edge shows where it ends. */
+    -webkit-mask-image: linear-gradient(90deg, #000 30%, rgba(0, 0, 0, 0.35) 68%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 30%, rgba(0, 0, 0, 0.35) 68%, transparent 100%);
+}
+
+/* Extra shade toward the text side for readability. */
+.pf-work-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 40%, rgba(35, 30, 24, 0.55) 100%);
+}
+
+.pf-work-body {
+    grid-column: 2;
+    align-self: center;
+    padding: 48px 52px 48px 24px;
+}
+
+/* Every second title flips: text on the left, art on the right. */
+.pf-work:nth-of-type(even) .pf-work-media {
+    left: auto;
+    right: 0;
+    -webkit-mask-image: linear-gradient(270deg, #000 30%, rgba(0, 0, 0, 0.35) 68%, transparent 100%);
+    mask-image: linear-gradient(270deg, #000 30%, rgba(0, 0, 0, 0.35) 68%, transparent 100%);
+}
+
+.pf-work:nth-of-type(even) .pf-work-media::after {
+    background: linear-gradient(270deg, transparent 40%, rgba(35, 30, 24, 0.55) 100%);
+}
+
+.pf-work:nth-of-type(even) .pf-work-body {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 48px 24px 48px 52px;
+}
+
+.pf-work-media--charge {
+    background-color: #cfe3ee;
+    /* Logo painted out (card.webp) so no title letters show behind the fade. */
+    background-image: url("../images/games/charge-drive/card.webp");
+    background-position: 62% center;
+}
+
+.pf-work-media--pz {
+    width: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+    background:
+        repeating-linear-gradient(135deg, rgba(217, 168, 91, 0.05) 0 16px, transparent 16px 32px),
+        var(--pf-panel);
+}
+
+.pf-work-media--pz::after {
+    display: none;
+}
+
+/* Project Latte placeholder art: milk foam on espresso (until a concept image exists). */
+.pf-work-media--latte {
+    background:
+        radial-gradient(circle at 38% 46%, rgba(255, 244, 228, 0.6) 0 9%, transparent 10%),
+        radial-gradient(circle at 38% 46%, rgba(183, 121, 72, 0.9) 0 15%, transparent 16%),
+        radial-gradient(circle at 38% 46%, rgba(240, 222, 196, 0.55) 0 21%, transparent 22%),
+        linear-gradient(150deg, #8a5a3b, #3b2418);
+}
+
+.pf-work-media--latte .pf-media-word {
+    color: rgba(255, 244, 228, 0.22);
+}
+
+/* Games page: sections land below the fixed header. */
+.gm-work {
+    scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.pf-work--soon {
+    min-height: 300px;
+}
+
+/* Big title word used while a game has no artwork yet. */
+.pf-media-word {
+    position: absolute;
+    left: 52px;
+    bottom: 36px;
+    font-family: var(--pf-serif);
+    font-weight: 700;
+    font-size: clamp(64px, 9vw, 140px);
+    line-height: 1;
+    color: rgba(217, 168, 91, 0.14);
+}
+
+.pf-status {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pf-muted);
+    margin-bottom: 12px;
+}
+
+.pf-status.is-live {
+    color: #6fd3a0;
+}
+
+.pf-status.is-live::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    vertical-align: 1px;
+}
+
+.pf-work-name {
+    font-family: var(--pf-serif);
+    font-weight: 700;
+    font-size: clamp(30px, 3vw, 44px);
+    color: var(--pf-fg);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.pf-work-copy {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--pf-fg);
+    margin-bottom: 24px;
+}
+
+.pf-meta {
     display: grid;
     grid-template-columns: max-content 1fr;
-    gap: 8px 16px;
+    gap: 8px 20px;
     font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: var(--pf-fg);
+}
+
+.pf-meta dt {
+    font-weight: 700;
+    color: var(--pf-muted);
+}
+
+/* Why / How / Result: a real three-step sequence. */
+.pf-story {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--pf-muted);
+}
+
+.pf-story li {
+    padding-top: 10px;
+    border-top: 1.5px solid var(--pf-gold);
+}
+
+.pf-story b {
+    display: block;
+    color: var(--pf-gold);
     margin-bottom: 4px;
 }
 
-.portfolio-meta dt {
+.pf-tags,
+.pf-skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pf-tags {
+    margin-bottom: 24px;
+}
+
+.pf-tags li {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pf-gold);
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--pf-gold-soft);
+}
+
+.pf .store-badge {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(243, 236, 224, 0.28);
+}
+
+.pf a.store-badge[href]:hover {
+    background: rgba(217, 168, 91, 0.2);
+    border-color: var(--pf-gold);
+}
+
+/* Sub tier: event entries */
+.pf-subheading {
+    margin: 56px 0 18px;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--pf-muted);
 }
 
-.portfolio-item .store-badge {
-    background: var(--text);
-    border-color: var(--text);
+.pf-mini {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+    padding: 16px;
+    background: var(--pf-panel);
+    border: 1px solid var(--pf-line);
+    border-radius: 18px;
 }
 
-.portfolio-item a.store-badge[href]:hover {
-    background: var(--brand-deep);
-    border-color: var(--brand-deep);
+.pf-mini-media {
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    background-repeat: no-repeat;
 }
 
-.portfolio-link {
-    display: inline-flex;
-    margin-top: 16px;
+/* Small label on an "other project" (event entry, side project...). */
+.pf-badge {
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 3px 10px;
+    border: 1px solid var(--pf-gold);
+    border-radius: 999px;
+    font-size: 12px;
     font-weight: 700;
-    color: var(--link);
+    color: var(--pf-gold);
 }
 
-.portfolio-link:hover {
-    color: var(--brand);
+.pf-mini-name {
+    font-family: var(--pf-serif);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--pf-fg);
+    margin-bottom: 4px;
+}
+
+.pf-mini-copy {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--pf-muted);
+    margin-bottom: 10px;
+}
+
+.pf-mini .pf-tags {
+    margin-bottom: 0;
+}
+
+.pf-mini-link {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1.5px solid var(--pf-gold);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pf-gold);
+    white-space: nowrap;
+}
+
+.pf-mini-link:hover {
+    background: var(--pf-gold);
+    color: var(--pf-bg);
+}
+
+/* Timeline */
+.pf-timeline {
+    list-style: none;
+    position: relative;
+    padding-left: 28px;
+    border-left: 1px solid var(--pf-line);
+}
+
+.pf-timeline li {
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.pf-timeline li:last-child {
+    padding-bottom: 0;
+}
+
+.pf-timeline li::before {
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--pf-gold);
+}
+
+.pf-timeline time {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--pf-gold);
+    font-variant-numeric: tabular-nums;
+}
+
+.pf-tl-title {
+    margin-top: 4px;
+    font-family: var(--pf-serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--pf-fg);
+}
+
+.pf-tl-body {
+    margin-top: 4px;
+    font-size: 15px;
+    color: var(--pf-muted);
+}
+
+/* Skills */
+.pf-skills li {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--pf-line);
+    background: var(--pf-panel);
+    color: var(--pf-fg);
+}
+
+/* Results and activities */
+.pf-notes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+}
+
+.pf-notes-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--pf-fg);
+    margin-bottom: 12px;
+}
+
+.pf-empty {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--pf-muted);
+    padding: 18px 20px;
+    border: 1px dashed var(--pf-line);
+    border-radius: 14px;
+}
+
+.pf-activity {
+    list-style: none;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--pf-fg);
+}
+
+.pf-activity {
+    display: grid;
+    gap: 10px;
+}
+
+.pf-activity li {
+    display: grid;
+    gap: 2px;
+    padding: 16px 20px;
+    background: var(--pf-panel);
+    border: 1px solid var(--pf-line);
+    border-radius: 14px;
+}
+
+.pf-activity time {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pf-gold);
+    font-variant-numeric: tabular-nums;
+}
+
+.pf a:focus-visible {
+    outline-color: var(--pf-gold);
 }
 
 
@@ -1025,6 +1631,19 @@ a.store-badge[href]:hover {
     padding: 10px 12px;
     text-align: left;
     vertical-align: top;
+    /* Long words (emails, URLs) wrap instead of pushing the table off a small phone. */
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    .legal-content table {
+        font-size: 0.88em;
+    }
+
+    .legal-content th,
+    .legal-content td {
+        padding: 8px;
+    }
 }
 
 .legal-content th {
@@ -1237,9 +1856,22 @@ body.is-sidebar-open .top-btn {
     left: 24px;
     bottom: 60px;
     z-index: 9999;
-    display: block;
-    color: #7c2d12;
-    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 22px 10px 10px;
+    border-radius: 999px;
+    background: #1b1712;
+    border: 1px solid rgba(217, 168, 91, 0.6);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28), 0 0 0 4px rgba(217, 168, 91, 0.08);
+    color: #f3ece0;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.play-cta:hover {
+    color: #f3ece0;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.34), 0 0 0 5px rgba(217, 168, 91, 0.16);
 }
 
 .play-cta.is-near-footer,
@@ -1250,93 +1882,270 @@ body.is-sidebar-open .play-cta {
     transform: translateY(12px);
 }
 
-.play-cta-visual {
-    position: relative;
-    display: block;
-    width: 176px;
-    height: 176px;
+.play-cta-icon {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #d9a85b;
+    color: #1b1712;
 }
 
-.play-cta-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.2s ease;
-}
-
-.play-cta:hover .play-cta-img {
-    transform: translateY(-4px) scale(1.06);
+.play-cta-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .play-cta-text {
-    position: absolute;
-    left: 50%;
-    top: 52%;
-    width: max-content;
-    max-width: 88%;
-    text-align: center;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
 }
 
-.play-cta:hover .play-cta-text {
-    transform: translate(-50%, calc(-50% - 4px)) scale(1.06);
+.play-cta-kicker {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.24em;
+    color: #d9a85b;
 }
 
 .play-cta-label {
-    display: block;
-    font-family: var(--font-title);
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: 0.04em;
-    color: #ffffff;
-    -webkit-text-stroke: 1.35px #000000;
-    paint-order: stroke fill;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-}
-
-/* Shown only if the CTA image fails to load. */
-.play-cta.is-fallback {
-    padding: 14px 18px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #ffedd5 0%, #fdba74 45%, #86efac 100%);
-    border: 1px solid rgba(251, 146, 60, 0.45);
-}
-
-.play-cta.is-fallback .play-cta-visual {
-    width: auto;
-    height: auto;
-}
-
-.play-cta.is-fallback .play-cta-img {
-    display: none;
-}
-
-.play-cta.is-fallback .play-cta-text {
-    position: static;
-    transform: none;
-}
-
-.play-cta.is-fallback .play-cta-label {
-    color: #7c2d12;
-    -webkit-text-stroke: 0;
-    text-shadow: none;
-}
-
-.play-cta.is-fallback .play-cta-label br {
-    display: none;
+    margin-top: 3px;
+    font-size: 17px;
+    font-weight: 800;
+    white-space: nowrap;
 }
 
 
 /* ============================================================= */
-/* 11. Play page (WebGL game + ranking scaffold)                  */
+/* 11. Web games: hub (/play/) and game page (/play/{id}/)        */
 /* ============================================================= */
-.play-page {
-    background: #f8fafc;
+/*
+   Same dark "night stage" look as the portfolio (.pf tokens).
+   Header strip stays light because the logo is black.
+*/
+
+/* ---------- Hub ---------- */
+.ph-hero {
+    position: relative;
+    padding: calc(var(--header-h) + 80px) 0 56px;
+    background:
+        radial-gradient(ellipse 70% 60% at 50% -10%, rgba(217, 168, 91, 0.18), transparent 60%),
+        var(--pf-bg);
+    border-bottom: 1px solid var(--pf-line);
+    text-align: center;
+}
+
+.ph-kicker {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--pf-gold);
+    margin-bottom: 12px;
+}
+
+.ph-title {
+    font-family: var(--pf-serif);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.02em;
+    color: var(--pf-fg);
+}
+
+.ph-lead {
+    margin: 16px auto 0;
+    max-width: 32em;
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.75;
+    color: var(--pf-muted);
+    text-wrap: balance;
+}
+
+.ph-list {
+    padding-top: 64px;
+}
+
+.ph-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 24px;
+}
+
+.ph-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--pf-panel);
+    border: 1px solid var(--pf-line);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ph-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+}
+
+.ph-card:not(.ph-card--soon):hover {
+    transform: translateY(-6px);
+    border-color: rgba(217, 168, 91, 0.55);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+}
+
+.ph-card-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.ph-card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, var(--pf-panel) 100%);
+}
+
+.ph-card-media--fruit {
+    background-color: #0c4a6e;
+    background-image:
+        url("../images/cta-fruit-valley.webp"),
+        radial-gradient(circle at 50% 45%, #38bdf8 0%, #0c4a6e 70%);
+    background-size: auto 92%, cover;
+    background-position: center 40%, center;
+    transition: transform 0.45s ease;
+}
+
+.ph-card:hover .ph-card-media--fruit {
+    transform: scale(1.04);
+}
+
+.ph-card-media--soon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        repeating-linear-gradient(135deg, rgba(217, 168, 91, 0.06) 0 14px, transparent 14px 28px),
+        #1f1a15;
+}
+
+.ph-card-media--soon span {
+    font-family: var(--pf-serif);
+    font-size: clamp(40px, 5vw, 64px);
+    color: rgba(217, 168, 91, 0.22);
+    letter-spacing: 0.06em;
+}
+
+.ph-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 24px 24px;
+}
+
+.ph-card-name {
+    font-family: var(--pf-serif);
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--pf-fg);
+    margin-bottom: 6px;
+}
+
+.ph-card-copy {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--pf-muted);
+    margin-bottom: 16px;
+}
+
+.ph-card .pf-tags {
+    margin-bottom: 20px;
+}
+
+.ph-card-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--pf-gold);
+    color: var(--pf-bg);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.ph-card--soon .ph-card-name {
+    color: var(--pf-muted);
+}
+
+.pf-badge.is-muted {
+    border-color: var(--pf-line);
+    color: var(--pf-muted);
+}
+
+/* Where a web game runs: phone / PC icons. */
+.device-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.device-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px 4px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--pf-fg, #ffffff);
+}
+
+.device-list svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.ph-card-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.ph-card-top .pf-badge,
+.ph-card-top .device-list {
+    margin-bottom: 8px;
+}
+
+/* ---------- Game page ---------- */
+body.play-page {
+    background: #1b1712;
     min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .play-header {
@@ -1344,80 +2153,189 @@ body.is-sidebar-open .play-cta {
     top: 0;
     z-index: 100;
     background: var(--bg-elevated);
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--line);
 }
 
 .play-header-inner {
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 12px 24px;
-    display: flex;
+    height: 56px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
 }
 
 .play-back {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 14px;
-    font-weight: 600;
-    color: var(--link);
+    font-weight: 700;
+    color: var(--text);
     white-space: nowrap;
 }
 
 .play-back:hover {
-    color: #0c4a6e;
+    color: var(--brand);
 }
 
-.play-title-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.play-home {
+    display: block;
 }
 
 .play-logo {
-    height: 38px;
+    height: 36px;
     width: auto;
+    display: block;
 }
 
-.play-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: #0f172a;
+.play-header .lang-toggle {
+    justify-self: end;
 }
 
-.play-header-spacer {
-    width: 72px;
-    flex-shrink: 0;
+.pv {
+    min-height: calc(100vh - 57px);
+    min-height: calc(100dvh - 57px);
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(217, 168, 91, 0.14), transparent 65%),
+        var(--pf-bg);
 }
 
-.play-main {
+.pv-layout {
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 20px 24px 40px;
+    padding: 24px 24px 40px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 20px;
+    grid-template-columns: minmax(220px, 300px) auto minmax(220px, 300px);
+    justify-content: center;
     align-items: start;
+    gap: 28px;
 }
 
-.play-stage {
-    min-width: 0;
+/* Left: title, short info and actions */
+.pv-info {
+    position: sticky;
+    top: 80px;
+    padding-top: 8px;
+}
+
+.pv-kicker {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    color: var(--pf-gold);
+    margin-bottom: 10px;
+}
+
+.pv-title {
+    font-family: var(--pf-serif);
+    font-weight: 700;
+    font-size: clamp(30px, 3vw, 40px);
+    line-height: 1.15;
+    color: var(--pf-fg);
+    margin: 8px 0 12px;
+}
+
+.pv-copy {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--pf-muted);
+    margin-bottom: 16px;
+}
+
+.pv-info .pf-tags {
+    margin-bottom: 24px;
+}
+
+.pv-actions {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pv-btn {
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1.5px solid var(--pf-gold);
+    background: transparent;
+    color: var(--pf-gold);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pv-btn:hover {
+    background: var(--pf-gold);
+    color: var(--pf-bg);
+}
+
+.pv-btn.is-primary {
+    background: var(--pf-gold);
+    color: var(--pf-bg);
+}
+
+.pv-btn.is-primary:hover {
+    background: #e8bd77;
+}
+
+.pv-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.pv-btn[hidden] {
+    display: none;
+}
+
+.pv-note {
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(184, 170, 148, 0.8);
+}
+
+/* Center: the game, framed like a lit stage */
+.pv-stage {
+    display: flex;
+    justify-content: center;
 }
 
 .play-frame-wrap {
     position: relative;
-    height: calc(100vh - 160px);
-    max-height: calc(100vh - 160px);
-    min-height: 420px;
-    max-width: min(420px, 100%);
+    /* Fill the screen height, keep a phone (9:16) shape. */
+    height: min(calc(100vh - 120px), 860px);
+    height: min(calc(100dvh - 120px), 860px);
+    min-height: 480px;
     aspect-ratio: 9 / 16;
-    background: #0a1a22;
-    border-radius: 12px;
+    max-width: 100%;
+    border-radius: 22px;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    background: #0a1a22;
+    border: 1px solid rgba(217, 168, 91, 0.45);
+    box-shadow:
+        0 0 0 6px rgba(217, 168, 91, 0.06),
+        0 24px 60px rgba(0, 0, 0, 0.55),
+        0 0 80px rgba(217, 168, 91, 0.12);
+}
+
+.play-frame-wrap:fullscreen {
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+    background: #000;
 }
 
 .play-frame {
@@ -1426,25 +2344,17 @@ body.is-sidebar-open .play-cta {
     width: 100%;
     height: 100%;
     border: 0;
-    background: #ffffff;
+    background: #0a1a22;
 }
 
+/* Right: ranking board */
 .play-ranking {
-    position: relative;
-    overflow: hidden;
-    padding: 18px 14px 14px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 251, 235, 0.95) 100%);
-    border: 1px solid rgba(251, 146, 60, 0.28);
-    border-radius: 18px;
-    box-shadow: 0 10px 28px rgba(14, 116, 144, 0.08);
-}
-
-.play-ranking::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 4px;
-    background: linear-gradient(90deg, #38bdf8, #4ade80, #fb923c);
+    position: sticky;
+    top: 80px;
+    padding: 20px 14px 14px;
+    border-radius: 20px;
+    background: var(--pf-panel);
+    border: 1px solid var(--pf-line);
 }
 
 .play-ranking-head {
@@ -1456,22 +2366,21 @@ body.is-sidebar-open .play-cta {
     margin-bottom: 4px;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.12em;
-    color: #0284c7;
+    letter-spacing: 0.2em;
+    color: var(--pf-gold);
 }
 
 .play-ranking-title {
-    font-family: var(--font-title);
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: #0f172a;
+    font-family: var(--pf-serif);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--pf-fg);
 }
 
 .play-ranking-cols,
 .play-ranking-row {
     display: grid;
-    grid-template-columns: 44px 1fr 64px;
+    grid-template-columns: 40px minmax(0, 1fr) 64px;
     gap: 8px;
 }
 
@@ -1479,7 +2388,7 @@ body.is-sidebar-open .play-cta {
     padding: 0 8px 8px;
     font-size: 11px;
     font-weight: 700;
-    color: #64748b;
+    color: var(--pf-muted);
 }
 
 .play-ranking-cols span:last-child {
@@ -1491,50 +2400,39 @@ body.is-sidebar-open .play-cta {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-height: calc(100vh - 220px);
+    max-height: calc(100vh - 260px);
     overflow-y: auto;
 }
 
 .play-ranking-row {
     align-items: center;
-    padding: 10px 8px;
+    padding: 9px 8px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.78);
-    border: 1px solid rgba(226, 232, 240, 0.9);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(217, 168, 91, 0.1);
 }
 
-.play-ranking-row.is-gold {
-    background: linear-gradient(90deg, rgba(254, 243, 199, 0.95), rgba(255, 255, 255, 0.9));
-    border-color: rgba(251, 191, 36, 0.45);
-}
-
-.play-ranking-row.is-silver {
-    background: linear-gradient(90deg, rgba(241, 245, 249, 0.98), rgba(255, 255, 255, 0.9));
-    border-color: rgba(148, 163, 184, 0.45);
-}
-
-.play-ranking-row.is-bronze {
-    background: linear-gradient(90deg, rgba(255, 237, 213, 0.95), rgba(255, 255, 255, 0.9));
-    border-color: rgba(251, 146, 60, 0.4);
-}
+.play-ranking-row.is-gold { border-color: rgba(217, 168, 91, 0.6); background: rgba(217, 168, 91, 0.12); }
+.play-ranking-row.is-silver { border-color: rgba(203, 213, 225, 0.4); }
+.play-ranking-row.is-bronze { border-color: rgba(205, 127, 50, 0.45); }
 
 .play-ranking-rank {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 800;
-    color: #334155;
-    background: #f1f5f9;
+    color: var(--pf-muted);
+    background: rgba(255, 255, 255, 0.06);
 }
 
-.play-ranking-row.is-gold .play-ranking-rank { color: #92400e; background: #fde68a; }
-.play-ranking-row.is-silver .play-ranking-rank { color: #334155; background: #e2e8f0; }
-.play-ranking-row.is-bronze .play-ranking-rank { color: #9a3412; background: #fdba74; }
+.play-ranking-row.is-gold .play-ranking-rank { color: #1b1712; background: var(--pf-gold); }
+.play-ranking-row.is-silver .play-ranking-rank { color: #1b1712; background: #cbd5e1; }
+.play-ranking-row.is-bronze .play-ranking-rank { color: #1b1712; background: #cd7f32; }
 
 .play-ranking-name {
     overflow: hidden;
@@ -1542,15 +2440,126 @@ body.is-sidebar-open .play-cta {
     white-space: nowrap;
     font-size: 13px;
     font-weight: 700;
-    color: #0f172a;
+    color: var(--pf-fg);
 }
 
 .play-ranking-score {
     text-align: right;
     font-size: 13px;
     font-weight: 800;
-    color: var(--link);
+    color: var(--pf-gold);
     font-variant-numeric: tabular-nums;
+}
+
+.play-ranking-foot {
+    margin-top: 12px;
+    font-size: 12px;
+    text-align: center;
+    color: var(--pf-muted);
+}
+
+/* Narrow desktop / tablet: game on the left, info and ranking stacked on the right. */
+@media (max-width: 1100px) {
+    .pv-layout {
+        grid-template-columns: auto minmax(240px, 320px);
+        gap: 24px;
+    }
+
+    .pv-stage {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+
+    .pv-info {
+        position: static;
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .play-ranking {
+        position: static;
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .play-ranking-list {
+        max-height: 320px;
+    }
+
+    .pv-note {
+        display: none;
+    }
+}
+
+/* Phone: game first and as big as the screen allows. */
+@media (max-width: 700px) {
+    .play-header-inner {
+        height: 52px;
+        padding: 0 12px;
+    }
+
+    .play-back-label {
+        display: none;
+    }
+
+    .play-logo {
+        height: 30px;
+    }
+
+    .pv-layout {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 12px 12px 32px;
+        gap: 20px;
+    }
+
+    .pv-stage,
+    .pv-info,
+    .play-ranking {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .pv-stage {
+        order: -1;
+    }
+
+    .play-frame-wrap {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: calc(100dvh - 76px);
+        max-width: calc((100dvh - 76px) * 9 / 16);
+        margin: 0 auto;
+        border-radius: 16px;
+    }
+
+    .pv-info {
+        display: block;
+    }
+
+    .pv-title {
+        font-size: 28px;
+    }
+
+    .pv-actions {
+        margin-top: 16px;
+    }
+
+    .play-ranking {
+        position: static;
+    }
+
+    .play-ranking-list {
+        max-height: none;
+    }
+
+    .ph-hero {
+        padding: calc(var(--header-h) + 40px) 0 40px;
+    }
+
+    .ph-list {
+        padding-top: 40px;
+    }
 }
 
 
@@ -1847,7 +2856,7 @@ body.season-sheet::before {
     }
 }
 
-/* One column for game cards and portfolio items. */
+/* One column for game cards and portfolio sections. */
 @media (max-width: 800px) {
     .games-showcase-grid {
         grid-template-columns: 1fr;
@@ -1861,16 +2870,89 @@ body.season-sheet::before {
         min-height: 260px;
     }
 
-    .portfolio-item {
+    .pf-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .pf-hero-copy {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .pf-emblem {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+        width: 200px;
+        margin: -12px 0 12px -24px;
+    }
+
+    /* Stack the art on top and fade it into the text below. */
+    .pf-work {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .pf-work-media,
+    .pf-work:nth-of-type(even) .pf-work-media {
+        position: relative;
+        left: auto;
+        right: auto;
+        width: 100%;
+        height: 240px;
+        z-index: 0;
+    }
+
+    .pf-work-media,
+    .pf-work:nth-of-type(even) .pf-work-media {
+        -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    }
+
+    .pf-work-media::after,
+    .pf-work:nth-of-type(even) .pf-work-media::after {
+        display: none;
+    }
+
+    .pf-work-body,
+    .pf-work:nth-of-type(even) .pf-work-body {
+        grid-column: 1;
+        grid-row: auto;
+        padding: 8px 22px 30px;
+    }
+
+    .pf-work--soon .pf-work-media {
+        position: absolute;
+        height: auto;
+        inset: 0;
+    }
+
+    .pf-work--soon .pf-work-body {
+        position: relative;
+        padding-top: 30px;
+    }
+
+    .pf-split {
         grid-template-columns: 1fr;
     }
 
-    .portfolio-media {
-        min-height: 220px;
+    .pf-split .pf-heading {
+        position: static;
     }
 
-    .portfolio-body {
-        padding: 24px 22px 28px;
+    .pf-notes {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .pf-mini {
+        grid-template-columns: 96px minmax(0, 1fr);
+    }
+
+    .pf-mini-link {
+        grid-column: 1 / -1;
+        justify-self: start;
     }
 }
 
@@ -1974,22 +3056,42 @@ body.season-sheet::before {
         padding: 24px 0 56px;
     }
 
-    .page-hero {
-        padding-top: calc(var(--header-h) + 40px);
+    .pf-hero {
+        padding: calc(var(--header-h) + 48px) 0 64px;
+    }
+
+    .pf-section {
+        padding: 64px 0;
+    }
+
+    .pf-story {
+        grid-template-columns: 1fr;
     }
 
     .play-cta {
         left: 12px;
         bottom: 20px;
+        gap: 9px;
+        padding: 7px 16px 7px 7px;
     }
 
-    .play-cta-visual {
-        width: 148px;
-        height: 148px;
+    /* Smaller on phones so it does not cover the game cards. */
+    .play-cta-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .play-cta-icon svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .play-cta-kicker {
+        font-size: 9px;
     }
 
     .play-cta-label {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .top-btn {
@@ -1998,38 +3100,6 @@ body.season-sheet::before {
         font-size: 15px;
     }
 
-    .play-header-inner {
-        flex-wrap: wrap;
-        padding: 10px 16px;
-    }
-
-    .play-header-spacer {
-        display: none;
-    }
-
-    .play-main {
-        grid-template-columns: 1fr;
-        padding: 16px;
-    }
-
-    .play-frame-wrap {
-        width: min(100%, 420px);
-        height: auto;
-        max-height: 75vh;
-        min-height: 280px;
-        margin: 0 auto;
-    }
-
-    .play-ranking {
-        order: 2;
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto;
-    }
-
-    .play-ranking-list {
-        max-height: none;
-    }
 }
 
 /* Phone landscape and small phones: stack the intro. */

@@ -47,13 +47,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=5">
+    <link rel="stylesheet" href="/css/style.css?v=13">
 </head>
 <body>
 <!-- layout:header -->
 <script src="/js/theme-catalog.js?v=4"></script>
 <script src="/js/theme-schedule.js?v=4"></script>
-<script src="/js/theme.js?v=4"></script>
+<script src="/js/theme.js?v=5"></script>
 
 <a class="skip-link" href="#main" data-en="Skip to content">본문 바로가기</a>
 
@@ -68,7 +68,7 @@
         <nav class="header-menu" aria-label="주 메뉴" data-en-aria-label="Main menu">
             <ul class="header-menu-list">
                 <li class="menu-item"><a href="/#about" data-en="About">울림게임즈</a></li>
-                <li class="menu-item"><a href="/#games" data-en="Games">게임소개</a></li>
+                <li class="menu-item"><a href="/games.html" data-en="Games">게임소개</a></li>
                 <li class="menu-item"><a href="#" data-en="News">소식</a></li>
                 <li class="menu-item"><a href="#" data-en="Support">고객지원</a></li>
             </ul>
@@ -109,10 +109,10 @@
                 <a href="/portfolio.html" data-en="Portfolio">포트폴리오</a>
             </div>
             <div class="dropdown-column">
-                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
-                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
-                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
+                <a href="/games.html#knight-tour" data-en="Knight's Tour">나이트 투어</a>
+                <a href="/games.html#charge-drive" data-en="Charge Drive">차지드라이브</a>
+                <a href="/games.html#project-latte" data-en="Project Latte">프로젝트 Latte</a>
+                <a href="/games.html#puzzling-together">Puzzling Together</a>
             </div>
             <div class="dropdown-column">
                 <a href="#" data-en="Notices">공지사항</a>
@@ -141,10 +141,10 @@
         <div class="sidebar-group">
             <button class="sidebar-title-btn" type="button" aria-expanded="false" aria-controls="sidebarSub2" data-en="Games">게임소개</button>
             <div class="sidebar-sub-menu" id="sidebarSub2">
-                <a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a>
-                <a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a>
-                <a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a>
-                <a href="/#games" data-en="Project PZ">프로젝트 PZ</a>
+                <a href="/games.html#knight-tour" data-en="Knight's Tour">나이트 투어</a>
+                <a href="/games.html#charge-drive" data-en="Charge Drive">차지드라이브</a>
+                <a href="/games.html#project-latte" data-en="Project Latte">프로젝트 Latte</a>
+                <a href="/games.html#puzzling-together">Puzzling Together</a>
             </div>
         </div>
 
@@ -219,10 +219,15 @@
 
     <section class="games-showcase" id="games" aria-labelledby="gamesTitle">
         <div class="page-inner">
-            <header class="section-head">
-                <p class="section-kicker">GAMES</p>
-                <h2 class="section-title" id="gamesTitle" data-en="Games by Ullim">울림이 만드는 게임</h2>
-                <p class="section-desc" data-en="Our released games come first, alongside games you can play right in your browser.">출시한 게임을 앞에 두고, 브라우저에서 하는 게임도 같이 모읍니다.</p>
+            <header class="section-head section-head--row">
+                <div>
+                    <p class="section-kicker">GAMES</p>
+                    <h2 class="section-title" id="gamesTitle" data-en="Games">게임소개</h2>
+                </div>
+                <a class="section-more" href="/games.html">
+                    <span data-en="View all">전체보기</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
             </header>
 
             <div class="games-showcase-grid">
@@ -248,6 +253,7 @@
                     <div class="game-panel-body">
                         <span class="game-panel-tag is-store" data-en="Mobile">모바일</span>
                         <h3 class="game-panel-name" data-en="Charge Drive">차지드라이브</h3>
+                        <p class="game-panel-copy" data-en="A casual driving race where you grow dramatically in one short run.">짧은 한 판으로 극적으로 성장하는 캐주얼 드라이브 레이싱.</p>
                         <ul class="store-badges" aria-label="차지드라이브 받는 곳" data-en-aria-label="Where to get Charge Drive">
                             <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" class="store-badge" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer"><img src="/images/brand/google-play.svg" alt="" width="18" height="18">Google Play</a></li>
                             <li><a class="store-badge" data-link="chargeDriveTossUrl"><img src="/images/brand/toss.svg" alt="" width="18" height="18"><span data-en="Toss">토스</span></a></li>
@@ -255,14 +261,15 @@
                     </div>
                 </article>
 
-                <article class="game-panel game-panel--small is-linked">
-                    <div class="game-panel-media game-panel-media--fruit" aria-hidden="true"></div>
+                <article class="game-panel game-panel--small">
+                    <div class="game-panel-media game-panel-media--latte" aria-hidden="true">
+                        <span class="game-panel-word">Latte</span>
+                    </div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
-                    <a href="/play/fruit-valley/" class="game-panel-hit" data-link="fruitValleyPlayUrl" aria-label="후르츠발리 웹에서 바로 플레이" data-en-aria-label="Play Fruit Volley in your browser"></a>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag is-live" data-en="Web">웹</span>
-                        <h3 class="game-panel-name" data-en="Fruit Volley">후르츠발리</h3>
-                        <p class="game-panel-copy" data-en="A casual volleyball game full of summer vibes.">여름 감성의 캐주얼 발리볼.</p>
+                        <span class="game-panel-tag" data-en="In preparation · Mobile">준비 중 · 모바일</span>
+                        <h3 class="game-panel-name" data-en="Project Latte">프로젝트 Latte</h3>
+                        <p class="game-panel-copy" data-en="A mobile game about making latte art. Coming to Google Play and Toss.">라떼아트를 그리는 모바일 게임. 구글플레이와 토스 출시를 준비하고 있습니다.</p>
                     </div>
                 </article>
 
@@ -270,8 +277,9 @@
                     <div class="game-panel-media game-panel-media--pz" aria-hidden="true"></div>
                     <div class="game-panel-fade" aria-hidden="true"></div>
                     <div class="game-panel-body">
-                        <span class="game-panel-tag" data-en="Coming Q1 2027">2027년 1분기 출시 예정</span>
-                        <h3 class="game-panel-name" data-en="Project PZ">프로젝트 PZ</h3>
+                        <span class="game-panel-tag" data-en="In preparation · Steam">준비 중 · Steam</span>
+                        <h3 class="game-panel-name">Puzzling Together</h3>
+                        <p class="game-panel-copy" data-en="A 3D co-op puzzle game you solve with friends. Coming to Steam in the first half of 2027.">친구와 함께 머리를 맞대는 3D 협동 퍼즐 게임. 2027년 상반기 스팀 출시 예정.</p>
                     </div>
                 </article>
             </div>
@@ -326,10 +334,11 @@
             <div class="footer-menu-group">
                 <h2 class="menu-title" data-en="Games">게임소개</h2>
                 <ul>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.UllimGames.KnightsTour&hl=ko" data-link="nightTourPlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Knight's Tour">나이트 투어</a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.ullimgames.chargedrive&hl=ko" data-link="chargeDrivePlayStoreUrl" target="_blank" rel="noopener noreferrer" data-en="Charge Drive">차지드라이브</a></li>
-                    <li><a href="/play/fruit-valley/" data-link="fruitValleyPlayUrl" data-en="Fruit Volley">후르츠발리</a></li>
-                    <li><a href="/#games" data-en="Project PZ">프로젝트 PZ</a></li>
+                    <li><a href="/games.html#knight-tour" data-en="Knight's Tour">나이트 투어</a></li>
+                    <li><a href="/games.html#charge-drive" data-en="Charge Drive">차지드라이브</a></li>
+                    <li><a href="/games.html#project-latte" data-en="Project Latte">프로젝트 Latte</a></li>
+                    <li><a href="/games.html#puzzling-together">Puzzling Together</a></li>
+                    <li><a href="/play/" data-en="Play Zone">플레이 공간</a></li>
                 </ul>
             </div>
             <div class="footer-menu-group">
@@ -350,22 +359,22 @@
     <a class="admin-entry" href="/admin/" rel="nofollow" data-en="Admin">관리</a>
 </footer>
 
+<a href="/play/" id="playZoneCta" class="play-cta" aria-label="플레이 공간: 브라우저에서 바로 하는 웹게임" data-en-aria-label="Play Zone: web games you can play in your browser">
+    <span class="play-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v1.5a3.5 3.5 0 0 1-6.3 2.1L14.5 14h-5l-1.2 1.6A3.5 3.5 0 0 1 2 13.5V12a4 4 0 0 1 4-4z"/><path d="M7.5 10.5v3M6 12h3"/><path d="M16 10.6h.01M17.8 12.8h.01"/></svg>
+    </span>
+    <span class="play-cta-text" aria-hidden="true">
+        <span class="play-cta-kicker">PLAY ZONE</span>
+        <span class="play-cta-label" data-en="Play Zone">플레이 공간</span>
+    </span>
+</a>
+
 <button id="backToTop" class="top-btn" type="button" aria-label="맨 위로" data-en-aria-label="Back to top">TOP</button>
 
 <script src="/js/games-config.js"></script>
-<script src="/js/site.js?v=3"></script>
+<script src="/js/site.js?v=4"></script>
 <script src="/js/i18n.js?v=1"></script>
 <!-- /layout:footer -->
-
-<a href="/play/fruit-valley/" id="fruitValleyCta" class="play-cta" aria-label="후르츠발리 웹에서 바로 플레이" data-en-aria-label="Play Fruit Volley in your browser">
-    <span class="play-cta-visual">
-        <img class="play-cta-img" src="/images/cta-fruit-valley.webp" alt="" width="176" height="176"
-             onerror="this.closest('.play-cta').classList.add('is-fallback');">
-        <span class="play-cta-text" aria-hidden="true">
-            <span class="play-cta-label" data-en-html="Play&lt;br&gt;now">지금 바로<br>플레이</span>
-        </span>
-    </span>
-</a>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/home.js?v=3"></script>

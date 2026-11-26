@@ -16,7 +16,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ["index.html", "portfolio.html", "privacy.html", "terms.html"]
+PAGES = ["index.html", "games.html", "portfolio.html", "play/index.html", "privacy.html", "terms.html"]
 PARTIALS = ["header", "footer"]
 
 

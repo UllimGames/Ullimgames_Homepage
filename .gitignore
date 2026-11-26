@@ -7,3 +7,6 @@
 # Old portfolio materials: local reference only
 _portfolio-reference/*
 !_portfolio-reference/README.md
+
+# Raw game photos (source only; picked images live in images/games/)
+portfolio-game-photos/

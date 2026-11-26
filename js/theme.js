@@ -142,6 +142,9 @@
         show: show
     };
 
+    // Pages marked <html data-no-theme> (e.g. portfolio) keep the plain brand look.
+    if (document.documentElement.hasAttribute("data-no-theme")) return;
+
     var initial = scheduledTheme();
     applySkin(initial);
     current = null;
