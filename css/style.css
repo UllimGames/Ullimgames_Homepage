@@ -18,6 +18,10 @@
     --text-muted: #6b5c4e;
     --brand: #8f3d24;
     --brand-deep: #5c2a1a;
+    /* Company colors. Season themes change --brand, never these. */
+    --ullim-brand: #8f3d24;
+    --ullim-brand-deep: #5c2a1a;
+    --ullim-cream: #fbf3e6;
     --line: #e4d5c3;
     --link: #0369a1;
     --focus: #0284c7;
@@ -803,9 +807,9 @@ html.i18n-pending body {
         linear-gradient(90deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.35) 55%, rgba(15, 23, 42, 0.05) 100%),
         url("../images/games/charge-drive/card.webp");
     /* Full key art with the game logo painted out, so it does not clash with the card title.
-       Pushed down a little; the strip above is filled with the art's own sky color. */
+       Aimed low so the road at the bottom of the art shows. */
     background-color: #f5feff;
-    background-position: center, 70% 14px;
+    background-position: center, 70% 80%;
 }
 
 .game-panel-media--fruit {
@@ -970,16 +974,61 @@ a.store-badge[href]:hover {
     --pf-fg: #f3ece0;
     --pf-muted: #b8aa94;
     --pf-gold: #d9a85b;
-    --pf-gold-soft: rgba(217, 168, 91, 0.14);
-    --pf-line: rgba(217, 168, 91, 0.18);
+    --pf-gold-soft: color-mix(in srgb, var(--pf-gold) 14%, transparent);
+    --pf-line: color-mix(in srgb, var(--pf-gold) 18%, transparent);
     --pf-serif: "Noto Serif KR", "Nanum Myeongjo", serif;
+    --pf-gold-deep: #e8bd77;
+    --pf-on-gold: #1b1712;
+    --pf-live: #6fd3a0;
+    --pf-shade: var(--pf-shade);
+    --pf-shadow: rgba(0, 0, 0, 0.45);
 
     background: var(--pf-bg);
     color: var(--pf-fg);
 }
 
+/*
+   Main-site skin for pages that reuse the portfolio layout (games, play zone).
+   Colors and fonts come from the main page, the background from the season theme.
+   The dark-gold portfolio look stays on portfolio.html only.
+*/
+.pf.site-skin {
+    --pf-bg: transparent;
+    --pf-panel: var(--bg-elevated);
+    --pf-fg: var(--text);
+    --pf-muted: var(--text-muted);
+    --pf-gold: var(--brand);
+    --pf-gold-deep: var(--brand-deep);
+    --pf-gold-soft: color-mix(in srgb, var(--brand) 10%, transparent);
+    --pf-line: var(--line);
+    --pf-serif: var(--font-title);
+    --pf-on-gold: #ffffff;
+    --pf-live: #15803d;
+    --pf-shade: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+    --pf-shadow: color-mix(in srgb, var(--brand-deep) 16%, transparent);
+
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    color: var(--text);
+}
+
+.site-skin :is(.ph-title, .ph-card-name, .pv-title, .play-ranking-title, .pf-work-name, .pf-media-word, .pf-heading) {
+    font-weight: 400;
+}
+
+.site-skin :is(.ph-title, .pv-title, .pf-work-name) {
+    color: var(--brand-deep);
+}
+
+.site-skin .pf-work,
+.site-skin .ph-card,
+.site-skin .play-ranking {
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--brand-deep) 8%, transparent);
+}
+
 .pf ::selection {
-    background: rgba(217, 168, 91, 0.32);
+    background: color-mix(in srgb, var(--pf-gold) 32%, transparent);
 }
 
 /* Hero */
@@ -989,7 +1038,7 @@ a.store-badge[href]:hover {
     padding: calc(var(--header-h) + 96px) 0 112px;
     border-bottom: 1px solid var(--pf-line);
     background:
-        radial-gradient(ellipse 70% 55% at 50% -12%, rgba(217, 168, 91, 0.16), transparent 60%),
+        radial-gradient(ellipse 70% 55% at 50% -12%, color-mix(in srgb, var(--pf-gold) 16%, transparent), transparent 60%),
         var(--pf-bg);
 }
 
@@ -1080,8 +1129,8 @@ a.store-badge[href]:hover {
     width: 46%;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: radial-gradient(circle, #f6ecd9 0%, #ead9b8 52%, rgba(217, 168, 91, 0.55) 72%, transparent 74%);
-    box-shadow: 0 0 120px 30px rgba(217, 168, 91, 0.22);
+    background: radial-gradient(circle, #f6ecd9 0%, #ead9b8 52%, color-mix(in srgb, var(--pf-gold) 55%, transparent) 72%, transparent 74%);
+    box-shadow: 0 0 120px 30px color-mix(in srgb, var(--pf-gold) 22%, transparent);
 }
 
 .pf-ripple {
@@ -1191,7 +1240,7 @@ a.store-badge[href]:hover {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent 40%, rgba(35, 30, 24, 0.55) 100%);
+    background: linear-gradient(90deg, transparent 40%, var(--pf-shade) 100%);
 }
 
 .pf-work-body {
@@ -1209,7 +1258,7 @@ a.store-badge[href]:hover {
 }
 
 .pf-work:nth-of-type(even) .pf-work-media::after {
-    background: linear-gradient(270deg, transparent 40%, rgba(35, 30, 24, 0.55) 100%);
+    background: linear-gradient(270deg, transparent 40%, var(--pf-shade) 100%);
 }
 
 .pf-work:nth-of-type(even) .pf-work-body {
@@ -1222,7 +1271,7 @@ a.store-badge[href]:hover {
     background-color: #cfe3ee;
     /* Logo painted out (card.webp) so no title letters show behind the fade. */
     background-image: url("../images/games/charge-drive/card.webp");
-    background-position: 62% center;
+    background-position: 62% 80%;
 }
 
 .pf-work-media--pz {
@@ -1230,7 +1279,7 @@ a.store-badge[href]:hover {
     -webkit-mask-image: none;
     mask-image: none;
     background:
-        repeating-linear-gradient(135deg, rgba(217, 168, 91, 0.05) 0 16px, transparent 16px 32px),
+        repeating-linear-gradient(135deg, color-mix(in srgb, var(--pf-gold) 5%, transparent) 0 16px, transparent 16px 32px),
         var(--pf-panel);
 }
 
@@ -1269,7 +1318,7 @@ a.store-badge[href]:hover {
     font-weight: 700;
     font-size: clamp(64px, 9vw, 140px);
     line-height: 1;
-    color: rgba(217, 168, 91, 0.14);
+    color: color-mix(in srgb, var(--pf-gold) 14%, transparent);
 }
 
 .pf-status {
@@ -1281,7 +1330,7 @@ a.store-badge[href]:hover {
 }
 
 .pf-status.is-live {
-    color: #6fd3a0;
+    color: var(--pf-live);
 }
 
 .pf-status.is-live::before {
@@ -1371,12 +1420,12 @@ a.store-badge[href]:hover {
 }
 
 .pf .store-badge {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(243, 236, 224, 0.28);
+    background: color-mix(in srgb, var(--pf-fg, #ffffff) 6%, transparent);
+    border-color: color-mix(in srgb, var(--pf-fg) 28%, transparent);
 }
 
 .pf a.store-badge[href]:hover {
-    background: rgba(217, 168, 91, 0.2);
+    background: color-mix(in srgb, var(--pf-gold) 20%, transparent);
     border-color: var(--pf-gold);
 }
 
@@ -1448,7 +1497,7 @@ a.store-badge[href]:hover {
 
 .pf-mini-link:hover {
     background: var(--pf-gold);
-    color: var(--pf-bg);
+    color: var(--pf-on-gold);
 }
 
 /* Timeline */
@@ -1850,7 +1899,7 @@ body.is-sidebar-open .top-btn {
     display: none;
 }
 
-/* Fruit Valley seasonal CTA (summer accent, not the company palette). */
+/* Play Zone button. Fixed company colors, so it looks the same on every season theme. */
 .play-cta {
     position: fixed;
     left: 24px;
@@ -1859,19 +1908,20 @@ body.is-sidebar-open .top-btn {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 22px 10px 10px;
+    padding: 8px 22px 8px 8px;
     border-radius: 999px;
-    background: #1b1712;
-    border: 1px solid rgba(217, 168, 91, 0.6);
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28), 0 0 0 4px rgba(217, 168, 91, 0.08);
-    color: #f3ece0;
-    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    background: var(--ullim-brand);
+    border: 0;
+    box-shadow: 0 12px 28px rgba(92, 42, 26, 0.32);
+    color: #ffffff;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
 }
 
 .play-cta:hover {
-    color: #f3ece0;
+    color: #ffffff;
+    background: var(--ullim-brand-deep);
     transform: translateY(-3px);
-    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.34), 0 0 0 5px rgba(217, 168, 91, 0.16);
+    box-shadow: 0 16px 34px rgba(92, 42, 26, 0.4);
 }
 
 .play-cta.is-near-footer,
@@ -1890,16 +1940,17 @@ body.is-sidebar-open .play-cta {
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    background: #d9a85b;
-    color: #1b1712;
+    background: var(--ullim-cream);
+    color: var(--ullim-brand);
 }
 
 .play-cta-icon svg {
-    width: 26px;
-    height: 26px;
+    flex: none;
+    width: 28px;
+    height: 28px;
     fill: none;
     stroke: currentColor;
-    stroke-width: 1.9;
+    stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
@@ -1914,7 +1965,7 @@ body.is-sidebar-open .play-cta {
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.24em;
-    color: #d9a85b;
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .play-cta-label {
@@ -1929,8 +1980,8 @@ body.is-sidebar-open .play-cta {
 /* 11. Web games: hub (/play/) and game page (/play/{id}/)        */
 /* ============================================================= */
 /*
-   Same dark "night stage" look as the portfolio (.pf tokens).
-   Header strip stays light because the logo is black.
+   Reuses the portfolio layout with the main-site skin (.site-skin):
+   main page colors and fonts, season theme background.
 */
 
 /* ---------- Hub ---------- */
@@ -1938,7 +1989,7 @@ body.is-sidebar-open .play-cta {
     position: relative;
     padding: calc(var(--header-h) + 80px) 0 56px;
     background:
-        radial-gradient(ellipse 70% 60% at 50% -10%, rgba(217, 168, 91, 0.18), transparent 60%),
+        radial-gradient(ellipse 70% 60% at 50% -10%, color-mix(in srgb, var(--pf-gold) 18%, transparent), transparent 60%),
         var(--pf-bg);
     border-bottom: 1px solid var(--pf-line);
     text-align: center;
@@ -2000,8 +2051,8 @@ body.is-sidebar-open .play-cta {
 
 .ph-card:not(.ph-card--soon):hover {
     transform: translateY(-6px);
-    border-color: rgba(217, 168, 91, 0.55);
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+    border-color: color-mix(in srgb, var(--pf-gold) 55%, transparent);
+    box-shadow: 0 20px 44px var(--pf-shadow);
 }
 
 .ph-card-media {
@@ -2037,14 +2088,14 @@ body.is-sidebar-open .play-cta {
     align-items: center;
     justify-content: center;
     background:
-        repeating-linear-gradient(135deg, rgba(217, 168, 91, 0.06) 0 14px, transparent 14px 28px),
-        #1f1a15;
+        repeating-linear-gradient(135deg, color-mix(in srgb, var(--pf-gold) 6%, transparent) 0 14px, transparent 14px 28px),
+        var(--pf-panel);
 }
 
 .ph-card-media--soon span {
     font-family: var(--pf-serif);
     font-size: clamp(40px, 5vw, 64px);
-    color: rgba(217, 168, 91, 0.22);
+    color: color-mix(in srgb, var(--pf-gold) 22%, transparent);
     letter-spacing: 0.06em;
 }
 
@@ -2083,7 +2134,7 @@ body.is-sidebar-open .play-cta {
     padding: 10px 20px;
     border-radius: 999px;
     background: var(--pf-gold);
-    color: var(--pf-bg);
+    color: var(--pf-on-gold);
     font-size: 14px;
     font-weight: 800;
 }
@@ -2112,8 +2163,8 @@ body.is-sidebar-open .play-cta {
     gap: 5px;
     padding: 4px 10px 4px 8px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: color-mix(in srgb, var(--pf-fg, #ffffff) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pf-fg, #ffffff) 12%, transparent);
     font-size: 12px;
     font-weight: 700;
     color: var(--pf-fg, #ffffff);
@@ -2142,8 +2193,13 @@ body.is-sidebar-open .play-cta {
 }
 
 /* ---------- Game page ---------- */
+/* Season pieces fall behind the game, never across it. */
+body.play-page .season-pin {
+    z-index: 0;
+}
+
 body.play-page {
-    background: #1b1712;
+    background: var(--bg);
     min-height: 100vh;
     min-height: 100dvh;
 }
@@ -2200,7 +2256,7 @@ body.play-page {
     min-height: calc(100vh - 57px);
     min-height: calc(100dvh - 57px);
     background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(217, 168, 91, 0.14), transparent 65%),
+        radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in srgb, var(--pf-gold) 14%, transparent), transparent 65%),
         var(--pf-bg);
 }
 
@@ -2274,16 +2330,16 @@ body.play-page {
 
 .pv-btn:hover {
     background: var(--pf-gold);
-    color: var(--pf-bg);
+    color: var(--pf-on-gold);
 }
 
 .pv-btn.is-primary {
     background: var(--pf-gold);
-    color: var(--pf-bg);
+    color: var(--pf-on-gold);
 }
 
 .pv-btn.is-primary:hover {
-    background: #e8bd77;
+    background: var(--pf-gold-deep);
 }
 
 .pv-btn svg {
@@ -2304,7 +2360,7 @@ body.play-page {
     margin-top: 20px;
     font-size: 13px;
     line-height: 1.6;
-    color: rgba(184, 170, 148, 0.8);
+    color: var(--pf-muted);
 }
 
 /* Center: the game, framed like a lit stage */
@@ -2324,11 +2380,11 @@ body.play-page {
     border-radius: 22px;
     overflow: hidden;
     background: #0a1a22;
-    border: 1px solid rgba(217, 168, 91, 0.45);
+    border: 1px solid color-mix(in srgb, var(--pf-gold) 45%, transparent);
     box-shadow:
-        0 0 0 6px rgba(217, 168, 91, 0.06),
-        0 24px 60px rgba(0, 0, 0, 0.55),
-        0 0 80px rgba(217, 168, 91, 0.12);
+        0 0 0 6px color-mix(in srgb, var(--pf-gold) 6%, transparent),
+        0 24px 60px var(--pf-shadow),
+        0 0 80px color-mix(in srgb, var(--pf-gold) 12%, transparent);
 }
 
 .play-frame-wrap:fullscreen {
@@ -2408,11 +2464,11 @@ body.play-page {
     align-items: center;
     padding: 9px 8px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(217, 168, 91, 0.1);
+    background: color-mix(in srgb, var(--pf-fg) 3%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pf-gold) 10%, transparent);
 }
 
-.play-ranking-row.is-gold { border-color: rgba(217, 168, 91, 0.6); background: rgba(217, 168, 91, 0.12); }
+.play-ranking-row.is-gold { border-color: color-mix(in srgb, var(--pf-gold) 60%, transparent); background: color-mix(in srgb, var(--pf-gold) 12%, transparent); }
 .play-ranking-row.is-silver { border-color: rgba(203, 213, 225, 0.4); }
 .play-ranking-row.is-bronze { border-color: rgba(205, 127, 50, 0.45); }
 
@@ -2427,10 +2483,10 @@ body.play-page {
     font-size: 12px;
     font-weight: 800;
     color: var(--pf-muted);
-    background: rgba(255, 255, 255, 0.06);
+    background: color-mix(in srgb, var(--pf-fg, #ffffff) 6%, transparent);
 }
 
-.play-ranking-row.is-gold .play-ranking-rank { color: #1b1712; background: var(--pf-gold); }
+.play-ranking-row.is-gold .play-ranking-rank { color: var(--pf-on-gold); background: var(--pf-gold); }
 .play-ranking-row.is-silver .play-ranking-rank { color: #1b1712; background: #cbd5e1; }
 .play-ranking-row.is-bronze .play-ranking-rank { color: #1b1712; background: #cd7f32; }
 
@@ -3082,8 +3138,8 @@ body.season-sheet::before {
     }
 
     .play-cta-icon svg {
-        width: 21px;
-        height: 21px;
+        width: 23px;
+        height: 23px;
     }
 
     .play-cta-kicker {
