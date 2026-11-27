@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Serif+KR:wght@600;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="/css/style.css?v=14">
+    <link rel="stylesheet" href="/css/style.css?v=16">
 </head>
 <body class="play-page">
 <script src="/js/theme-catalog.js?v=4"></script>
@@ -46,7 +46,8 @@
     </div>
 </header>
 
-<main class="pf pv site-skin">
+<!-- Game shape: data-orientation="portrait" (9:16) or "landscape" (16:9). -->
+<main class="pf pv site-skin" data-orientation="portrait">
     <div class="pv-layout">
         <section class="pv-info" aria-labelledby="pvTitle">
             <p class="pv-kicker">WEB GAME</p>
@@ -86,75 +87,11 @@
                 ></iframe>
             </div>
         </section>
-
-        <!-- Ranking UI ready; data wiring stays OFF until server exists (data-ranking-enabled). -->
-        <aside class="play-ranking" aria-label="후르츠발리 랭킹" data-en-aria-label="Fruit Volley ranking" data-ranking-enabled="false">
-            <div class="play-ranking-head">
-                <p class="play-ranking-kicker">FRUIT VOLLEY</p>
-                <h2 class="play-ranking-title" data-en="Ranking">랭킹</h2>
-            </div>
-
-            <div class="play-ranking-cols" aria-hidden="true">
-                <span data-en="Rank">순위</span>
-                <span data-en="Player">닉네임</span>
-                <span data-en="Score">점수</span>
-            </div>
-
-            <ol class="play-ranking-list" id="fruitValleyRankingList">
-                <!-- Rows filled by JS (empty placeholders until server ranking is enabled) -->
-            </ol>
-            <p class="play-ranking-foot" data-en="Ranking opens soon.">랭킹은 곧 열립니다.</p>
-        </aside>
     </div>
 </main>
 
 <script>
     (function () {
-        var RANK_LIMIT = 10;
-        var listEl = document.getElementById('fruitValleyRankingList');
-        var boardEl = document.querySelector('.play-ranking');
-
-        function escapeText(value) {
-            return String(value).replace(/[&<>"']/g, function (c) {
-                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-            });
-        }
-
-        function renderRows(entries) {
-            if (!listEl) return;
-            var html = '';
-            for (var i = 0; i < RANK_LIMIT; i++) {
-                var entry = entries[i];
-                var rank = i + 1;
-                var name = entry && entry.name ? escapeText(entry.name) : '—';
-                var score = entry && typeof entry.score === 'number' ? entry.score.toLocaleString('ko-KR') : '—';
-                var medal = rank === 1 ? ' is-gold' : rank === 2 ? ' is-silver' : rank === 3 ? ' is-bronze' : '';
-                html +=
-                    '<li class="play-ranking-row' + medal + '">' +
-                    '<span class="play-ranking-rank">' + rank + '</span>' +
-                    '<span class="play-ranking-name">' + name + '</span>' +
-                    '<span class="play-ranking-score">' + score + '</span>' +
-                    '</li>';
-            }
-            listEl.innerHTML = html;
-        }
-
-        // Empty board for now (ranking storage OFF)
-        renderRows([]);
-
-        window.UllimFruitValleyRanking = {
-            enabled: false,
-            render: renderRows,
-            submitScore: function () {
-                console.info('[Ullim] Ranking is disabled. Wire server later, then set enabled = true.');
-                return Promise.resolve({ ok: false, reason: 'disabled' });
-            },
-            setEnabled: function (on) {
-                this.enabled = !!on;
-                if (boardEl) boardEl.setAttribute('data-ranking-enabled', on ? 'true' : 'false');
-            }
-        };
-
         // Full screen: only shown where the browser supports it (not on iPhone Safari).
         var fsBtn = document.getElementById('pvFullscreen');
         var wrap = document.getElementById('pvFrameWrap');

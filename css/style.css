@@ -18,10 +18,12 @@
     --text-muted: #6b5c4e;
     --brand: #8f3d24;
     --brand-deep: #5c2a1a;
-    /* Company colors. Season themes change --brand, never these. */
-    --ullim-brand: #8f3d24;
-    --ullim-brand-deep: #5c2a1a;
-    --ullim-cream: #fbf3e6;
+    /* Company colors, taken from the Ullim logo (black U, violet "GAMES").
+       Season themes change --brand, never these. */
+    --ullim-ink: #111017;
+    --ullim-violet: #7f5ddf;
+    --ullim-violet-deep: #4a3488;
+    --ullim-violet-soft: #c9b8f5;
     --line: #e4d5c3;
     --link: #0369a1;
     --focus: #0284c7;
@@ -980,7 +982,7 @@ a.store-badge[href]:hover {
     --pf-gold-deep: #e8bd77;
     --pf-on-gold: #1b1712;
     --pf-live: #6fd3a0;
-    --pf-shade: var(--pf-shade);
+    --pf-shade: rgba(35, 30, 24, 0.55);
     --pf-shadow: rgba(0, 0, 0, 0.45);
 
     background: var(--pf-bg);
@@ -1013,7 +1015,7 @@ a.store-badge[href]:hover {
     color: var(--text);
 }
 
-.site-skin :is(.ph-title, .ph-card-name, .pv-title, .play-ranking-title, .pf-work-name, .pf-media-word, .pf-heading) {
+.site-skin :is(.ph-title, .ph-card-name, .pv-title, .pf-work-name, .pf-media-word, .pf-heading) {
     font-weight: 400;
 }
 
@@ -1022,8 +1024,7 @@ a.store-badge[href]:hover {
 }
 
 .site-skin .pf-work,
-.site-skin .ph-card,
-.site-skin .play-ranking {
+.site-skin .ph-card {
     box-shadow: 0 10px 30px color-mix(in srgb, var(--brand-deep) 8%, transparent);
 }
 
@@ -1899,7 +1900,7 @@ body.is-sidebar-open .top-btn {
     display: none;
 }
 
-/* Play Zone button. Fixed company colors, so it looks the same on every season theme. */
+/* Play Zone button. Logo colors (ink + violet), so it looks the same on every season theme. */
 .play-cta {
     position: fixed;
     left: 24px;
@@ -1908,20 +1909,19 @@ body.is-sidebar-open .top-btn {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 8px 22px 8px 8px;
+    padding: 7px 22px 7px 7px;
     border-radius: 999px;
-    background: var(--ullim-brand);
+    background: var(--ullim-ink);
     border: 0;
-    box-shadow: 0 12px 28px rgba(92, 42, 26, 0.32);
+    box-shadow: 0 10px 24px rgba(17, 16, 23, 0.22);
     color: #ffffff;
-    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .play-cta:hover {
     color: #ffffff;
-    background: var(--ullim-brand-deep);
     transform: translateY(-3px);
-    box-shadow: 0 16px 34px rgba(92, 42, 26, 0.4);
+    box-shadow: 0 14px 30px rgba(74, 52, 136, 0.35);
 }
 
 .play-cta.is-near-footer,
@@ -1934,20 +1934,24 @@ body.is-sidebar-open .play-cta {
 
 .play-cta-icon {
     flex: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--ullim-cream);
-    color: var(--ullim-brand);
+    background: var(--ullim-violet);
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+.play-cta:hover .play-cta-icon {
+    background: var(--ullim-violet-deep);
 }
 
 .play-cta-icon svg {
-    flex: none;
-    width: 28px;
-    height: 28px;
+    display: block;
+    width: 26px;
+    height: 26px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
@@ -1965,7 +1969,7 @@ body.is-sidebar-open .play-cta {
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.24em;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--ullim-violet-soft);
 }
 
 .play-cta-label {
@@ -2051,7 +2055,6 @@ body.is-sidebar-open .play-cta {
 
 .ph-card:not(.ph-card--soon):hover {
     transform: translateY(-6px);
-    border-color: color-mix(in srgb, var(--pf-gold) 55%, transparent);
     box-shadow: 0 20px 44px var(--pf-shadow);
 }
 
@@ -2076,11 +2079,6 @@ body.is-sidebar-open .play-cta {
         radial-gradient(circle at 50% 45%, #38bdf8 0%, #0c4a6e 70%);
     background-size: auto 92%, cover;
     background-position: center 40%, center;
-    transition: transform 0.45s ease;
-}
-
-.ph-card:hover .ph-card-media--fruit {
-    transform: scale(1.04);
 }
 
 .ph-card-media--soon {
@@ -2260,15 +2258,36 @@ body.play-page {
         var(--pf-bg);
 }
 
+/*
+   Two columns: info on the left, the game on the right.
+   The game's shape comes from data-orientation on <main class="pv">:
+   portrait (9:16, default) or landscape (16:9). Other shapes: set --game-w / --game-h.
+*/
+.pv {
+    --game-w: 9;
+    --game-h: 16;
+}
+
+.pv[data-orientation="landscape"] {
+    --game-w: 16;
+    --game-h: 9;
+}
+
 .pv-layout {
     max-width: var(--page-max);
     margin: 0 auto;
     padding: 24px 24px 40px;
     display: grid;
-    grid-template-columns: minmax(220px, 300px) auto minmax(220px, 300px);
+    grid-template-columns: minmax(220px, 300px) auto;
     justify-content: center;
     align-items: start;
-    gap: 28px;
+    gap: 40px;
+}
+
+/* A wide game takes all the room it can. */
+.pv[data-orientation="landscape"] .pv-layout {
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    justify-content: stretch;
 }
 
 /* Left: title, short info and actions */
@@ -2363,35 +2382,37 @@ body.play-page {
     color: var(--pf-muted);
 }
 
-/* Center: the game, framed like a lit stage */
+/* The game */
 .pv-stage {
     display: flex;
     justify-content: center;
+    min-width: 0;
 }
 
 .play-frame-wrap {
+    /* Tallest the game may be: the screen minus the header, capped on big monitors. */
+    --frame-h: min(calc(100vh - 110px), 900px);
     position: relative;
-    /* Fill the screen height, keep a phone (9:16) shape. */
-    height: min(calc(100vh - 120px), 860px);
-    height: min(calc(100dvh - 120px), 860px);
-    min-height: 480px;
-    aspect-ratio: 9 / 16;
+    width: calc(var(--frame-h) * var(--game-w) / var(--game-h));
     max-width: 100%;
-    border-radius: 22px;
+    aspect-ratio: var(--game-w) / var(--game-h);
     overflow: hidden;
-    background: #0a1a22;
-    border: 1px solid color-mix(in srgb, var(--pf-gold) 45%, transparent);
-    box-shadow:
-        0 0 0 6px color-mix(in srgb, var(--pf-gold) 6%, transparent),
-        0 24px 60px var(--pf-shadow),
-        0 0 80px color-mix(in srgb, var(--pf-gold) 12%, transparent);
+    background: #000000;
+    box-shadow: 0 20px 50px var(--pf-shadow);
+}
+
+@supports (height: 100dvh) {
+    .play-frame-wrap {
+        --frame-h: min(calc(100dvh - 110px), 900px);
+    }
 }
 
 .play-frame-wrap:fullscreen {
+    width: 100%;
     height: 100%;
-    border-radius: 0;
-    border: 0;
-    background: #000;
+    max-width: none;
+    aspect-ratio: auto;
+    box-shadow: none;
 }
 
 .play-frame {
@@ -2400,150 +2421,48 @@ body.play-page {
     width: 100%;
     height: 100%;
     border: 0;
-    background: #0a1a22;
+    background: #000000;
 }
 
-/* Right: ranking board */
-.play-ranking {
-    position: sticky;
-    top: 80px;
-    padding: 20px 14px 14px;
-    border-radius: 20px;
-    background: var(--pf-panel);
-    border: 1px solid var(--pf-line);
-}
-
-.play-ranking-head {
-    text-align: center;
-    margin-bottom: 14px;
-}
-
-.play-ranking-kicker {
-    margin-bottom: 4px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.2em;
-    color: var(--pf-gold);
-}
-
-.play-ranking-title {
-    font-family: var(--pf-serif);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--pf-fg);
-}
-
-.play-ranking-cols,
-.play-ranking-row {
-    display: grid;
-    grid-template-columns: 40px minmax(0, 1fr) 64px;
-    gap: 8px;
-}
-
-.play-ranking-cols {
-    padding: 0 8px 8px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--pf-muted);
-}
-
-.play-ranking-cols span:last-child {
-    text-align: right;
-}
-
-.play-ranking-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-height: calc(100vh - 260px);
-    overflow-y: auto;
-}
-
-.play-ranking-row {
-    align-items: center;
-    padding: 9px 8px;
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--pf-fg) 3%, transparent);
-    border: 1px solid color-mix(in srgb, var(--pf-gold) 10%, transparent);
-}
-
-.play-ranking-row.is-gold { border-color: color-mix(in srgb, var(--pf-gold) 60%, transparent); background: color-mix(in srgb, var(--pf-gold) 12%, transparent); }
-.play-ranking-row.is-silver { border-color: rgba(203, 213, 225, 0.4); }
-.play-ranking-row.is-bronze { border-color: rgba(205, 127, 50, 0.45); }
-
-.play-ranking-rank {
-    width: 26px;
-    height: 26px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--pf-muted);
-    background: color-mix(in srgb, var(--pf-fg, #ffffff) 6%, transparent);
-}
-
-.play-ranking-row.is-gold .play-ranking-rank { color: var(--pf-on-gold); background: var(--pf-gold); }
-.play-ranking-row.is-silver .play-ranking-rank { color: #1b1712; background: #cbd5e1; }
-.play-ranking-row.is-bronze .play-ranking-rank { color: #1b1712; background: #cd7f32; }
-
-.play-ranking-name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--pf-fg);
-}
-
-.play-ranking-score {
-    text-align: right;
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--pf-gold);
-    font-variant-numeric: tabular-nums;
-}
-
-.play-ranking-foot {
-    margin-top: 12px;
-    font-size: 12px;
-    text-align: center;
-    color: var(--pf-muted);
-}
-
-/* Narrow desktop / tablet: game on the left, info and ranking stacked on the right. */
+/* Tablet: a tall game keeps its side column; a wide game moves to the top at full width. */
 @media (max-width: 1100px) {
     .pv-layout {
-        grid-template-columns: auto minmax(240px, 320px);
+        grid-template-columns: minmax(200px, 260px) auto;
+        gap: 28px;
+    }
+
+    .pv[data-orientation="landscape"] .pv-layout {
+        grid-template-columns: minmax(0, 1fr);
         gap: 24px;
     }
 
-    .pv-stage {
-        grid-column: 1;
-        grid-row: 1 / span 2;
+    .pv[data-orientation="landscape"] .pv-stage {
+        order: -1;
     }
 
-    .pv-info {
+    .pv[data-orientation="landscape"] .pv-info {
         position: static;
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .play-ranking {
-        position: static;
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .play-ranking-list {
-        max-height: 320px;
     }
 
     .pv-note {
         display: none;
+    }
+}
+
+/* Short screens (phone turned sideways): the game uses the full height. */
+@media (max-height: 500px) {
+    .play-frame-wrap {
+        --frame-h: calc(100vh - 70px);
+    }
+
+    @supports (height: 100dvh) {
+        .play-frame-wrap {
+            --frame-h: calc(100dvh - 70px);
+        }
+    }
+
+    .pv-layout {
+        padding-top: 8px;
     }
 }
 
@@ -2562,35 +2481,39 @@ body.play-page {
         height: 30px;
     }
 
-    .pv-layout {
+    .pv-layout,
+    .pv[data-orientation="landscape"] .pv-layout {
         grid-template-columns: minmax(0, 1fr);
         padding: 12px 12px 32px;
         gap: 20px;
-    }
-
-    .pv-stage,
-    .pv-info,
-    .play-ranking {
-        grid-column: 1;
-        grid-row: auto;
     }
 
     .pv-stage {
         order: -1;
     }
 
-    .play-frame-wrap {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-        max-height: calc(100dvh - 76px);
-        max-width: calc((100dvh - 76px) * 9 / 16);
-        margin: 0 auto;
-        border-radius: 16px;
+    .pv-info {
+        position: static;
     }
 
-    .pv-info {
-        display: block;
+    .play-frame-wrap {
+        --frame-h: calc(100vh - 76px);
+    }
+
+    @supports (height: 100dvh) {
+        .play-frame-wrap {
+            --frame-h: calc(100dvh - 76px);
+        }
+    }
+
+    /* A wide game on a phone held upright runs edge to edge. */
+    .pv[data-orientation="landscape"] .pv-layout {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .pv[data-orientation="landscape"] .pv-info {
+        padding: 0 12px;
     }
 
     .pv-title {
@@ -2601,14 +2524,6 @@ body.play-page {
         margin-top: 16px;
     }
 
-    .play-ranking {
-        position: static;
-    }
-
-    .play-ranking-list {
-        max-height: none;
-    }
-
     .ph-hero {
         padding: calc(var(--header-h) + 40px) 0 40px;
     }
@@ -2617,7 +2532,6 @@ body.play-page {
         padding-top: 40px;
     }
 }
-
 
 /* ============================================================= */
 /* 12. Season themes (applied by js/theme.js)                     */
@@ -3138,8 +3052,8 @@ body.season-sheet::before {
     }
 
     .play-cta-icon svg {
-        width: 23px;
-        height: 23px;
+        width: 22px;
+        height: 22px;
     }
 
     .play-cta-kicker {
